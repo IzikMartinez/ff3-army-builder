@@ -1,0 +1,601 @@
+{
+  "nation": "Yugoslavia",
+  "year": 1985,
+  "doctrine": "Warsaw Pact combined-arms on a South Slav / Bulgarian manpower base. Never Non-Aligned in this timeline, so no US leftover park and no independent M-84 / M-80 type issue — Moscow keeps them on the export pipeline.",
+  "quality_doctrine": {
+    "note": "Quality ranks use the project's quality.json experience bands. Lower quality number is better.",
+    "pact_1985": [
+      {
+        "nation": "East Germany",
+        "rank": 1,
+        "line": "excellent",
+        "elite": "elite"
+      },
+      {
+        "nation": "USSR",
+        "rank": 2,
+        "line": "good",
+        "elite": "elite"
+      },
+      {
+        "nation": "Zapadoslavia",
+        "rank": 2,
+        "line": "good",
+        "elite": "excellent"
+      },
+      {
+        "nation": "Yugoslavia",
+        "rank": 4,
+        "line": "average",
+        "elite": "good",
+        "notes": "Weakest of the big four. Large, linguistically split, and still carrying territorial-defence habits. Proleterska Garda is the only formation that consistently fights at 'good'."
+      }
+    ]
+  },
+  "force_structure_1985": {
+    "fronts": [
+      {
+        "name": "Southwestern Front",
+        "hq": "Zagreb",
+        "faces": "Italy, the Alps, and any NATO landing on the Adriatic",
+        "armies": ["5th Combined Arms Army (Zagreb)", "9th Combined Arms Army (Ljubljana)"]
+      },
+      {
+        "name": "Southern Front",
+        "hq": "Skopje",
+        "faces": "Greece and the Straits approaches",
+        "armies": ["2nd Combined Arms Army (Niš)", "3rd Combined Arms Army (Sofia)"]
+      }
+    ],
+    "strategic_reserve": [
+      "1st Proleterska Garda Mechanized Division (Belgrade)",
+      "31st Airborne Brigade (Niš) — light, no BMD",
+      "Bulgarian 16th Motor Rifle Division held as Front reserve at Sofia"
+    ],
+    "line_divisions_approx": "12–14 tank and motor-rifle divisions plus 1 guards mechanized division, 1 light airborne brigade, and territorial brigades that do not belong on a first-echelon table",
+    "manpower_note": "Peak wartime strength around 800–900 thousand including the Bulgarian republic. Peacetime cadre closer to 350–400 thousand. Quality falls off a cliff once the territorial brigades are called up — leave those at 'fair' or 'marginal'."
+  },
+  "experience_defaults": {
+    "motorized": "average",
+    "mechanized": "average",
+    "armor": "average",
+    "guards_mechanized": "good",
+    "guards_armor": "good",
+    "airborne": "good",
+    "mountain": "average"
+  },
+  "motorized": {
+    "title": "Motorizovani bataljon / Моторизиран батальон",
+    "short": "Motor Rifle Battalion (wheeled)",
+    "experience": "average",
+    "notes": "BTR-60PB or BTR-70. Some second-line and Bulgarian battalions still on BTR-152. Infantry mix of M70 (AKM-pattern) and older M59/66. No OT-64.",
+    "bhq": {
+      "command": { "unit": "CAPC", "quantity": 1 },
+      "support": [
+        { "unit": "UAZ-469", "quantity": 1 },
+        { "unit": "PKM", "quantity": 1 },
+        { "unit": "SA-7", "quantity": 1 }
+      ]
+    },
+    "companies": {
+      "chq": {
+        "command": { "unit": "CAPC", "quantity": 1 },
+        "support": [{ "unit": "RPG-7", "quantity": 1 }]
+      },
+      "platoon_quantity": 3,
+      "platoon": {
+        "AFV": [{ "unit": "APC", "quantity": 3 }],
+        "Infantry": [
+          { "unit": "M70 / AKM", "quantity": 3 },
+          { "unit": "PKM", "quantity": 1 },
+          { "unit": "RPK", "quantity": 2 },
+          { "unit": "RPG-7", "quantity": 3 },
+          { "unit": "SA-7", "quantity": 1 }
+        ]
+      }
+    },
+    "artillery": [
+      { "unit": "M120", "quantity": 6 },
+      { "unit": "Truck", "quantity": 6 },
+      { "unit": "UAZ-469", "quantity": 1 }
+    ],
+    "antiarmor": [
+      { "unit": "BRDM-2 AT-3c", "quantity": 4 },
+      { "unit": "SPG-9", "quantity": 4 }
+    ],
+    "air_defence": [
+      { "unit": "ZU-23/2", "quantity": 4 },
+      { "unit": "SA-7", "quantity": 3 }
+    ]
+  },
+  "mechanized": {
+    "title": "Mehanizovani bataljon / Механизиран батальон",
+    "short": "Mechanized Battalion (BMP-1)",
+    "experience": "average",
+    "notes": "Export BMP-1 with 73mm and AT-3. Not a fleet of BMP-1P. Garda gets the AT-4 vehicles; line battalions do not.",
+    "bhq": {
+      "command": { "unit": "BMP-1K", "quantity": 1 },
+      "support": [
+        { "unit": "UAZ-469", "quantity": 1 },
+        { "unit": "PKM", "quantity": 1 },
+        { "unit": "SA-7", "quantity": 1 }
+      ]
+    },
+    "companies": {
+      "chq": {
+        "command": { "unit": "IFV", "quantity": 1 },
+        "support": [{ "unit": "RPG-7", "quantity": 1 }]
+      },
+      "platoon_quantity": 3,
+      "platoon": {
+        "AFV": [{ "unit": "IFV", "quantity": 3 }],
+        "Infantry": [
+          { "unit": "M70 / AKM", "quantity": 3 },
+          { "unit": "PKM", "quantity": 1 },
+          { "unit": "RPK", "quantity": 2 },
+          { "unit": "RPG-7", "quantity": 3 },
+          { "unit": "SA-7", "quantity": 1 }
+        ]
+      }
+    },
+    "artillery": [
+      { "unit": "M120", "quantity": 6 },
+      { "unit": "MT-LB", "quantity": 6 },
+      { "unit": "UAZ-469", "quantity": 1 }
+    ],
+    "antiarmor": [
+      { "unit": "BRDM-2 AT-3c", "quantity": 4 },
+      { "unit": "SPG-9", "quantity": 2 }
+    ],
+    "air_defence": [
+      { "unit": "ZU-23/2", "quantity": 4 },
+      { "unit": "SA-7", "quantity": 3 }
+    ]
+  },
+  "armor": {
+    "title": "Tenkovski bataljon / Танков батальон",
+    "short": "Tank Battalion",
+    "experience": "average",
+    "notes": "T-55 / T-55A is still the mass tank. First-echelon tank regiments have T-72 / T-72M Export. No T-72M1 type issue, no T-72B, no M-84. Older 40-tank T-55 battalions exist next to 31-tank T-72 battalions.",
+    "bhq": {
+      "command": { "unit": "CT", "quantity": 1 },
+      "support": [
+        { "unit": "T-55ARV", "quantity": 1 },
+        { "unit": "UAZ-469", "quantity": 1 }
+      ]
+    },
+    "companies": {
+      "chq": {
+        "command": { "unit": "tank", "quantity": 1 }
+      },
+      "platoon_quantity": 3,
+      "platoon": {
+        "AFV": [{ "unit": "tank", "quantity": 3 }]
+      }
+    },
+    "attached_motor_rifle": {
+      "note": "Pair a T-72 battalion with a BMP-1 company. Pair a T-55 battalion with a BTR company.",
+      "AFV": [{ "unit": "APC", "quantity": 3 }],
+      "Infantry": [
+        { "unit": "M70 / AKM", "quantity": 3 },
+        { "unit": "RPG-7", "quantity": 3 },
+        { "unit": "SA-7", "quantity": 1 }
+      ]
+    }
+  },
+  "guards_mechanized": {
+    "title": "Mehanizovani bataljon Proleterske Garde",
+    "short": "Proleterska Garda Mechanized Battalion",
+    "experience": "good",
+    "notes": "Only Yugoslav formation that can stand next to a Zapadoslav line battalion. BMP-1P and AT-4 fill. Still a step under Gwardia and two under NVA.",
+    "bhq": {
+      "command": { "unit": "BMP-1K", "quantity": 1 },
+      "support": [
+        { "unit": "BRDM-2", "quantity": 1 },
+        { "unit": "PKM", "quantity": 1 },
+        { "unit": "SA-7", "quantity": 2 }
+      ]
+    },
+    "companies": {
+      "chq": {
+        "command": { "unit": "IFV", "quantity": 1 },
+        "support": [{ "unit": "AT-4 Fagot", "quantity": 1 }]
+      },
+      "platoon_quantity": 3,
+      "platoon": {
+        "AFV": [{ "unit": "IFV", "quantity": 3 }],
+        "Infantry": [
+          { "unit": "M70 / AKM", "quantity": 3 },
+          { "unit": "PKM", "quantity": 1 },
+          { "unit": "RPK", "quantity": 2 },
+          { "unit": "RPG-7", "quantity": 3 },
+          { "unit": "AT-4 Fagot", "quantity": 1 },
+          { "unit": "SA-7", "quantity": 1 }
+        ]
+      }
+    },
+    "artillery": [
+      { "unit": "2S1 Gvozdika", "quantity": 6 },
+      { "unit": "UAZ-469", "quantity": 1 }
+    ],
+    "antiarmor": [
+      { "unit": "BRDM-2 AT-5", "quantity": 4 },
+      { "unit": "AT-4 Fagot", "quantity": 4 }
+    ],
+    "air_defence": [
+      { "unit": "ZSU-23/4", "quantity": 2 },
+      { "unit": "SA-9", "quantity": 2 }
+    ]
+  },
+  "guards_armor": {
+    "title": "Tenkovski bataljon Proleterske Garde",
+    "short": "Proleterska Garda Tank Battalion",
+    "experience": "good",
+    "notes": "Best T-72M Export hulls in the country. Still no T-72M1 night-sight batch as a type issue.",
+    "bhq": {
+      "command": { "unit": "CT", "quantity": 1 },
+      "support": [
+        { "unit": "T-72K ARV", "quantity": 1 },
+        { "unit": "BRDM-2", "quantity": 1 }
+      ]
+    },
+    "companies": {
+      "chq": {
+        "command": { "unit": "tank", "quantity": 1 }
+      },
+      "platoon_quantity": 3,
+      "platoon": {
+        "AFV": [{ "unit": "tank", "quantity": 3 }]
+      }
+    }
+  },
+  "airborne": {
+    "title": "Padobranski bataljon",
+    "short": "Airborne Battalion (light)",
+    "experience": "good",
+    "notes": "31st Airborne Brigade. No BMD family at all. Drops light and waits for BTR-60 follow-on. Treat as a poorer Sokol light battalion.",
+    "bhq": {
+      "command": { "unit": "CAPC", "quantity": 1 },
+      "support": [
+        { "unit": "UAZ-469", "quantity": 1 },
+        { "unit": "PKM", "quantity": 1 },
+        { "unit": "SA-7", "quantity": 1 }
+      ]
+    },
+    "companies": {
+      "chq": {
+        "command": { "unit": "CAPC", "quantity": 1 },
+        "support": [{ "unit": "RPG-7", "quantity": 1 }]
+      },
+      "platoon_quantity": 3,
+      "platoon": {
+        "AFV": [{ "unit": "APC", "quantity": 0 }],
+        "Infantry": [
+          { "unit": "M70 / AKM", "quantity": 3 },
+          { "unit": "PKM", "quantity": 1 },
+          { "unit": "RPK", "quantity": 2 },
+          { "unit": "RPG-7", "quantity": 3 },
+          { "unit": "SA-7", "quantity": 1 }
+        ]
+      }
+    },
+    "lift_followon": {
+      "AFV": [
+        { "unit": "BTR-60PB", "quantity": 10 },
+        { "unit": "UAZ-469 + SPG-9", "quantity": 4 }
+      ]
+    },
+    "artillery": [
+      { "unit": "M120", "quantity": 6 }
+    ],
+    "antiarmor": [
+      { "unit": "SPG-9", "quantity": 6 },
+      { "unit": "AT-3c", "quantity": 4 }
+    ]
+  },
+  "mountain": {
+    "title": "Planinski bataljon",
+    "short": "Mountain Battalion",
+    "experience": "average",
+    "notes": "Slovene, Montenegrin, and Rhodope battalions. Trucks and mules, not BTRs. Better in broken ground than the motor-rifle table suggests; worse on a German plain.",
+    "bhq": {
+      "command": { "unit": "UAZ-469", "quantity": 1 },
+      "support": [
+        { "unit": "PKM", "quantity": 1 },
+        { "unit": "SA-7", "quantity": 1 }
+      ]
+    },
+    "companies": {
+      "chq": {
+        "command": { "unit": "Truck", "quantity": 1 },
+        "support": [{ "unit": "RPG-7", "quantity": 1 }]
+      },
+      "platoon_quantity": 3,
+      "platoon": {
+        "AFV": [{ "unit": "Truck", "quantity": 1 }],
+        "Infantry": [
+          { "unit": "M70 / AKM", "quantity": 3 },
+          { "unit": "PKM", "quantity": 1 },
+          { "unit": "RPK", "quantity": 2 },
+          { "unit": "RPG-7", "quantity": 3 },
+          { "unit": "SA-7", "quantity": 1 }
+        ]
+      }
+    },
+    "artillery": [
+      { "unit": "M120", "quantity": 6 }
+    ],
+    "antiarmor": [
+      { "unit": "SPG-9", "quantity": 6 },
+      { "unit": "B-11 107mm RR", "quantity": 2 }
+    ]
+  },
+  "weapons": {
+    "APC": [
+      "BTR-60PB",
+      "BTR-70",
+      "BTR-152",
+      "M-60P"
+    ],
+    "CAPC": [
+      "BTR-60PB",
+      "BTR-70",
+      "BTR-50PU"
+    ],
+    "IFV": [
+      "BMP-1"
+    ],
+    "tank": [
+      "T-55 / T-55A",
+      "T-72 / T-72M Export"
+    ],
+    "CT": [
+      "T-55K",
+      "T-72K",
+      "BMP-1K",
+      "BTR-50PU"
+    ],
+    "recon": [
+      "BRDM-2",
+      "PT-76B",
+      "BRDM-1"
+    ],
+    "artillery_sp": [
+      "2S1 Gvozdika",
+      "M120"
+    ],
+    "air_defence": [
+      "ZSU-23/4",
+      "ZSU-57/2",
+      "SA-9",
+      "S-60",
+      "ZU-23/2",
+      "SA-7"
+    ],
+    "atgm": [
+      "AT-3c",
+      "AT-4",
+      "AT-5"
+    ]
+  },
+  "equipment_policy": {
+    "allowed_export": [
+      "T-54B",
+      "T-55 / T-55A",
+      "T-72 / T-72M Export",
+      "BMP-1",
+      "BTR-152",
+      "BTR-50PK",
+      "BTR-60PB",
+      "BTR-70",
+      "BRDM-2",
+      "BRDM-2 AT-3c",
+      "PT-76B",
+      "ZSU-23/4",
+      "ZSU-57/2",
+      "SA-9",
+      "2S1",
+      "MTLB, MT-LBV, MT-LBT"
+    ],
+    "domestic_unique": [
+      "M-60P APC (treat as BTR-60 equivalent)"
+    ],
+    "forbidden": [
+      "T-72M1 as a type issue",
+      "T-64 family",
+      "T-80 family",
+      "T-72B",
+      "M-84 (never independently developed; they stayed on the Soviet export line)",
+      "M-80 IFV as a type issue",
+      "BMD family",
+      "OT-64",
+      "Dana",
+      "BTR-80",
+      "BMP-2",
+      "2S6 Tunguska"
+    ]
+  },
+  "elite_order_of_battle": {
+    "garda": {
+      "name": "1st Proleterska Garda Mechanized Division",
+      "honorific": "Proleterska",
+      "hq": "Belgrade",
+      "role": "Front reserve and palace-to-capital covering force; the only Yugoslav formation that is not filler",
+      "order_of_battle": [
+        "1st Garda Tank Regiment — T-72 / T-72M Export",
+        "2nd Garda Mechanized Regiment — BMP-1P",
+        "3rd Garda Mechanized Regiment — BMP-1P",
+        "Garda Artillery Regiment — 2S1"
+      ],
+      "experience": "good",
+      "compared_to": "A Zapadoslav line tank division. Not Gwardia. Not NVA."
+    },
+    "airborne": {
+      "name": "31st Airborne Brigade",
+      "hq": "Niš",
+      "role": "Tactical drops on the Greek frontier and Adriatic passes",
+      "experience": "good",
+      "compared_to": "Sokol light battalion without the OT-64 follow-on or the BMD regiment."
+    }
+  },
+  "era_1965_1975": {
+    "note": "Cold-war-gone-hot window. Split at 1970 because that is when BMP-1, AT-3 density, and SA-7 start to matter. Quality bands are the same relative ladder, one notch rawer than 1985.",
+    "experience_defaults": {
+      "line": "average",
+      "garda": "good",
+      "airborne": "good",
+      "territorial": "fair"
+    },
+    "early_1965_1970": {
+      "tanks": [
+        "T-34/85 (second line and Bulgarian territorial)",
+        "T-54",
+        "T-54A",
+        "T-54B",
+        "T-55 / T-55A (first-echelon, still scarce in 1965)",
+        "SU-100 (tank destroyer battalions)",
+        "IS-2 / IS-3 (parade and mobilisation only — do not put these in a first-wave tank regiment)"
+      ],
+      "apc": [
+        "BTR-152",
+        "BTR-152V1",
+        "BTR-50P, BTR-50PA",
+        "BTR-50PK",
+        "BTR-40",
+        "Truck (still the majority lift in 1965)"
+      ],
+      "ifv": [],
+      "recon": [
+        "PT-76",
+        "PT-76B",
+        "BRDM-1",
+        "BRDM-1 AT-1",
+        "BA-64 leftovers (territorial only)"
+      ],
+      "artillery": [
+        "M-30 122mm",
+        "D-1 152mm",
+        "M-46 130mm (few)",
+        "M120",
+        "BM-13 / BM-24 leftovers",
+        "M-51 / early Grad (late window only)"
+      ],
+      "air_defence": [
+        "ZSU-57/2",
+        "S-60 AAG",
+        "ZPU-2 AAG",
+        "ZPU-4 AAG",
+        "M1939 37mm AAG"
+      ],
+      "at_and_atgm": [
+        "T-12 AT Gun",
+        "D-44 AT Gun",
+        "BS-3 Field Gun",
+        "B-10 82mm RR",
+        "B-11 107mm RR",
+        "SPG-9 Rocket Gun (from ~1968)",
+        "RPG-2",
+        "RPG-7 (from mid/late 1960s)",
+        "AT-1 Snapper on BRDM-1 (rare)",
+        "AT-3b from ~1968 in Garda only"
+      ],
+      "infantry_weapons": [
+        "M59 / M59/66 SKS-pattern",
+        "AK-47 / early M64",
+        "RPD",
+        "DP-28 leftovers",
+        "SG-43 / PK early"
+      ],
+      "airborne": [
+        "Foot drop",
+        "ASU-57 (token, if at all)",
+        "Truck follow-on",
+        "no BMD"
+      ],
+      "garda_park_1965_1970": [
+        "T-55 / T-55A",
+        "BTR-50PK",
+        "BRDM-1 AT-1",
+        "ZSU-57/2"
+      ]
+    },
+    "late_1971_1975": {
+      "tanks": [
+        "T-55 / T-55A (now the mass tank)",
+        "T-54B (still common)",
+        "T-34/85 (mobilisation only)",
+        "SU-100 (reserve tank destroyer)"
+      ],
+      "apc": [
+        "BTR-60P",
+        "BTR-60PA",
+        "BTR-60PB (the one you want for first echelon)",
+        "BTR-50PK",
+        "BTR-152K (second line)",
+        "M-60P (domestic, treat as BTR-60)"
+      ],
+      "ifv": [
+        "BMP-1 (Garda and one Southern Front regiment only, from ~1973–75)",
+        "no BMP-1P yet"
+      ],
+      "recon": [
+        "PT-76B",
+        "BRDM-2",
+        "BRDM-2 AT-3b",
+        "BRDM-1 (second line)"
+      ],
+      "artillery": [
+        "M-30 122mm",
+        "D-30 122mm (arriving)",
+        "D-1 / D-20 152mm",
+        "BM-21 Grad",
+        "M120"
+      ],
+      "air_defence": [
+        "ZSU-57/2",
+        "ZSU-23/4 (Garda and a few AA battalions from ~1972)",
+        "S-60 AAG",
+        "ZU-23/2",
+        "SA-7 (from ~1971, never enough)"
+      ],
+      "at_and_atgm": [
+        "T-12 / MT-12 AT Gun",
+        "SPG-9",
+        "RPG-7",
+        "AT-3b on BRDM-2",
+        "AT-3c late in the window, Garda first"
+      ],
+      "infantry_weapons": [
+        "M70 / AKM",
+        "RPK",
+        "PK / PKM",
+        "M59/66 still in territorial units"
+      ],
+      "airborne": [
+        "Foot drop",
+        "BTR-60 follow-on",
+        "SA-7 and RPG-7",
+        "no BMD, no ASU-85"
+      ],
+      "garda_park_1971_1975": [
+        "T-55 / T-55A",
+        "BMP-1 (from ~1973)",
+        "BTR-60PB",
+        "BRDM-2 AT-3b",
+        "ZSU-23/4"
+      ]
+    },
+    "forbidden_this_era": [
+      "T-72 of any mark (too early for a Pact minor)",
+      "T-64 / T-80",
+      "BMP-2",
+      "BMD family",
+      "OT-64 (Zapadoslav domestic, not exported south)",
+      "Dana",
+      "RM-70",
+      "SA-8 / SA-9 / SA-13 as a type issue",
+      "AT-4 / AT-5",
+      "any US or Non-Aligned leftover (M-47, M-18, M-36, M3) — they never left the Pact"
+    ]
+  }
+}
