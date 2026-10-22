@@ -3,7 +3,7 @@ export type Scale = "1:5" | "1:1";
 export type Alliance = "nato" | "warpac" | "warpac-alt" | "other";
 export type HeaderInk = "light" | "dark";
 export type ThemeMode = "dark" | "light";
-export type UnitKind = "ground" | "helicopter";
+export type UnitKind = "ground" | "helicopter" | "infantry";
 
 export type Era = {
   start_era: string;
@@ -29,6 +29,31 @@ export type EquipMark = {
   code: string;
   name: string;
   effect: string;
+};
+
+/** Indirect / area fire (artillery, mortars, MRLs). */
+export type IndirectFire = {
+  /** Min and max range in inches; guns and mortars have a min of 0. */
+  range: [number, number];
+  /** Ammo codes: h HE, s smoke, c chemical, i ICM, l laser-guided, g GPS-guided, m mines. */
+  ammo: string;
+  /** Multiple rocket launchers: size class and fire units per stand (B.13.3). */
+  mrl?: { class: "light" | "medium" | "heavy" | "very heavy"; fireUnits: number };
+};
+
+/** One infantry anti-tank or SAM weapon line (LAW, MAW or SAM). */
+export type InfantryWeapon = { pen: string; rof: string; rng: string };
+
+export type InfantryStats = {
+  /** Anti-infantry ROF: [ranged, close combat]. */
+  rof: [number, number];
+  /** ROF in parentheses on the chart: −1 ROF if the stand moved. */
+  reducedOnMove: boolean;
+  /** Transport space the stand takes up. */
+  size: number;
+  law: InfantryWeapon | null;
+  maw: InfantryWeapon | null;
+  sam: InfantryWeapon | null;
 };
 
 export type HeloPodPick = {
@@ -70,6 +95,8 @@ export type Vehicle = {
   podOptionKeys: string[];
   maxMissilePods: number | null;
   maxKeyPods: Record<string, number>;
+  indirect?: IndirectFire;
+  infantry?: InfantryStats;
 };
 
 export type Missile = {

@@ -8,6 +8,7 @@
     filterUnits,
     unitsForNation,
   } from "../lib/ffot3/catalog";
+  import { cardName, groupByName, variantsForBand } from "../lib/ffot3/variants";
   import {
     availableClasses,
     matchesClass,
@@ -63,6 +64,12 @@
       missile: decadeSelected ? missile : "",
     }),
   );
+  // A decade narrows each card to the variants serving most of it.
+  const cards = $derived(
+    decadeSelected
+      ? groupByName(units).map((g) => variantsForBand(g, $force.yearMin, $force.yearMax))
+      : groupByName(units),
+  );
 
   function isDecadeActive(min: number, max: number) {
     return $force.yearMin === min && $force.yearMax === max;
@@ -103,7 +110,7 @@
             <span class="font-display text-2xl leading-none tracking-wide text-paper uppercase">{nation.short}</span>
             <span class="font-display text-xl leading-none tabular-nums text-brass">{$force.yearMin}–{$force.yearMax}</span>
           </div>
-          <p class="text-sm text-muted">{units.length} cards in this window</p>
+          <p class="text-sm text-muted">{cards.length} cards in this window</p>
         </div>
 
         <div>
@@ -194,7 +201,7 @@
         </label>
       </section>
 
-      {#if units.length === 0}
+      {#if cards.length === 0}
         <div class="rounded-[24px] border border-line bg-ink-2 px-4 py-16 text-center">
           <p class="font-display text-2xl">No units in this window</p>
           <p class="mt-2 text-muted">
@@ -203,8 +210,8 @@
         </div>
       {:else}
         <ul class="grid grid-cols-1 gap-4 xl:grid-cols-2">
-          {#each units as unit (unit.id)}
-            <CatalogEntry {unit} yearMin={$force.yearMin} yearMax={$force.yearMax} bw={$force.bwMode} />
+          {#each cards as variants (`${variants[0]!.nation}::${cardName(variants[0]!)}`)}
+            <CatalogEntry {variants} yearMin={$force.yearMin} yearMax={$force.yearMax} bw={$force.bwMode} />
           {/each}
         </ul>
       {/if}

@@ -142,7 +142,15 @@ function zapadExtras(raw: RawUnit[]): RawUnit[] {
   ];
 }
 
+export const FANTASY_NATIONS = ["zapadoslavia", "yugoslavia"];
+
 export function fantasyUnits(raw: RawUnit[]): RawUnit[] {
+  // Rows already tagged with a fantasy nation (e.g. Yugoslav M-77 Oganj from
+  // the spreadsheet) still get the 1990 cut-off.
+  const native = [...raw, ...(yugoNativeJson as RawUnit[])]
+    .filter((u) => FANTASY_NATIONS.includes(u.nation))
+    .map((u) => clampUnit(u, u.nation))
+    .filter((u): u is RawUnit => u !== null);
   const zapad = derive(
     raw,
     ["czechoslovakia", "poland"],
@@ -151,5 +159,5 @@ export function fantasyUnits(raw: RawUnit[]): RawUnit[] {
     ZAPAD_NAMES,
   );
   const yugo = derive(raw, ["bulgaria"], "yugoslavia", (u) => !sovietOnly(u));
-  return [...zapad, ...zapadExtras(raw), ...yugo, ...(yugoNativeJson as RawUnit[])];
+  return [...zapad, ...zapadExtras(raw), ...yugo, ...native];
 }

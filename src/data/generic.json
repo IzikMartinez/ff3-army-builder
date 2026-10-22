@@ -1,0 +1,1178 @@
+[
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "Bulldozer",
+    "Points": 15,
+    "era": {
+      "start_era": "50",
+      "end_era": "15"
+    },
+    "gun_name": "12.7mm HMG",
+    "move_type": [
+      "tracked"
+    ],
+    "move_value": "7",
+    "nation": "generic",
+    "armor": [
+      3,
+      0
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": ""
+  },
+  {
+    "AI": -1,
+    "Equip": "",
+    "Gun_Pen": [
+      "1"
+    ],
+    "Gun_ROF": 1,
+    "Gun_Rng": 6,
+    "Name": "Tracked APC",
+    "Points": 18,
+    "era": {
+      "start_era": "61",
+      "end_era": "15"
+    },
+    "gun_name": "12.7mm HMG",
+    "move_type": [
+      "tracked",
+      "amphibious"
+    ],
+    "move_value": "9",
+    "nation": "generic",
+    "armor": [
+      2,
+      1
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": ""
+  },
+  {
+    "AI": -1,
+    "Equip": "n,i",
+    "Gun_Pen": [
+      "1"
+    ],
+    "Gun_ROF": 1,
+    "Gun_Rng": 6,
+    "Name": "Wheeled APC",
+    "Points": 15,
+    "era": {
+      "start_era": "60",
+      "end_era": "15"
+    },
+    "gun_name": "12.7mm HMG",
+    "move_type": [
+      "wheeled",
+      "amphibious"
+    ],
+    "move_value": "9",
+    "nation": "generic",
+    "armor": [
+      1,
+      0
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": ""
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "Very Light Truck",
+    "Points": 1,
+    "era": {
+      "start_era": "50",
+      "end_era": "15"
+    },
+    "gun_name": "i.e., Jeep or GAZ-69",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "9",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0.5,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": ""
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "Light Truck",
+    "Points": 2,
+    "era": {
+      "start_era": "50",
+      "end_era": "15"
+    },
+    "gun_name": "",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "8",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": ""
+  },
+  {
+    "AI": -1,
+    "Equip": "",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 1,
+    "Gun_Rng": 6,
+    "Name": "Light Truck w/MG",
+    "Points": 2,
+    "era": {
+      "start_era": "50",
+      "end_era": "15"
+    },
+    "gun_name": "7.62mm MG",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "8",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": ""
+  },
+  {
+    "AI": -1,
+    "Equip": "",
+    "Gun_Pen": [
+      "1"
+    ],
+    "Gun_ROF": 1,
+    "Gun_Rng": 6,
+    "Name": "Light Truck w/HMG",
+    "Points": 7,
+    "era": {
+      "start_era": "50",
+      "end_era": "15"
+    },
+    "gun_name": "12.7mm HMG",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "8",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": ""
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "Medium Truck",
+    "Points": 5,
+    "era": {
+      "start_era": "50",
+      "end_era": "15"
+    },
+    "gun_name": "",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "7",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 2,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": ""
+  },
+  {
+    "AI": -1,
+    "Equip": "",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 1,
+    "Gun_Rng": 6,
+    "Name": "Medium Truck w/MG",
+    "Points": 5,
+    "era": {
+      "start_era": "50",
+      "end_era": "15"
+    },
+    "gun_name": "7.62mm MG",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "7",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 2,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": ""
+  },
+  {
+    "AI": -1,
+    "Equip": "",
+    "Gun_Pen": [
+      "1"
+    ],
+    "Gun_ROF": 1,
+    "Gun_Rng": 6,
+    "Name": "Medium Truck w/HMG",
+    "Points": 9,
+    "era": {
+      "start_era": "50",
+      "end_era": "15"
+    },
+    "gun_name": "12.7mm HMG",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "7",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 2,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": ""
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "Heavy Truck",
+    "Points": 7,
+    "era": {
+      "start_era": "50",
+      "end_era": "15"
+    },
+    "gun_name": "",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "7",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 3,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": ""
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "Jeep",
+    "Points": 1,
+    "era": {
+      "start_era": "50",
+      "end_era": "15"
+    },
+    "gun_name": "",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "9",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0.5,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": ""
+  },
+  {
+    "AI": -1,
+    "Equip": "",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 1,
+    "Gun_Rng": 6,
+    "Name": "Jeep w/LMG",
+    "Points": 1,
+    "era": {
+      "start_era": "50",
+      "end_era": "15"
+    },
+    "gun_name": "7.62mm MG",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "8",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0.5,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": ""
+  },
+  {
+    "AI": -1,
+    "Equip": "",
+    "Gun_Pen": [
+      "1"
+    ],
+    "Gun_ROF": 1,
+    "Gun_Rng": 6,
+    "Name": "Jeep w/HMG",
+    "Points": 6,
+    "era": {
+      "start_era": "50",
+      "end_era": "15"
+    },
+    "gun_name": "12.7mm HMG",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "8",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0.5,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": ""
+  },
+  {
+    "AI": -1,
+    "Equip": "",
+    "Gun_Pen": [
+      "11h"
+    ],
+    "Gun_ROF": 3,
+    "Gun_Rng": 8,
+    "Name": "Jeep w/106mm RR",
+    "Points": 37,
+    "era": {
+      "start_era": "55",
+      "end_era": "94"
+    },
+    "gun_name": "106mm RR (US)",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "8",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": ""
+  },
+  {
+    "AI": -1,
+    "Equip": "",
+    "Gun_Pen": [
+      "14h"
+    ],
+    "Gun_ROF": 3,
+    "Gun_Rng": 8,
+    "Name": "Jeep w/106mm RR",
+    "Points": 50,
+    "era": {
+      "start_era": "95",
+      "end_era": "15"
+    },
+    "gun_name": "106mm RR (US)",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "8",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": ""
+  },
+  {
+    "AI": -1,
+    "Equip": "i",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 1,
+    "Gun_Rng": 6,
+    "Name": "Jeep w/TOW",
+    "Points": 47,
+    "era": {
+      "start_era": "70",
+      "end_era": "75"
+    },
+    "gun_name": "TOW; 7.62mm MG",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "8",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": true,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": ""
+  },
+  {
+    "AI": -1,
+    "Equip": "i",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 1,
+    "Gun_Rng": 6,
+    "Name": "Jeep w/TOW",
+    "Points": 62,
+    "era": {
+      "start_era": "76",
+      "end_era": "79"
+    },
+    "gun_name": "TOW-ER",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "8",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": true,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": ""
+  },
+  {
+    "AI": -1,
+    "Equip": "t",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 1,
+    "Gun_Rng": 6,
+    "Name": "Jeep w/TOW",
+    "Points": 66,
+    "era": {
+      "start_era": "80",
+      "end_era": "81"
+    },
+    "gun_name": "TOW-ER",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "8",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": true,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": ""
+  },
+  {
+    "AI": -1,
+    "Equip": "t",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 1,
+    "Gun_Rng": 6,
+    "Name": "Jeep w/TOW",
+    "Points": 71,
+    "era": {
+      "start_era": "82",
+      "end_era": "83"
+    },
+    "gun_name": "ITOW",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "8",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": true,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": ""
+  },
+  {
+    "AI": -1,
+    "Equip": "t",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 1,
+    "Gun_Rng": 6,
+    "Name": "Jeep w/TOW",
+    "Points": 75,
+    "era": {
+      "start_era": "84",
+      "end_era": "86"
+    },
+    "gun_name": "TOW-2",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "8",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": true,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": ""
+  },
+  {
+    "AI": -1,
+    "Equip": "t",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 1,
+    "Gun_Rng": 6,
+    "Name": "Jeep w/TOW",
+    "Points": 93,
+    "era": {
+      "start_era": "87",
+      "end_era": "91"
+    },
+    "gun_name": "TOW-2A",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "8",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": true,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": ""
+  },
+  {
+    "AI": -1,
+    "Equip": "t",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 1,
+    "Gun_Rng": 6,
+    "Name": "Jeep w/TOW",
+    "Points": 75,
+    "era": {
+      "start_era": "92",
+      "end_era": "15"
+    },
+    "gun_name": "TOW-2B",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "8",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": true,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": ""
+  },
+  {
+    "AI": -1,
+    "Equip": "",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 1,
+    "Gun_Rng": 6,
+    "Name": "Jeep w/Milan",
+    "Points": 29,
+    "era": {
+      "start_era": "75",
+      "end_era": "84"
+    },
+    "gun_name": "Milan; 7.62mm MG",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "8",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": true,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": ""
+  },
+  {
+    "AI": -1,
+    "Equip": "t",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 1,
+    "Gun_Rng": 6,
+    "Name": "Jeep w/Milan",
+    "Points": 40,
+    "era": {
+      "start_era": "85",
+      "end_era": "15"
+    },
+    "gun_name": "Milan 2/3",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "8",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": true,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": ""
+  },
+  {
+    "AI": -1,
+    "Equip": "",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 1,
+    "Gun_Rng": 6,
+    "Name": "Jeep w/SS-11",
+    "Points": 22,
+    "era": {
+      "start_era": "56",
+      "end_era": "15"
+    },
+    "gun_name": "SS-11; 7.62mm MG",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "8",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": true,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": ""
+  },
+  {
+    "AI": -1,
+    "Equip": "",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 1,
+    "Gun_Rng": 6,
+    "Name": "Jeep w/ENTAC",
+    "Points": 18,
+    "era": {
+      "start_era": "57",
+      "end_era": "15"
+    },
+    "gun_name": "ENTAC; 7.62mm MG",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "8",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": true,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": ""
+  },
+  {
+    "AI": -2,
+    "Equip": "f",
+    "Gun_Pen": [
+      "9"
+    ],
+    "Gun_ROF": 3,
+    "Gun_Rng": 8,
+    "Name": "57mm AT Gun",
+    "Points": 28,
+    "era": {
+      "start_era": "50",
+      "end_era": "15"
+    },
+    "gun_name": "57mm/L50 R 6-pdr (UK)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": ""
+  },
+  {
+    "AI": -1,
+    "Equip": "f",
+    "Gun_Pen": [
+      "10"
+    ],
+    "Gun_ROF": 3,
+    "Gun_Rng": 8,
+    "Name": "76mm AT Gun",
+    "Points": 29,
+    "era": {
+      "start_era": "50",
+      "end_era": "15"
+    },
+    "gun_name": "76mm/L55 R 17-pdr (UK)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": ""
+  },
+  {
+    "AI": -1,
+    "Equip": "f",
+    "Gun_Pen": [
+      "8"
+    ],
+    "Gun_ROF": 3,
+    "Gun_Rng": 10,
+    "Name": "85mm AT Gun",
+    "Points": 30,
+    "era": {
+      "start_era": "50",
+      "end_era": "59"
+    },
+    "gun_name": "85mm/L55 R ZIS-S53(Russia)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": ""
+  },
+  {
+    "AI": -1,
+    "Equip": "f",
+    "Gun_Pen": [
+      "9"
+    ],
+    "Gun_ROF": 3,
+    "Gun_Rng": 10,
+    "Name": "85mm AT Gun",
+    "Points": 33,
+    "era": {
+      "start_era": "60",
+      "end_era": "69"
+    },
+    "gun_name": "85mm/L55 R ZIS-S53(Russia)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": ""
+  },
+  {
+    "AI": -1,
+    "Equip": "f",
+    "Gun_Pen": [
+      "9",
+      "10h"
+    ],
+    "Gun_ROF": 3,
+    "Gun_Rng": 10,
+    "Name": "85mm AT Gun",
+    "Points": 38,
+    "era": {
+      "start_era": "70",
+      "end_era": "15"
+    },
+    "gun_name": "85mm/L55 R ZIS-S53(Russia)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": ""
+  },
+  {
+    "AI": -1,
+    "Equip": "",
+    "Gun_Pen": [
+      "1"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "12.7mm AAG",
+    "Points": 8,
+    "era": {
+      "start_era": "50",
+      "end_era": "15"
+    },
+    "gun_name": "12.7mm HMG AA",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "4",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0.5,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": ""
+  },
+  {
+    "AI": -1,
+    "Equip": "",
+    "Gun_Pen": [
+      "1"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "Quad MG AA Gun",
+    "Points": 11,
+    "era": {
+      "start_era": "44",
+      "end_era": "15"
+    },
+    "gun_name": "12.7mm HMG AAx4",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": ""
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "3"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "20mm AA Gun",
+    "Points": 21,
+    "era": {
+      "start_era": "50",
+      "end_era": "15"
+    },
+    "gun_name": "20mm AA",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": ""
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "3"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "Twin 20mm AA Gun",
+    "Points": 26,
+    "era": {
+      "start_era": "50",
+      "end_era": "15"
+    },
+    "gun_name": "20mm AAx2",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": ""
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "3"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "Twin 30mm AA Gun",
+    "Points": 37,
+    "era": {
+      "start_era": "50",
+      "end_era": "15"
+    },
+    "gun_name": "30mm AAx2",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": ""
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "7"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "Twin 35mm AA Gun",
+    "Points": 75,
+    "era": {
+      "start_era": "50",
+      "end_era": "15"
+    },
+    "gun_name": "35mm AAx2",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": ""
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "4"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "Towed 40mm AA Gun",
+    "Points": 29,
+    "era": {
+      "start_era": "50",
+      "end_era": "15"
+    },
+    "gun_name": "40mm AA",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": ""
+  }
+]

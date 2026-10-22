@@ -2,6 +2,10 @@ import unitsJson from "@/data/units.json";
 import helosJson from "@/data/helicopters.json";
 import missilesJson from "@/data/missiles.json";
 import qualityJson from "@/data/quality.json";
+import infantryJson from "@/data/infantry.json";
+import artilleryJson from "@/data/artillery.json";
+import genericJson from "@/data/generic.json";
+import baorRenamesJson from "@/data/baor-renames.json";
 import type { HeloPodPick, Missile, MissileLoadout, Quality, TowedPick, Vehicle } from "./types";
 import { YEAR_MAX, YEAR_MIN, eraOverlaps, parseEraYear, unitBasePoints } from "./combat";
 import { gunLabel, matchesClass } from "./classify";
@@ -14,9 +18,15 @@ import {
   sanitizeHeloPicks,
 } from "./helo";
 import { isZeroMoveTowed, isTowed, towedExtraPoints, visibleTowed } from "./towed";
-import { fantasyUnits } from "./fantasy";
+import { FANTASY_NATIONS, fantasyUnits } from "./fantasy";
+import { supportUnits } from "./patrons";
+import { cardName } from "./variants";
 
-type RawVehicle = Partial<Vehicle> & Omit<Vehicle, "id" | "kind" | "armorSoft" | "pods" | "podOptionKeys" | "maxMissilePods" | "maxKeyPods">;
+type RawVehicle = Partial<Vehicle> &
+  Omit<
+    Vehicle,
+    "id" | "kind" | "armorSoft" | "pods" | "podOptionKeys" | "maxMissilePods" | "maxKeyPods"
+  >;
 
 type RawHelo = {
   nation: string;
@@ -44,7 +54,11 @@ type RawHelo = {
  * leaving out Points / array position means re-pricing or adding rows doesn't
  * orphan saved lists.
  */
-function unitId(u: { nation: string; Name: string; era: { start_era: string; end_era: string } }): string {
+function unitId(u: {
+  nation: string;
+  Name: string;
+  era: { start_era: string; end_era: string };
+}): string {
   return [u.nation, u.Name, u.era.start_era, u.era.end_era].join("::");
 }
 
@@ -68,8 +82,10 @@ function normalizeUnit(u: RawVehicle): Vehicle {
     missiles: Array.isArray(u.missiles) ? u.missiles : [],
     missileRequired: Boolean(u.missileRequired),
     notes: u.notes ?? "",
-    kind: "ground",
-    armorSoft: false,
+    kind: u.kind === "infantry" ? "infantry" : "ground",
+    armorSoft: Boolean(u.armorSoft),
+    ...(u.indirect ? { indirect: u.indirect } : {}),
+    ...(u.infantry ? { infantry: u.infantry } : {}),
     pods: 0,
     podOptionKeys: [],
     maxMissilePods: null,
@@ -110,10 +126,33 @@ function normalizeHelo(raw: RawHelo): Vehicle {
   };
 }
 
-const RAW_UNITS = unitsJson as RawVehicle[];
+/**
+ * Vehicles plus infantry, artillery and generic rows (with patron copies). A
+ * nation's own vehicle row wins over a generic copy of the same item (the US
+ * list already has its own Jeep rows).
+ */
+const RAW_UNITS: RawVehicle[] = (() => {
+  const seen = new Set<string>();
+  return [
+    ...(unitsJson as RawVehicle[]),
+    ...supportUnits(
+      infantryJson as unknown as RawVehicle[],
+      artilleryJson as unknown as RawVehicle[],
+      genericJson as unknown as RawVehicle[],
+    ),
+  ].filter((u) => {
+    const key = `${unitId(u)}|${u.nation}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+})();
 
 const ALL: Vehicle[] = [
-  ...[...RAW_UNITS, ...fantasyUnits(RAW_UNITS)].map((u) => normalizeUnit(u)),
+  ...[
+    ...RAW_UNITS.filter((u) => !FANTASY_NATIONS.includes(u.nation)),
+    ...fantasyUnits(RAW_UNITS),
+  ].map((u) => normalizeUnit(u)),
   ...(helosJson as RawHelo[]).map((h) => normalizeHelo(h)),
 ];
 
@@ -137,19 +176,70 @@ export function getUnit(id: string): Vehicle | undefined {
   return BY_ID.get(id);
 }
 
-/** Old saved lists used `<key>::<Points>::<index>` ids; map them to the current id. */
-export function migrateUnitId(id: string): string {
+/** BAOR cards renamed from the import's bare names ("Mk 5, 6, 7, 8" → "Chieftain Mk 5, 6, 7, 8"). */
+const BAOR_RENAMES = baorRenamesJson as Record<string, string>;
+
+/**
+ * Map ids from older saved lists to the current id: `<key>::<Points>::<index>`
+ * ids from the first import, BAOR cards saved under their old names, and rows
+ * since split by missile era or renamed "<name> (ATGM)" — those follow the
+ * saved missile to the row that carries it now.
+ */
+export function migrateUnitId(id: string, missileId?: string | null): string {
   if (BY_ID.has(id)) return id;
+  // Exact matches first: first-import ids, then BAOR renames.
   const legacy = id.replace(/::[^:]*::\d+$/, "");
-  return BY_ID.has(legacy) ? legacy : id;
+  if (BY_ID.has(legacy)) return legacy;
+  for (const candidate of [id, legacy]) {
+    const m = /^baor::(.+)::(\d\d)::(\d\d)$/.exec(candidate);
+    const renamed = m && BAOR_RENAMES[m[1]!];
+    const next = renamed && `baor::${renamed}::${m[2]}::${m[3]}`;
+    if (next && BY_ID.has(next)) return next;
+  }
+  // Then rows that were split by missile era or renamed "(ATGM)".
+  for (const candidate of [id, legacy]) {
+    const successor = splitSuccessor(candidate, missileId);
+    if (successor) return successor;
+  }
+  return id;
+}
+
+function splitSuccessor(id: string, missileId?: string | null): string | null {
+  const m = /^([^:]+)::(.+)::(\d\d)::(\d\d)$/.exec(id);
+  if (!m) return null;
+  const [, nation, name, start, end] = m;
+  const lo = parseEraYear(start!);
+  const hi = parseEraYear(end!);
+  const renamed = (nation === "baor" && BAOR_RENAMES[name!]) || name!;
+  const names = new Set([name, `${name} (ATGM)`, renamed, `${renamed} (ATGM)`]);
+  const candidates = ALL.filter(
+    (u) =>
+      u.nation === nation &&
+      names.has(u.Name) &&
+      parseEraYear(u.era.start_era) <= hi &&
+      parseEraYear(u.era.end_era) >= lo,
+  );
+  if (missileId) {
+    const carrier = candidates.find((u) => u.missiles.some((x) => x.id === missileId));
+    if (carrier) return carrier.id;
+  }
+  // No missile saved: prefer the plain vehicle over its "(ATGM)" sibling.
+  return (
+    (
+      candidates.find((u) => u.Name === name || u.Name === renamed) ??
+      candidates.find((u) => !u.missiles.length) ??
+      candidates[0]
+    )?.id ?? null
+  );
 }
 
 export function unitsForNation(nationId: string): Vehicle[] {
   return UNITS.filter((u) => u.nation === nationId);
 }
 
+/** Number of catalog cards (same-name variants count once). */
 export function countForNation(nationId: string): number {
-  return UNITS.reduce((n, u) => (u.nation === nationId ? n + 1 : n), 0);
+  return new Set(UNITS.filter((u) => u.nation === nationId).map(cardName)).size;
 }
 
 export function missileVisible(opt: MissileLoadout, yearMin: number, yearMax: number): boolean {
@@ -163,7 +253,11 @@ function betterLoadout(a: MissileLoadout, b: MissileLoadout): MissileLoadout {
   return parseEraYear(b.era.start_era) >= parseEraYear(a.era.start_era) ? b : a;
 }
 
-export function visibleMissiles(unit: Vehicle, yearMin?: number, yearMax?: number): MissileLoadout[] {
+export function visibleMissiles(
+  unit: Vehicle,
+  yearMin?: number,
+  yearMax?: number,
+): MissileLoadout[] {
   const lo = yearMin ?? YEAR_MIN;
   const hi = yearMax ?? YEAR_MAX;
   const vis = (unit.missiles ?? []).filter((m) => missileVisible(m, lo, hi));
@@ -177,7 +271,9 @@ export function visibleMissiles(unit: Vehicle, yearMin?: number, yearMax?: numbe
     const prev = byLabel.get(m.label);
     byLabel.set(m.label, prev ? betterLoadout(prev, m) : m);
   }
-  return [...byLabel.values()].sort((a, b) => a.points - b.points || a.label.localeCompare(b.label));
+  return [...byLabel.values()].sort(
+    (a, b) => a.points - b.points || a.label.localeCompare(b.label),
+  );
 }
 
 export function defaultMissileId(unit: Vehicle, yearMin?: number, yearMax?: number): string | null {
@@ -188,7 +284,8 @@ export function defaultMissileId(unit: Vehicle, yearMin?: number, yearMax?: numb
 }
 
 export function unitHasMissiles(unit: Vehicle, yearMin?: number, yearMax?: number): boolean {
-  if (isHelicopter(unit)) return heloMissileLabels(unit, yearMin ?? YEAR_MIN, yearMax ?? YEAR_MAX).length > 0;
+  if (isHelicopter(unit))
+    return heloMissileLabels(unit, yearMin ?? YEAR_MIN, yearMax ?? YEAR_MAX).length > 0;
   return visibleMissiles(unit, yearMin, yearMax).length > 0;
 }
 
@@ -233,7 +330,10 @@ export function unitStandBase(
   // 17.10: dedicated transports cost double, including pods (17.9).
   const mult = dedicated && isTransportHelo(unit) ? 2 : 1;
   const cargo = isHelicopter(unit) ? [] : (towedLoad ?? []);
-  return chassis * mult + towedExtraPoints(cargo, getUnit, (w, pick) => unitBasePoints(w, pick.missileId));
+  return (
+    chassis * mult +
+    towedExtraPoints(cargo, getUnit, (w, pick) => unitBasePoints(w, pick.missileId))
+  );
 }
 
 export type UnitFilter = {
@@ -261,8 +361,11 @@ export function filterUnits(nationId: string, filter: UnitFilter): Vehicle[] {
       if (!cargo.some((w) => gunLabel(w) === gun)) return false;
     }
     if (missile) {
-      const onGround = visibleMissiles(u, filter.yearMin, filter.yearMax).some((m) => m.label === missile);
-      const onHelo = isHelicopter(u) && heloHasMissileLabel(u, missile, filter.yearMin, filter.yearMax);
+      const onGround = visibleMissiles(u, filter.yearMin, filter.yearMax).some(
+        (m) => m.label === missile,
+      );
+      const onHelo =
+        isHelicopter(u) && heloHasMissileLabel(u, missile, filter.yearMin, filter.yearMax);
       const onTowed = cargo.some((w) =>
         visibleMissiles(w, filter.yearMin, filter.yearMax).some((m) => m.label === missile),
       );
@@ -305,11 +408,7 @@ export function availableGunsFor(units: Vehicle[], yearMin: number, yearMax: num
   return [...set].sort((a, b) => a.localeCompare(b));
 }
 
-export function availableMissilesFor(
-  units: Vehicle[],
-  yearMin: number,
-  yearMax: number,
-): string[] {
+export function availableMissilesFor(units: Vehicle[], yearMin: number, yearMax: number): string[] {
   const set = new Set<string>();
   for (const u of units) {
     for (const m of visibleMissiles(u, yearMin, yearMax)) {

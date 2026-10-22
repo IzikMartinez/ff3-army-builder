@@ -1372,9 +1372,19 @@
       {
         "years": [
           1950,
+          1957
+        ],
+        "cards": [
+          "SU-100"
+        ]
+      },
+      {
+        "years": [
+          1958,
           1965
         ],
         "cards": [
+          "BRDM-1 (ATGM)",
           "SU-100"
         ]
       },
@@ -1384,9 +1394,9 @@
           1990
         ],
         "cards": [
-          "BRDM-2"
+          "BRDM-2 (ATGM)"
         ],
-        "note": "BRDM-2 with its ATGM loadout (AT-3; AT-5 from 1977)."
+        "note": "AT-3; AT-5 from 1977."
       }
     ],
     "AT Gun": [

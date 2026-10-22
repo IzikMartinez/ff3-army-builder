@@ -171,6 +171,10 @@ export function formatPen(value: number | null, mod = 0): string {
 
 export function terrainMove(move: number, moveType: string): MoveTable {
   const t = moveType.toLowerCase();
+  if (t === "leg") {
+    // Infantry: clear, rough and bad going all cost 1; no road bonus (Terrain Effects Chart).
+    return { normal: move, rough: move, bad: move, road: move };
+  }
   if (t === "tracked" || t === "towed") {
     return {
       normal: move,

@@ -1,0 +1,6041 @@
+[
+  {
+    "AI": 0,
+    "Equip": "f,n",
+    "Gun_Pen": [
+      "15h"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 8,
+    "Name": "DANA (ShKH-77)",
+    "Points": 55,
+    "era": {
+      "start_era": "81",
+      "end_era": "15"
+    },
+    "gun_name": "152mm/L? R (Czech)",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "8",
+    "nation": "czechoslovakia",
+    "armor": [
+      1,
+      1
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        185
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "RM-70 MRL",
+    "Points": 16,
+    "era": {
+      "start_era": "72",
+      "end_era": "94"
+    },
+    "gun_name": "",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "7",
+    "nation": "czechoslovakia",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "Med, 4 fire units",
+    "indirect": {
+      "range": [
+        50,
+        200
+      ],
+      "ammo": "hsc",
+      "mrl": {
+        "class": "medium",
+        "fireUnits": 4
+      }
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "RM-70 MRL",
+    "Points": 16,
+    "era": {
+      "start_era": "95",
+      "end_era": "15"
+    },
+    "gun_name": "",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "7",
+    "nation": "czechoslovakia",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "Med, 4 fire units",
+    "indirect": {
+      "range": [
+        50,
+        200
+      ],
+      "ammo": "hscim",
+      "mrl": {
+        "class": "medium",
+        "fireUnits": 4
+      }
+    }
+  },
+  {
+    "AI": -1,
+    "Equip": "f",
+    "Gun_Pen": [
+      "10h"
+    ],
+    "Gun_ROF": 3,
+    "Gun_Rng": 6,
+    "Name": "Mk 61 SP 105mm How",
+    "Points": 40,
+    "era": {
+      "start_era": "57",
+      "end_era": "88"
+    },
+    "gun_name": "105mm/L? (France)",
+    "move_type": [
+      "tracked"
+    ],
+    "move_value": "7",
+    "nation": "france",
+    "armor": [
+      1,
+      0
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        150
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "7he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 8,
+    "Name": "Mk F3 SP 155mm Gun",
+    "Points": 21,
+    "era": {
+      "start_era": "65",
+      "end_era": "89"
+    },
+    "gun_name": "155mm/L33 R (France)",
+    "move_type": [
+      "tracked"
+    ],
+    "move_value": "7",
+    "nation": "france",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        200
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "n",
+    "Gun_Pen": [
+      "7he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 8,
+    "Name": "GCT SP 155mm Gun",
+    "Points": 110,
+    "era": {
+      "start_era": "77",
+      "end_era": "79"
+    },
+    "gun_name": "155mm/L40 R (France)",
+    "move_type": [
+      "tracked"
+    ],
+    "move_value": "8",
+    "nation": "france",
+    "armor": [
+      8,
+      4
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        235
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "n",
+    "Gun_Pen": [
+      "7he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 8,
+    "Name": "GCT SP 155mm Gun",
+    "Points": 110,
+    "era": {
+      "start_era": "80",
+      "end_era": "15"
+    },
+    "gun_name": "155mm/L40 R (France)",
+    "move_type": [
+      "tracked"
+    ],
+    "move_value": "8",
+    "nation": "france",
+    "armor": [
+      8,
+      4
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        235
+      ],
+      "ammo": "hsim"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "7he"
+    ],
+    "Gun_ROF": 3,
+    "Gun_Rng": 8,
+    "Name": "CAESAR",
+    "Points": 26,
+    "era": {
+      "start_era": "05",
+      "end_era": "15"
+    },
+    "gun_name": "155mm/L52 R (France)",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "7",
+    "nation": "france",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        300
+      ],
+      "ammo": "hsim"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "7he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 6,
+    "Name": "OB-155-50 BF",
+    "Points": 17,
+    "era": {
+      "start_era": "50",
+      "end_era": "15"
+    },
+    "gun_name": "155mm/L22 R (France)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "france",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        180
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "7he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 8,
+    "Name": "TR 155mm Gun",
+    "Points": 20,
+    "era": {
+      "start_era": "89",
+      "end_era": "15"
+    },
+    "gun_name": "155mm/L40 R (France)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "france",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        235
+      ],
+      "ammo": "hsim"
+    }
+  },
+  {
+    "AI": -1,
+    "Equip": "n,i",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 1,
+    "Gun_Rng": 6,
+    "Name": "AML-60",
+    "Points": 11,
+    "era": {
+      "start_era": "60",
+      "end_era": "15"
+    },
+    "gun_name": "60mm Mtr/MG (France)",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "7",
+    "nation": "france",
+    "armor": [
+      1,
+      0
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        62
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": -1,
+    "Equip": "n,i",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 6,
+    "Name": "AML-60-7",
+    "Points": 11,
+    "era": {
+      "start_era": "60",
+      "end_era": "15"
+    },
+    "gun_name": "60mm Mtr/2xMG (France)",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "7",
+    "nation": "france",
+    "armor": [
+      1,
+      0
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        62
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": -1,
+    "Equip": "n,i",
+    "Gun_Pen": [
+      "1"
+    ],
+    "Gun_ROF": 1,
+    "Gun_Rng": 6,
+    "Name": "AML-60-12",
+    "Points": 14,
+    "era": {
+      "start_era": "60",
+      "end_era": "15"
+    },
+    "gun_name": "60mm Mtr/12.7mm (France)",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "7",
+    "nation": "france",
+    "armor": [
+      1,
+      0
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        62
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "n,i",
+    "Gun_Pen": [
+      "2"
+    ],
+    "Gun_ROF": 4,
+    "Gun_Rng": 10,
+    "Name": "AML-60-20",
+    "Points": 29,
+    "era": {
+      "start_era": "81",
+      "end_era": "81"
+    },
+    "gun_name": "60mm Mtr/20mm (France)",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "7",
+    "nation": "france",
+    "armor": [
+      1,
+      0
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        62
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "n,i",
+    "Gun_Pen": [
+      "3"
+    ],
+    "Gun_ROF": 4,
+    "Gun_Rng": 10,
+    "Name": "AML-60-20",
+    "Points": 35,
+    "era": {
+      "start_era": "82",
+      "end_era": "15"
+    },
+    "gun_name": "",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "7",
+    "nation": "france",
+    "armor": [
+      1,
+      0
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        62
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "81mm Mtr",
+    "Points": 18,
+    "era": {
+      "start_era": "50",
+      "end_era": "61"
+    },
+    "gun_name": "81mm Mtr (France)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "4",
+    "nation": "france",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0.5,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        28
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "81mm Mtr",
+    "Points": 18,
+    "era": {
+      "start_era": "62",
+      "end_era": "15"
+    },
+    "gun_name": "81mm Mtr (France)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "4",
+    "nation": "france",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0.5,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        52
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "120mm Mtr",
+    "Points": 52,
+    "era": {
+      "start_era": "61",
+      "end_era": "15"
+    },
+    "gun_name": "120mm Mtr (France)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "1",
+    "nation": "france",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0.5,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        81
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "t,n",
+    "Gun_Pen": [
+      "7he"
+    ],
+    "Gun_ROF": 3,
+    "Gun_Rng": 8,
+    "Name": "PzH 2000",
+    "Points": 147,
+    "era": {
+      "start_era": "98",
+      "end_era": "15"
+    },
+    "gun_name": "155mm/L52 R (Germany)",
+    "move_type": [
+      "tracked"
+    ],
+    "move_value": "9",
+    "nation": "west-germany",
+    "armor": [
+      9,
+      6
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        300
+      ],
+      "ammo": "hsim"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "n,i",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "PzMrs Kurz",
+    "Points": 27,
+    "era": {
+      "start_era": "60",
+      "end_era": "69"
+    },
+    "gun_name": "81mm Mtr (US)",
+    "move_type": [
+      "tracked"
+    ],
+    "move_value": "10",
+    "nation": "west-germany",
+    "armor": [
+      1,
+      0
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        45
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "SPz 52-3 SP 120mm Mtr",
+    "Points": 71,
+    "era": {
+      "start_era": "58",
+      "end_era": "69"
+    },
+    "gun_name": "120mm Mtr (Finland)",
+    "move_type": [
+      "tracked"
+    ],
+    "move_value": "7",
+    "nation": "west-germany",
+    "armor": [
+      4,
+      2
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        65
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "Panzermörser SP 120mm Mtr",
+    "Points": 67,
+    "era": {
+      "start_era": "69",
+      "end_era": "78"
+    },
+    "gun_name": "120mm Mtr (Finland)",
+    "move_type": [
+      "tracked",
+      "amphibious"
+    ],
+    "move_value": "9",
+    "nation": "west-germany",
+    "armor": [
+      2,
+      1
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        65
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "n",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "Panzermörser SP 120mm Mtr",
+    "Points": 67,
+    "era": {
+      "start_era": "79",
+      "end_era": "15"
+    },
+    "gun_name": "120mm Mtr (Finland)",
+    "move_type": [
+      "tracked",
+      "amphibious"
+    ],
+    "move_value": "9",
+    "nation": "west-germany",
+    "armor": [
+      2,
+      1
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        65
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "Kraka SP 120mm Mtr",
+    "Points": 52,
+    "era": {
+      "start_era": "74",
+      "end_era": "89"
+    },
+    "gun_name": "120mm Mtr (Finland)",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "8",
+    "nation": "west-germany",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        65
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "LARS / LARS II MRL",
+    "Points": 16,
+    "era": {
+      "start_era": "70",
+      "end_era": "79"
+    },
+    "gun_name": "",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "8",
+    "nation": "west-germany",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "Med, 4 fire units",
+    "indirect": {
+      "range": [
+        35,
+        140
+      ],
+      "ammo": "hs",
+      "mrl": {
+        "class": "medium",
+        "fireUnits": 4
+      }
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "LARS / LARS II MRL",
+    "Points": 16,
+    "era": {
+      "start_era": "80",
+      "end_era": "15"
+    },
+    "gun_name": "",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "8",
+    "nation": "west-germany",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "Med, 4 fire units",
+    "indirect": {
+      "range": [
+        35,
+        140
+      ],
+      "ammo": "hsim",
+      "mrl": {
+        "class": "medium",
+        "fireUnits": 4
+      }
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "n,t",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 20,
+    "Name": "VBM Freccia SP Mtr",
+    "Points": 116,
+    "era": {
+      "start_era": "08",
+      "end_era": "15"
+    },
+    "gun_name": "120mm Mtr",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "9",
+    "nation": "italy",
+    "armor": [
+      8,
+      6
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        57
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": -1,
+    "Equip": "f",
+    "Gun_Pen": [
+      "8h"
+    ],
+    "Gun_ROF": 3,
+    "Gun_Rng": 6,
+    "Name": "M56 105mm Pack How",
+    "Points": 22,
+    "era": {
+      "start_era": "57",
+      "end_era": "15"
+    },
+    "gun_name": "105mm/L14 R (Italy)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "italy",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        105
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": -1,
+    "Equip": "",
+    "Gun_Pen": [
+      "12h"
+    ],
+    "Gun_ROF": 3,
+    "Gun_Rng": 8,
+    "Name": "2S1 SP 122mm Gun",
+    "Points": 65,
+    "era": {
+      "start_era": "72",
+      "end_era": "15"
+    },
+    "gun_name": "122mm/L35 R (Russia)",
+    "move_type": [
+      "tracked",
+      "amphibious"
+    ],
+    "move_value": "9",
+    "nation": "soviets",
+    "armor": [
+      1,
+      0
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        153
+      ],
+      "ammo": "hsc"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "8"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 8,
+    "Name": "2S3 SP 152mm How",
+    "Points": 32,
+    "era": {
+      "start_era": "72",
+      "end_era": "79"
+    },
+    "gun_name": "152mm/L34 R (Russia)",
+    "move_type": [
+      "tracked"
+    ],
+    "move_value": "9",
+    "nation": "soviets",
+    "armor": [
+      1,
+      0
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        185
+      ],
+      "ammo": "hsc"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "8"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 8,
+    "Name": "2S3 SP 152mm How",
+    "Points": 32,
+    "era": {
+      "start_era": "80",
+      "end_era": "84"
+    },
+    "gun_name": "152mm/L34 R (Russia)",
+    "move_type": [
+      "tracked"
+    ],
+    "move_value": "9",
+    "nation": "soviets",
+    "armor": [
+      1,
+      0
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        185
+      ],
+      "ammo": "hsci"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "8"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 8,
+    "Name": "2S3 SP 152mm How",
+    "Points": 32,
+    "era": {
+      "start_era": "85",
+      "end_era": "15"
+    },
+    "gun_name": "152mm/L34 R (Russia)",
+    "move_type": [
+      "tracked"
+    ],
+    "move_value": "9",
+    "nation": "soviets",
+    "armor": [
+      1,
+      0
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        185
+      ],
+      "ammo": "hscil"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "7he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 8,
+    "Name": "2S5 SP 152mm Gun",
+    "Points": 22,
+    "era": {
+      "start_era": "80",
+      "end_era": "84"
+    },
+    "gun_name": "152mm/L49 R (Russia)",
+    "move_type": [
+      "tracked"
+    ],
+    "move_value": "9",
+    "nation": "soviets",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        270
+      ],
+      "ammo": "hsci"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "7he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 8,
+    "Name": "2S5 SP 152mm Gun",
+    "Points": 22,
+    "era": {
+      "start_era": "85",
+      "end_era": "15"
+    },
+    "gun_name": "152mm/L49 R (Russia)",
+    "move_type": [
+      "tracked"
+    ],
+    "move_value": "9",
+    "nation": "soviets",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        270
+      ],
+      "ammo": "hscil"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "18he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 8,
+    "Name": "2S7 203mm SP Gun",
+    "Points": 43,
+    "era": {
+      "start_era": "78",
+      "end_era": "15"
+    },
+    "gun_name": "203mm/L? R (Russia)",
+    "move_type": [
+      "tracked"
+    ],
+    "move_value": "9",
+    "nation": "soviets",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        375
+      ],
+      "ammo": "hci"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "n,i",
+    "Gun_Pen": [
+      "7he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 8,
+    "Name": "2S19 Msta-S",
+    "Points": 42,
+    "era": {
+      "start_era": "89",
+      "end_era": "15"
+    },
+    "gun_name": "152mm/L52 R (Russia)",
+    "move_type": [
+      "tracked"
+    ],
+    "move_value": "10",
+    "nation": "soviets",
+    "armor": [
+      2,
+      1
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        247
+      ],
+      "ammo": "hscil"
+    }
+  },
+  {
+    "AI": -1,
+    "Equip": "f",
+    "Gun_Pen": [
+      "9"
+    ],
+    "Gun_ROF": 1,
+    "Gun_Rng": 10,
+    "Name": "M1931/37 122mm FG",
+    "Points": 13,
+    "era": {
+      "start_era": "50",
+      "end_era": "15"
+    },
+    "gun_name": "122mm/L46 A-19 R (Russia)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "soviets",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        208
+      ],
+      "ammo": "hsc"
+    }
+  },
+  {
+    "AI": -1,
+    "Equip": "f",
+    "Gun_Pen": [
+      "7h"
+    ],
+    "Gun_ROF": 3,
+    "Gun_Rng": 6,
+    "Name": "M-30 122mm How",
+    "Points": 21,
+    "era": {
+      "start_era": "50",
+      "end_era": "67"
+    },
+    "gun_name": "122mm/L23 R (Russia)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "soviets",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        118
+      ],
+      "ammo": "hsc"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "9h"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 6,
+    "Name": "D-1 152mm How",
+    "Points": 20,
+    "era": {
+      "start_era": "50",
+      "end_era": "15"
+    },
+    "gun_name": "152mm/L23 R (Russia)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "soviets",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        124
+      ],
+      "ammo": "hc"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "8"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 8,
+    "Name": "ML-20 152mm How",
+    "Points": 22,
+    "era": {
+      "start_era": "50",
+      "end_era": "55"
+    },
+    "gun_name": "152mm/L28 R (Russia)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "soviets",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        168
+      ],
+      "ammo": "hsc"
+    }
+  },
+  {
+    "AI": -1,
+    "Equip": "f,i",
+    "Gun_Pen": [
+      "11"
+    ],
+    "Gun_ROF": 3,
+    "Gun_Rng": 10,
+    "Name": "M-46 130mm FG",
+    "Points": 46,
+    "era": {
+      "start_era": "54",
+      "end_era": "15"
+    },
+    "gun_name": "130mm/L52 R (Russia)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "soviets",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        275
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "12he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 8,
+    "Name": "S-23 180mm FG",
+    "Points": 27,
+    "era": {
+      "start_era": "55",
+      "end_era": "15"
+    },
+    "gun_name": "180mm/L? R (Russia)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "soviets",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        304
+      ],
+      "ammo": "h"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "8"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 8,
+    "Name": "D-20 152mm How",
+    "Points": 22,
+    "era": {
+      "start_era": "55",
+      "end_era": "15"
+    },
+    "gun_name": "152mm/L34 R (Russia)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "soviets",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        185
+      ],
+      "ammo": "hsc"
+    }
+  },
+  {
+    "AI": -1,
+    "Equip": "f",
+    "Gun_Pen": [
+      "10"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 10,
+    "Name": "D-74 122mm FG",
+    "Points": 27,
+    "era": {
+      "start_era": "57",
+      "end_era": "15"
+    },
+    "gun_name": "122mm/L46 D-74 R (Russia)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "soviets",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        240
+      ],
+      "ammo": "hsc"
+    }
+  },
+  {
+    "AI": -1,
+    "Equip": "",
+    "Gun_Pen": [
+      "12h"
+    ],
+    "Gun_ROF": 3,
+    "Gun_Rng": 8,
+    "Name": "D-30 122mm FG",
+    "Points": 36,
+    "era": {
+      "start_era": "67",
+      "end_era": "15"
+    },
+    "gun_name": "122mm/L35 R (Russia)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "soviets",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        153
+      ],
+      "ammo": "hsc"
+    }
+  },
+  {
+    "AI": -1,
+    "Equip": "f",
+    "Gun_Pen": [
+      "9h"
+    ],
+    "Gun_ROF": 3,
+    "Gun_Rng": 6,
+    "Name": "M1969 76mm Mtn How",
+    "Points": 24,
+    "era": {
+      "start_era": "69",
+      "end_era": "15"
+    },
+    "gun_name": "76mm/L14 R (Russia)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "1",
+    "nation": "soviets",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        110
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "7he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 8,
+    "Name": "2A36 152mm FG",
+    "Points": 20,
+    "era": {
+      "start_era": "76",
+      "end_era": "79"
+    },
+    "gun_name": "152mm/L49 R (Russia)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "soviets",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        270
+      ],
+      "ammo": "hsc"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "7he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 8,
+    "Name": "2A36 152mm FG",
+    "Points": 20,
+    "era": {
+      "start_era": "80",
+      "end_era": "84"
+    },
+    "gun_name": "152mm/L49 R (Russia)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "soviets",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        270
+      ],
+      "ammo": "hsci"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "7he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 8,
+    "Name": "2A36 152mm FG",
+    "Points": 20,
+    "era": {
+      "start_era": "85",
+      "end_era": "15"
+    },
+    "gun_name": "152mm/L49 R (Russia)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "soviets",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        270
+      ],
+      "ammo": "hscil"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "7he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 8,
+    "Name": "2A65 Msta-B",
+    "Points": 20,
+    "era": {
+      "start_era": "86",
+      "end_era": "15"
+    },
+    "gun_name": "152mm/L52 R (Russia)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "soviets",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        247
+      ],
+      "ammo": "hscil"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "7he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 6,
+    "Name": "2A61 152mm Lt. How",
+    "Points": 18,
+    "era": {
+      "start_era": "93",
+      "end_era": "15"
+    },
+    "gun_name": "152mm/L? R (Russia)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "soviets",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        150
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "r",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "2S4 SP 240mm Mtr",
+    "Points": 137,
+    "era": {
+      "start_era": "73",
+      "end_era": "15"
+    },
+    "gun_name": "240mm Mtr (Russia)",
+    "move_type": [
+      "tracked"
+    ],
+    "move_value": "9",
+    "nation": "soviets",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        97
+      ],
+      "ammo": "h"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f,n",
+    "Gun_Pen": [
+      "13h"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 8,
+    "Name": "2S9 SP 120mm GMtr",
+    "Points": 53,
+    "era": {
+      "start_era": "81",
+      "end_era": "15"
+    },
+    "gun_name": "120mm Gun-Mtr (Russia)",
+    "move_type": [
+      "tracked",
+      "amphibious"
+    ],
+    "move_value": "14",
+    "nation": "soviets",
+    "armor": [
+      1,
+      0
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        87
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f,n",
+    "Gun_Pen": [
+      "13h"
+    ],
+    "Gun_ROF": 3,
+    "Gun_Rng": 8,
+    "Name": "2S23 SP 120mm GMtr",
+    "Points": 68,
+    "era": {
+      "start_era": "90",
+      "end_era": "15"
+    },
+    "gun_name": "120mm Gun-Mtr (Russia)",
+    "move_type": [
+      "wheeled",
+      "amphibious"
+    ],
+    "move_value": "9",
+    "nation": "soviets",
+    "armor": [
+      1,
+      0
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        87
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "o",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "Vasilek Portee",
+    "Points": 27,
+    "era": {
+      "start_era": "80",
+      "end_era": "15"
+    },
+    "gun_name": "82mm AutoMtr (Russia)",
+    "move_type": [
+      "tracked",
+      "amphibious"
+    ],
+    "move_value": "10",
+    "nation": "soviets",
+    "armor": [
+      1,
+      0
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        42
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "82mm Mtr",
+    "Points": 18,
+    "era": {
+      "start_era": "50",
+      "end_era": "15"
+    },
+    "gun_name": "82mm Mtr (Russia)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "4",
+    "nation": "soviets",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0.5,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        30
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "Vasilek 82mm Mtr",
+    "Points": 18,
+    "era": {
+      "start_era": "73",
+      "end_era": "15"
+    },
+    "gun_name": "82mm AutoMtr (Russia)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "1",
+    "nation": "soviets",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        42
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "M-43 120mm Mtr",
+    "Points": 52,
+    "era": {
+      "start_era": "50",
+      "end_era": "15"
+    },
+    "gun_name": "120mm Mtr (Russia)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "2",
+    "nation": "soviets",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0.5,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        57
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "2B11/2S12 120mm Mtr",
+    "Points": 52,
+    "era": {
+      "start_era": "81",
+      "end_era": "15"
+    },
+    "gun_name": "120mm Mtr (Russia)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "2",
+    "nation": "soviets",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0.5,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        71
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "M-43 160mm Mtr",
+    "Points": 55,
+    "era": {
+      "start_era": "50",
+      "end_era": "15"
+    },
+    "gun_name": "160mm Mtr (Russia)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "soviets",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        52
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "M-160 160mm Mtr",
+    "Points": 55,
+    "era": {
+      "start_era": "55",
+      "end_era": "15"
+    },
+    "gun_name": "160mm Mtr (Russia)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "soviets",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        80
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "2B8 240mm Mtr",
+    "Points": 137,
+    "era": {
+      "start_era": "52",
+      "end_era": "15"
+    },
+    "gun_name": "240mm Mtr (Russia)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "soviets",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        97
+      ],
+      "ammo": "h"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "BM-13 Katyusha MRL",
+    "Points": 8,
+    "era": {
+      "start_era": "50",
+      "end_era": "15"
+    },
+    "gun_name": "",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "7",
+    "nation": "soviets",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "Med, 2 fire units",
+    "indirect": {
+      "range": [
+        0,
+        85
+      ],
+      "ammo": "hsc",
+      "mrl": {
+        "class": "medium",
+        "fireUnits": 2
+      }
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "BM-24 MRL",
+    "Points": 46,
+    "era": {
+      "start_era": "52",
+      "end_era": "15"
+    },
+    "gun_name": "",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "7",
+    "nation": "soviets",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "Hvy, 2 fire units",
+    "indirect": {
+      "range": [
+        25,
+        110
+      ],
+      "ammo": "hsc",
+      "mrl": {
+        "class": "heavy",
+        "fireUnits": 2
+      }
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "BM-14 MRL",
+    "Points": 8,
+    "era": {
+      "start_era": "59",
+      "end_era": "15"
+    },
+    "gun_name": "",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "7",
+    "nation": "soviets",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "Med, 2 fire units",
+    "indirect": {
+      "range": [
+        25,
+        98
+      ],
+      "ammo": "hsc",
+      "mrl": {
+        "class": "medium",
+        "fireUnits": 2
+      }
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "BM-21 Grad MRL",
+    "Points": 16,
+    "era": {
+      "start_era": "63",
+      "end_era": "94"
+    },
+    "gun_name": "",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "8",
+    "nation": "soviets",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "Med, 4 fire units",
+    "indirect": {
+      "range": [
+        50,
+        200
+      ],
+      "ammo": "hsc",
+      "mrl": {
+        "class": "medium",
+        "fireUnits": 4
+      }
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "BM-21 Grad MRL",
+    "Points": 16,
+    "era": {
+      "start_era": "95",
+      "end_era": "15"
+    },
+    "gun_name": "",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "8",
+    "nation": "soviets",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "Med, 4 fire units",
+    "indirect": {
+      "range": [
+        50,
+        350
+      ],
+      "ammo": "hsc",
+      "mrl": {
+        "class": "medium",
+        "fireUnits": 4
+      }
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "BM-21V MRL",
+    "Points": 16,
+    "era": {
+      "start_era": "75",
+      "end_era": "15"
+    },
+    "gun_name": "",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "8",
+    "nation": "soviets",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "Med, 4 fire units",
+    "indirect": {
+      "range": [
+        50,
+        200
+      ],
+      "ammo": "hsc",
+      "mrl": {
+        "class": "medium",
+        "fireUnits": 4
+      }
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "BM-21V MRL",
+    "Points": 16,
+    "era": {
+      "start_era": "95",
+      "end_era": "15"
+    },
+    "gun_name": "",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "8",
+    "nation": "soviets",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "Med, 4 fire units",
+    "indirect": {
+      "range": [
+        50,
+        350
+      ],
+      "ammo": "hsc",
+      "mrl": {
+        "class": "medium",
+        "fireUnits": 4
+      }
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "BM-21 Prima MRL",
+    "Points": 24,
+    "era": {
+      "start_era": "87",
+      "end_era": "94"
+    },
+    "gun_name": "",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "8",
+    "nation": "soviets",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "Med, 6 fire units",
+    "indirect": {
+      "range": [
+        50,
+        200
+      ],
+      "ammo": "hsc",
+      "mrl": {
+        "class": "medium",
+        "fireUnits": 6
+      }
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "BM-21 Prima MRL",
+    "Points": 24,
+    "era": {
+      "start_era": "95",
+      "end_era": "15"
+    },
+    "gun_name": "",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "8",
+    "nation": "soviets",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "Med, 6 fire units",
+    "indirect": {
+      "range": [
+        50,
+        350
+      ],
+      "ammo": "hsc",
+      "mrl": {
+        "class": "medium",
+        "fireUnits": 6
+      }
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "Uragan MRL",
+    "Points": 46,
+    "era": {
+      "start_era": "75",
+      "end_era": "15"
+    },
+    "gun_name": "",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "7",
+    "nation": "soviets",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "Hvy, 2 fire units",
+    "indirect": {
+      "range": [
+        100,
+        350
+      ],
+      "ammo": "hcim",
+      "mrl": {
+        "class": "heavy",
+        "fireUnits": 2
+      }
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "Smerch MRL",
+    "Points": 70,
+    "era": {
+      "start_era": "87",
+      "end_era": "15"
+    },
+    "gun_name": "",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "8",
+    "nation": "soviets",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "Vry Hvy, 2 fire units",
+    "indirect": {
+      "range": [
+        200,
+        700
+      ],
+      "ammo": "hi",
+      "mrl": {
+        "class": "very heavy",
+        "fireUnits": 2
+      }
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "RPU-14 MRL",
+    "Points": 8,
+    "era": {
+      "start_era": "65",
+      "end_era": "15"
+    },
+    "gun_name": "",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "soviets",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "Med, 2 fire units",
+    "indirect": {
+      "range": [
+        25,
+        98
+      ],
+      "ammo": "hsc",
+      "mrl": {
+        "class": "medium",
+        "fireUnits": 2
+      }
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "TOS-1 MRL",
+    "Points": 140,
+    "era": {
+      "start_era": "81",
+      "end_era": "15"
+    },
+    "gun_name": "",
+    "move_type": [
+      "tracked"
+    ],
+    "move_value": "9",
+    "nation": "soviets",
+    "armor": [
+      11,
+      6
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "Vry Hvy, 4 fire units. Treat as HE, but actually FAE.",
+    "indirect": {
+      "range": [
+        5,
+        50
+      ],
+      "ammo": "h",
+      "mrl": {
+        "class": "very heavy",
+        "fireUnits": 4
+      }
+    }
+  },
+  {
+    "AI": -1,
+    "Equip": "n,i",
+    "Gun_Pen": [
+      "11h"
+    ],
+    "Gun_ROF": 3,
+    "Gun_Rng": 10,
+    "Name": "Abbot",
+    "Points": 76,
+    "era": {
+      "start_era": "65",
+      "end_era": "95"
+    },
+    "gun_name": "105mm/L37 R (UK)",
+    "move_type": [
+      "tracked"
+    ],
+    "move_value": "7",
+    "nation": "baor",
+    "armor": [
+      1,
+      0
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        172
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "n,i",
+    "Gun_Pen": [
+      "7he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 8,
+    "Name": "AS-90",
+    "Points": 40,
+    "era": {
+      "start_era": "93",
+      "end_era": "15"
+    },
+    "gun_name": "155mm/L39 R (UK)",
+    "move_type": [
+      "tracked"
+    ],
+    "move_value": "7",
+    "nation": "baor",
+    "armor": [
+      2,
+      0
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        240
+      ],
+      "ammo": "hsim"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "7he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 8,
+    "Name": "5.5\" FG",
+    "Points": 20,
+    "era": {
+      "start_era": "50",
+      "end_era": "78"
+    },
+    "gun_name": "140mm/L30 R 5.5\" Gun (UK)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "baor",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        140
+      ],
+      "ammo": "h"
+    }
+  },
+  {
+    "AI": -1,
+    "Equip": "f",
+    "Gun_Pen": [
+      "8h"
+    ],
+    "Gun_ROF": 3,
+    "Gun_Rng": 6,
+    "Name": "105mm Pack How L5",
+    "Points": 22,
+    "era": {
+      "start_era": "61",
+      "end_era": "75"
+    },
+    "gun_name": "105mm/L14 R (Italy)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "baor",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        105
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": -1,
+    "Equip": "f",
+    "Gun_Pen": [
+      "11h"
+    ],
+    "Gun_ROF": 3,
+    "Gun_Rng": 10,
+    "Name": "L118 Light Gun",
+    "Points": 43,
+    "era": {
+      "start_era": "74",
+      "end_era": "15"
+    },
+    "gun_name": "105mm/L37 R (UK)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "baor",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        172
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "i",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "FV-432 Mortar Carrier",
+    "Points": 28,
+    "era": {
+      "start_era": "65",
+      "end_era": "74"
+    },
+    "gun_name": "81mm Mtr (UK)",
+    "move_type": [
+      "tracked"
+    ],
+    "move_value": "7",
+    "nation": "baor",
+    "armor": [
+      1,
+      1
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        56
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "i",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "FV-432 Mortar Carrier",
+    "Points": 30,
+    "era": {
+      "start_era": "75",
+      "end_era": "15"
+    },
+    "gun_name": "81mm Mtr (UK)",
+    "move_type": [
+      "tracked"
+    ],
+    "move_value": "7",
+    "nation": "baor",
+    "armor": [
+      1,
+      1
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        56
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "3-inch ML Mtr Mk II",
+    "Points": 18,
+    "era": {
+      "start_era": "50",
+      "end_era": "65"
+    },
+    "gun_name": "76mm Mtr (UK)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "4",
+    "nation": "baor",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0.5,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        25
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "SB 4.2-inch Mtr",
+    "Points": 20,
+    "era": {
+      "start_era": "50",
+      "end_era": "55"
+    },
+    "gun_name": "107mm Mtr (UK)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "2",
+    "nation": "baor",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0.5,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        36
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "81mm Mtr",
+    "Points": 18,
+    "era": {
+      "start_era": "65",
+      "end_era": "15"
+    },
+    "gun_name": "81mm Mtr (UK)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "4",
+    "nation": "baor",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0.5,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        56
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "LIMAWS(R)",
+    "Points": 35,
+    "era": {
+      "start_era": "07",
+      "end_era": "15"
+    },
+    "gun_name": "",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "5",
+    "nation": "baor",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "Vry Hvy, 1 fire unit",
+    "indirect": {
+      "range": [
+        75,
+        300
+      ],
+      "ammo": "i",
+      "mrl": {
+        "class": "very heavy",
+        "fireUnits": 1
+      }
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "LIMAWS(R) w/GMLRS",
+    "Points": 23,
+    "era": {
+      "start_era": "07",
+      "end_era": "15"
+    },
+    "gun_name": "",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "5",
+    "nation": "baor",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "Hvy, 1 fire unit",
+    "indirect": {
+      "range": [
+        150,
+        600
+      ],
+      "ammo": "hi",
+      "mrl": {
+        "class": "heavy",
+        "fireUnits": 1
+      }
+    }
+  },
+  {
+    "AI": -1,
+    "Equip": "f,o",
+    "Gun_Pen": [
+      "6h"
+    ],
+    "Gun_ROF": 3,
+    "Gun_Rng": 6,
+    "Name": "M7 HMC Priest",
+    "Points": 55,
+    "era": {
+      "start_era": "50",
+      "end_era": "53"
+    },
+    "gun_name": "105mm/L23 R (US)",
+    "move_type": [
+      "tracked"
+    ],
+    "move_value": "7",
+    "nation": "us",
+    "armor": [
+      4,
+      2
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        112
+      ],
+      "ammo": "hsc"
+    }
+  },
+  {
+    "AI": -1,
+    "Equip": "f,o",
+    "Gun_Pen": [
+      "6h"
+    ],
+    "Gun_ROF": 3,
+    "Gun_Rng": 6,
+    "Name": "M37 HMC",
+    "Points": 32,
+    "era": {
+      "start_era": "50",
+      "end_era": "56"
+    },
+    "gun_name": "105mm/L23 R (US)",
+    "move_type": [
+      "tracked"
+    ],
+    "move_value": "5",
+    "nation": "us",
+    "armor": [
+      2,
+      1
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        112
+      ],
+      "ammo": "hsc"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f,o",
+    "Gun_Pen": [
+      "7he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 6,
+    "Name": "M41 HMC Gorilla",
+    "Points": 25,
+    "era": {
+      "start_era": "50",
+      "end_era": "56"
+    },
+    "gun_name": "155mm/L23 R (US)",
+    "move_type": [
+      "tracked"
+    ],
+    "move_value": "5",
+    "nation": "us",
+    "armor": [
+      1,
+      0
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        145
+      ],
+      "ammo": "hsc"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f,o",
+    "Gun_Pen": [
+      "9"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 8,
+    "Name": "M40 GMC",
+    "Points": 42,
+    "era": {
+      "start_era": "50",
+      "end_era": "55"
+    },
+    "gun_name": "155mm/L45 R (US)",
+    "move_type": [
+      "tracked"
+    ],
+    "move_value": "5",
+    "nation": "us",
+    "armor": [
+      2,
+      1
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        232
+      ],
+      "ammo": "hsc"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f,o",
+    "Gun_Pen": [
+      "18he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 6,
+    "Name": "M43 GMC",
+    "Points": 57,
+    "era": {
+      "start_era": "50",
+      "end_era": "62"
+    },
+    "gun_name": "203mm/L25 R (US)",
+    "move_type": [
+      "tracked"
+    ],
+    "move_value": "5",
+    "nation": "us",
+    "armor": [
+      2,
+      1
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        168
+      ],
+      "ammo": "h"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f,o",
+    "Gun_Pen": [
+      "7he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 6,
+    "Name": "M44 SP 155mm How",
+    "Points": 26,
+    "era": {
+      "start_era": "53",
+      "end_era": "63"
+    },
+    "gun_name": "155mm/L23 R (US)",
+    "move_type": [
+      "tracked"
+    ],
+    "move_value": "10",
+    "nation": "us",
+    "armor": [
+      1,
+      1
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        145
+      ],
+      "ammo": "hsc"
+    }
+  },
+  {
+    "AI": -1,
+    "Equip": "f",
+    "Gun_Pen": [
+      "8h"
+    ],
+    "Gun_ROF": 3,
+    "Gun_Rng": 6,
+    "Name": "M52 SP 105mm How",
+    "Points": 34,
+    "era": {
+      "start_era": "55",
+      "end_era": "63"
+    },
+    "gun_name": "105mm/L? R (US)",
+    "move_type": [
+      "tracked"
+    ],
+    "move_value": "10",
+    "nation": "us",
+    "armor": [
+      1,
+      1
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        112
+      ],
+      "ammo": "hsc"
+    }
+  },
+  {
+    "AI": -1,
+    "Equip": "",
+    "Gun_Pen": [
+      "8h"
+    ],
+    "Gun_ROF": 3,
+    "Gun_Rng": 6,
+    "Name": "M108 SP 105mm How",
+    "Points": 38,
+    "era": {
+      "start_era": "63",
+      "end_era": "67"
+    },
+    "gun_name": "105mm/L? R (US)",
+    "move_type": [
+      "tracked"
+    ],
+    "move_value": "9",
+    "nation": "us",
+    "armor": [
+      1,
+      1
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        115
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "7he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 6,
+    "Name": "M109 SP 155mm How",
+    "Points": 27,
+    "era": {
+      "start_era": "63",
+      "end_era": "73"
+    },
+    "gun_name": "155mm/L23 R (US)",
+    "move_type": [
+      "tracked",
+      "amphibious"
+    ],
+    "move_value": "8",
+    "nation": "us",
+    "armor": [
+      1,
+      1
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        145
+      ],
+      "ammo": "hsc"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "7he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 8,
+    "Name": "M109A1-4 SP 155mm How",
+    "Points": 31,
+    "era": {
+      "start_era": "73",
+      "end_era": "79"
+    },
+    "gun_name": "155mm/L39 R (US)",
+    "move_type": [
+      "tracked",
+      "amphibious"
+    ],
+    "move_value": "8",
+    "nation": "us",
+    "armor": [
+      1,
+      1
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        180
+      ],
+      "ammo": "hsc"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "7he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 8,
+    "Name": "M109A1-4 SP 155mm How",
+    "Points": 31,
+    "era": {
+      "start_era": "80",
+      "end_era": "83"
+    },
+    "gun_name": "155mm/L39 R (US)",
+    "move_type": [
+      "tracked",
+      "amphibious"
+    ],
+    "move_value": "8",
+    "nation": "us",
+    "armor": [
+      1,
+      1
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        180
+      ],
+      "ammo": "hscim"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "n",
+    "Gun_Pen": [
+      "7he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 8,
+    "Name": "M109A1-4 SP 155mm How",
+    "Points": 31,
+    "era": {
+      "start_era": "84",
+      "end_era": "84"
+    },
+    "gun_name": "155mm/L39 R (US)",
+    "move_type": [
+      "tracked",
+      "amphibious"
+    ],
+    "move_value": "8",
+    "nation": "us",
+    "armor": [
+      1,
+      1
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        180
+      ],
+      "ammo": "hscim"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "n",
+    "Gun_Pen": [
+      "7he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 8,
+    "Name": "M109A1-4 SP 155mm How",
+    "Points": 31,
+    "era": {
+      "start_era": "85",
+      "end_era": "93"
+    },
+    "gun_name": "155mm/L39 R (US)",
+    "move_type": [
+      "tracked",
+      "amphibious"
+    ],
+    "move_value": "8",
+    "nation": "us",
+    "armor": [
+      1,
+      1
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        180
+      ],
+      "ammo": "hsciml"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "n",
+    "Gun_Pen": [
+      "7he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 8,
+    "Name": "M109A6 SP 155mm How",
+    "Points": 41,
+    "era": {
+      "start_era": "93",
+      "end_era": "15"
+    },
+    "gun_name": "155mm/L39 R (US)",
+    "move_type": [
+      "tracked",
+      "amphibious"
+    ],
+    "move_value": "7",
+    "nation": "us",
+    "armor": [
+      2,
+      2
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        235
+      ],
+      "ammo": "hsciml"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "n",
+    "Gun_Pen": [
+      "7he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 8,
+    "Name": "M109A6 w/Excalibur",
+    "Points": 41,
+    "era": {
+      "start_era": "07",
+      "end_era": "09"
+    },
+    "gun_name": "155mm Excalibur (US)",
+    "move_type": [
+      "tracked",
+      "amphibious"
+    ],
+    "move_value": "7",
+    "nation": "us",
+    "armor": [
+      2,
+      2
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        350
+      ],
+      "ammo": "gh"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "n",
+    "Gun_Pen": [
+      "7he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 8,
+    "Name": "M109A6 w/Excalibur",
+    "Points": 41,
+    "era": {
+      "start_era": "10",
+      "end_era": "15"
+    },
+    "gun_name": "155mm Excalibur (US)",
+    "move_type": [
+      "tracked",
+      "amphibious"
+    ],
+    "move_value": "7",
+    "nation": "us",
+    "armor": [
+      2,
+      2
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        350
+      ],
+      "ammo": "ghi"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "12he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 8,
+    "Name": "M107 SP 175mm How",
+    "Points": 28,
+    "era": {
+      "start_era": "63",
+      "end_era": "78"
+    },
+    "gun_name": "175mm/L? R (US)",
+    "move_type": [
+      "tracked"
+    ],
+    "move_value": "7",
+    "nation": "us",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        327
+      ],
+      "ammo": "h"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "18he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 6,
+    "Name": "M110 SP 203mm How",
+    "Points": 29,
+    "era": {
+      "start_era": "63",
+      "end_era": "76"
+    },
+    "gun_name": "203mm/L25 R (US)",
+    "move_type": [
+      "tracked"
+    ],
+    "move_value": "7",
+    "nation": "us",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        168
+      ],
+      "ammo": "h"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "18he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 6,
+    "Name": "M110 SP 203mm How",
+    "Points": 29,
+    "era": {
+      "start_era": "77",
+      "end_era": "77"
+    },
+    "gun_name": "203mm/L25 R (US)",
+    "move_type": [
+      "tracked"
+    ],
+    "move_value": "7",
+    "nation": "us",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        213
+      ],
+      "ammo": "hci"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "18he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 6,
+    "Name": "M110 SP 203mm How",
+    "Points": 29,
+    "era": {
+      "start_era": "78",
+      "end_era": "15"
+    },
+    "gun_name": "203mm/L25 R (US)",
+    "move_type": [
+      "tracked"
+    ],
+    "move_value": "7",
+    "nation": "us",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        229
+      ],
+      "ammo": "hci"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "7he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 6,
+    "Name": "M114 155mm How",
+    "Points": 17,
+    "era": {
+      "start_era": "50",
+      "end_era": "78"
+    },
+    "gun_name": "155mm/L23 R (US)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "us",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        145
+      ],
+      "ammo": "hsc"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "18he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 6,
+    "Name": "M115 203mm How",
+    "Points": 28,
+    "era": {
+      "start_era": "50",
+      "end_era": "78"
+    },
+    "gun_name": "203mm/L25 R (US)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "us",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        168
+      ],
+      "ammo": "h"
+    }
+  },
+  {
+    "AI": -1,
+    "Equip": "f",
+    "Gun_Pen": [
+      "8h"
+    ],
+    "Gun_ROF": 3,
+    "Gun_Rng": 6,
+    "Name": "M101 105mm How",
+    "Points": 22,
+    "era": {
+      "start_era": "50",
+      "end_era": "15"
+    },
+    "gun_name": "105mm/L? R (US)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "us",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        112
+      ],
+      "ammo": "hsc"
+    }
+  },
+  {
+    "AI": -1,
+    "Equip": "",
+    "Gun_Pen": [
+      "8h"
+    ],
+    "Gun_ROF": 3,
+    "Gun_Rng": 6,
+    "Name": "M102 105mm How",
+    "Points": 23,
+    "era": {
+      "start_era": "64",
+      "end_era": "15"
+    },
+    "gun_name": "105mm/L? R (US)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "us",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        115
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "7he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 8,
+    "Name": "M198 155mm How",
+    "Points": 20,
+    "era": {
+      "start_era": "78",
+      "end_era": "79"
+    },
+    "gun_name": "155mm/L39 R (US)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "us",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        180
+      ],
+      "ammo": "hsc"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "7he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 8,
+    "Name": "M198 155mm How",
+    "Points": 20,
+    "era": {
+      "start_era": "80",
+      "end_era": "84"
+    },
+    "gun_name": "155mm/L39 R (US)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "us",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        180
+      ],
+      "ammo": "hscim"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "7he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 8,
+    "Name": "M198 155mm How",
+    "Points": 20,
+    "era": {
+      "start_era": "85",
+      "end_era": "15"
+    },
+    "gun_name": "155mm/L39 R (US)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "us",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        180
+      ],
+      "ammo": "hsciml"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "7he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 8,
+    "Name": "M198 w/Excalibur",
+    "Points": 20,
+    "era": {
+      "start_era": "07",
+      "end_era": "09"
+    },
+    "gun_name": "155mm Excalibur (US)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "us",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        350
+      ],
+      "ammo": "gh"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "7he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 8,
+    "Name": "M198 w/Excalibur",
+    "Points": 20,
+    "era": {
+      "start_era": "10",
+      "end_era": "15"
+    },
+    "gun_name": "155mm Excalibur (US)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "us",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        350
+      ],
+      "ammo": "ghi"
+    }
+  },
+  {
+    "AI": -1,
+    "Equip": "f",
+    "Gun_Pen": [
+      "8h"
+    ],
+    "Gun_ROF": 3,
+    "Gun_Rng": 10,
+    "Name": "M119 105mm How",
+    "Points": 30,
+    "era": {
+      "start_era": "90",
+      "end_era": "15"
+    },
+    "gun_name": "105mm/L? R (US)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "us",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        145
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "7he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 8,
+    "Name": "M777 155mm How",
+    "Points": 20,
+    "era": {
+      "start_era": "05",
+      "end_era": "15"
+    },
+    "gun_name": "155mm/L39 R (US)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "us",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        180
+      ],
+      "ammo": "hsciml"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "7he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 8,
+    "Name": "M777 w/ Excalibur",
+    "Points": 20,
+    "era": {
+      "start_era": "07",
+      "end_era": "09"
+    },
+    "gun_name": "155mm Excalibur (US)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "us",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        350
+      ],
+      "ammo": "gh"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "7he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 8,
+    "Name": "M777 w/ Excalibur",
+    "Points": 20,
+    "era": {
+      "start_era": "10",
+      "end_era": "15"
+    },
+    "gun_name": "155mm Excalibur (US)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "us",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        350
+      ],
+      "ammo": "ghi"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "r",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "M84 SP 107mm Mtr",
+    "Points": 32,
+    "era": {
+      "start_era": "57",
+      "end_era": "61"
+    },
+    "gun_name": "107mm Mtr (US)",
+    "move_type": [
+      "tracked",
+      "amphibious"
+    ],
+    "move_value": "6",
+    "nation": "us",
+    "armor": [
+      2,
+      1
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        68
+      ],
+      "ammo": "hsc"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "r",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "M106 SP 107mm Mtr",
+    "Points": 32,
+    "era": {
+      "start_era": "61",
+      "end_era": "15"
+    },
+    "gun_name": "107mm Mtr (US)",
+    "move_type": [
+      "tracked",
+      "amphibious"
+    ],
+    "move_value": "9",
+    "nation": "us",
+    "armor": [
+      2,
+      1
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        68
+      ],
+      "ammo": "hsc"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "r",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "M125 SP 81mm Mtr",
+    "Points": 33,
+    "era": {
+      "start_era": "61",
+      "end_era": "86"
+    },
+    "gun_name": "81mm Mtr (US)",
+    "move_type": [
+      "tracked",
+      "amphibious"
+    ],
+    "move_value": "9",
+    "nation": "us",
+    "armor": [
+      2,
+      1
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        45
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "r",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "M125 SP 81mm Mtr",
+    "Points": 33,
+    "era": {
+      "start_era": "87",
+      "end_era": "15"
+    },
+    "gun_name": "81mm Mtr (US)",
+    "move_type": [
+      "tracked",
+      "amphibious"
+    ],
+    "move_value": "9",
+    "nation": "us",
+    "armor": [
+      2,
+      1
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        56
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "t,n",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "LAV-M",
+    "Points": 30,
+    "era": {
+      "start_era": "88",
+      "end_era": "94"
+    },
+    "gun_name": "81mm Mtr (US)",
+    "move_type": [
+      "wheeled",
+      "amphibious"
+    ],
+    "move_value": "9",
+    "nation": "us",
+    "armor": [
+      2,
+      1
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        56
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "t,n",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "LAV-M",
+    "Points": 41,
+    "era": {
+      "start_era": "95",
+      "end_era": "99"
+    },
+    "gun_name": "81mm Mtr (US)",
+    "move_type": [
+      "wheeled",
+      "amphibious"
+    ],
+    "move_value": "8",
+    "nation": "us",
+    "armor": [
+      4,
+      3
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        56
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "t,n",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "LAV-M",
+    "Points": 46,
+    "era": {
+      "start_era": "00",
+      "end_era": "15"
+    },
+    "gun_name": "81mm Mtr (US)",
+    "move_type": [
+      "wheeled",
+      "amphibious"
+    ],
+    "move_value": "8",
+    "nation": "us",
+    "armor": [
+      5,
+      4
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        56
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "r",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "M1064 SP 120mm Mtr",
+    "Points": 71,
+    "era": {
+      "start_era": "91",
+      "end_era": "15"
+    },
+    "gun_name": "120mm Mtr (US)",
+    "move_type": [
+      "tracked",
+      "amphibious"
+    ],
+    "move_value": "9",
+    "nation": "us",
+    "armor": [
+      3,
+      1
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        72
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "s,n,i",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 20,
+    "Name": "M1129 Stryker SP Mtr",
+    "Points": 90,
+    "era": {
+      "start_era": "03",
+      "end_era": "03"
+    },
+    "gun_name": "120mm Mtr (US)",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "9",
+    "nation": "us",
+    "armor": [
+      6,
+      4
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        72
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "s,n,i",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 20,
+    "Name": "M1129 Stryker SP Mtr",
+    "Points": 98,
+    "era": {
+      "start_era": "04",
+      "end_era": "05"
+    },
+    "gun_name": "120mm Mtr (US)",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "9",
+    "nation": "us",
+    "armor": [
+      6,
+      4
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        72
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "s,t,n",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 20,
+    "Name": "M1129 Stryker SP Mtr",
+    "Points": 105,
+    "era": {
+      "start_era": "06",
+      "end_era": "15"
+    },
+    "gun_name": "120mm Mtr (US)",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "9",
+    "nation": "us",
+    "armor": [
+      6,
+      4
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        72
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "t,n",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 16,
+    "Name": "LAV-A2-M",
+    "Points": 100,
+    "era": {
+      "start_era": "08",
+      "end_era": "15"
+    },
+    "gun_name": "120mm Mtr (US)",
+    "move_type": [
+      "wheeled",
+      "amphibious"
+    ],
+    "move_value": "8",
+    "nation": "us",
+    "armor": [
+      6,
+      4
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        72
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "81mm Mtr",
+    "Points": 18,
+    "era": {
+      "start_era": "50",
+      "end_era": "56"
+    },
+    "gun_name": "81mm Mtr (US)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "4",
+    "nation": "us",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0.5,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        30
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "81mm Mtr",
+    "Points": 18,
+    "era": {
+      "start_era": "57",
+      "end_era": "86"
+    },
+    "gun_name": "81mm Mtr (US)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "4",
+    "nation": "us",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0.5,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        45
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "81mm Mtr",
+    "Points": 18,
+    "era": {
+      "start_era": "87",
+      "end_era": "15"
+    },
+    "gun_name": "81mm Mtr (US)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "4",
+    "nation": "us",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0.5,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        56
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "107mm Mtr",
+    "Points": 20,
+    "era": {
+      "start_era": "50",
+      "end_era": "51"
+    },
+    "gun_name": "107mm Mtr (US)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "2",
+    "nation": "us",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0.5,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        40
+      ],
+      "ammo": "hsc"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "107mm Mtr",
+    "Points": 20,
+    "era": {
+      "start_era": "52",
+      "end_era": "90"
+    },
+    "gun_name": "107mm Mtr (US)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "2",
+    "nation": "us",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0.5,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        68
+      ],
+      "ammo": "hsc"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "M98 Howtar",
+    "Points": 20,
+    "era": {
+      "start_era": "62",
+      "end_era": "70"
+    },
+    "gun_name": "107mm Howtar (US)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "2",
+    "nation": "us",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0.5,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        55
+      ],
+      "ammo": "hsc"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "120mm Mtr",
+    "Points": 52,
+    "era": {
+      "start_era": "91",
+      "end_era": "15"
+    },
+    "gun_name": "120mm Mtr (US)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "2",
+    "nation": "us",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0.5,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        72
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "T66 Honeycomb MRL",
+    "Points": 6,
+    "era": {
+      "start_era": "50",
+      "end_era": "55"
+    },
+    "gun_name": "",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "us",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "Light, 3 fire units",
+    "indirect": {
+      "range": [
+        12,
+        48
+      ],
+      "ammo": "h",
+      "mrl": {
+        "class": "light",
+        "fireUnits": 3
+      }
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "M270 MLRS",
+    "Points": 70,
+    "era": {
+      "start_era": "83",
+      "end_era": "15"
+    },
+    "gun_name": "",
+    "move_type": [
+      "tracked"
+    ],
+    "move_value": "8",
+    "nation": "us",
+    "armor": [
+      0,
+      0
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "Very Heavy, 2 fire units",
+    "indirect": {
+      "range": [
+        75,
+        300
+      ],
+      "ammo": "i",
+      "mrl": {
+        "class": "very heavy",
+        "fireUnits": 2
+      }
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "M270 MLRS w/GMLRS",
+    "Points": 46,
+    "era": {
+      "start_era": "05",
+      "end_era": "15"
+    },
+    "gun_name": "",
+    "move_type": [
+      "tracked"
+    ],
+    "move_value": "8",
+    "nation": "us",
+    "armor": [
+      0,
+      0
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "Heavy, 2 fire units",
+    "indirect": {
+      "range": [
+        150,
+        600
+      ],
+      "ammo": "hi",
+      "mrl": {
+        "class": "heavy",
+        "fireUnits": 2
+      }
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "HIMARS",
+    "Points": 35,
+    "era": {
+      "start_era": "05",
+      "end_era": "15"
+    },
+    "gun_name": "",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "10",
+    "nation": "us",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "Vry Hvy, 1 fire unit",
+    "indirect": {
+      "range": [
+        75,
+        300
+      ],
+      "ammo": "i",
+      "mrl": {
+        "class": "very heavy",
+        "fireUnits": 1
+      }
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "HIMARS w/GMLRS",
+    "Points": 23,
+    "era": {
+      "start_era": "05",
+      "end_era": "15"
+    },
+    "gun_name": "",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "10",
+    "nation": "us",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "Hvy, 1 fire unit",
+    "indirect": {
+      "range": [
+        150,
+        600
+      ],
+      "ammo": "hi",
+      "mrl": {
+        "class": "heavy",
+        "fireUnits": 1
+      }
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "M-77 Oganj MRL",
+    "Points": 16,
+    "era": {
+      "start_era": "80",
+      "end_era": "15"
+    },
+    "gun_name": "",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "8",
+    "nation": "yugoslavia",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "Med, 4 fire units",
+    "indirect": {
+      "range": [
+        22,
+        87
+      ],
+      "ammo": "h",
+      "mrl": {
+        "class": "medium",
+        "fireUnits": 4
+      }
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "M-63 Plamen MRL",
+    "Points": 8,
+    "era": {
+      "start_era": "63",
+      "end_era": "15"
+    },
+    "gun_name": "",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "yugoslavia",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "Light, 4 fire units",
+    "indirect": {
+      "range": [
+        50,
+        206
+      ],
+      "ammo": "h",
+      "mrl": {
+        "class": "light",
+        "fireUnits": 4
+      }
+    }
+  },
+  {
+    "AI": -1,
+    "Equip": "f",
+    "Gun_Pen": [
+      "8h"
+    ],
+    "Gun_ROF": 3,
+    "Gun_Rng": 6,
+    "Name": "105mm How",
+    "Points": 71,
+    "era": {
+      "start_era": "50",
+      "end_era": "15"
+    },
+    "gun_name": "105mm/L? R (US)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        112
+      ],
+      "ammo": "hsc"
+    }
+  },
+  {
+    "AI": -1,
+    "Equip": "f",
+    "Gun_Pen": [
+      "10"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 10,
+    "Name": "122mm How",
+    "Points": 18,
+    "era": {
+      "start_era": "57",
+      "end_era": "15"
+    },
+    "gun_name": "122mm/L46 D-74 R (Russia)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        240
+      ],
+      "ammo": "hsc"
+    }
+  },
+  {
+    "AI": -1,
+    "Equip": "",
+    "Gun_Pen": [
+      "12h"
+    ],
+    "Gun_ROF": 3,
+    "Gun_Rng": 8,
+    "Name": "122mm How",
+    "Points": 18,
+    "era": {
+      "start_era": "67",
+      "end_era": "15"
+    },
+    "gun_name": "122mm/L35 R (Russia)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        153
+      ],
+      "ammo": "hsc"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "8"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 8,
+    "Name": "152mm How",
+    "Points": 20,
+    "era": {
+      "start_era": "55",
+      "end_era": "15"
+    },
+    "gun_name": "152mm/L34 R (Russia)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        185
+      ],
+      "ammo": "hsc"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "7he"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 6,
+    "Name": "155mm How",
+    "Points": 20,
+    "era": {
+      "start_era": "50",
+      "end_era": "15"
+    },
+    "gun_name": "155mm/L23 R (US)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "0",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        145
+      ],
+      "ammo": "hsc"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "r",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "SP 81mm Mtr",
+    "Points": 33,
+    "era": {
+      "start_era": "61",
+      "end_era": "15"
+    },
+    "gun_name": "81mm Mtr",
+    "move_type": [
+      "tracked",
+      "amphibious"
+    ],
+    "move_value": "9",
+    "nation": "generic",
+    "armor": [
+      2,
+      1
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        45
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "r",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "SP 120mm Mtr",
+    "Points": 71,
+    "era": {
+      "start_era": "61",
+      "end_era": "15"
+    },
+    "gun_name": "120mm Mtr",
+    "move_type": [
+      "tracked",
+      "amphibious"
+    ],
+    "move_value": "9",
+    "nation": "generic",
+    "armor": [
+      3,
+      1
+    ],
+    "armorSoft": false,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        57
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "81mm Mtr",
+    "Points": 18,
+    "era": {
+      "start_era": "50",
+      "end_era": "15"
+    },
+    "gun_name": "81mm Mtr",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "4",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0.5,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        45
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "82mm Mtr",
+    "Points": 18,
+    "era": {
+      "start_era": "50",
+      "end_era": "15"
+    },
+    "gun_name": "82mm Mtr (Russia)",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "4",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0.5,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        30
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "107mm Mtr",
+    "Points": 20,
+    "era": {
+      "start_era": "52",
+      "end_era": "15"
+    },
+    "gun_name": "107mm Mtr",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "2",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0.5,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        68
+      ],
+      "ammo": "hsc"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "120mm Mtr",
+    "Points": 52,
+    "era": {
+      "start_era": "50",
+      "end_era": "15"
+    },
+    "gun_name": "120mm Mtr",
+    "move_type": [
+      "towed"
+    ],
+    "move_value": "2",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 0.5,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "",
+    "indirect": {
+      "range": [
+        0,
+        57
+      ],
+      "ammo": "hs"
+    }
+  },
+  {
+    "AI": 0,
+    "Equip": "f",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "122mm MRL",
+    "Points": 16,
+    "era": {
+      "start_era": "63",
+      "end_era": "15"
+    },
+    "gun_name": "",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "8",
+    "nation": "generic",
+    "armor": [
+      0
+    ],
+    "armorSoft": true,
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "Med, 4 fire units",
+    "indirect": {
+      "range": [
+        50,
+        200
+      ],
+      "ammo": "hsc",
+      "mrl": {
+        "class": "medium",
+        "fireUnits": 4
+      }
+    }
+  }
+]

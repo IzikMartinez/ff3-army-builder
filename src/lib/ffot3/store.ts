@@ -38,12 +38,14 @@ function migrateQuality(q: string | undefined): string | undefined {
 }
 
 function normalizeEntry(e: Partial<ListEntry>): ListEntry | null {
-  const unitId = e.unitId ? migrateUnitId(e.unitId) : "";
+  const unitId = e.unitId ? migrateUnitId(e.unitId, e.missileId) : "";
   const unit = getUnit(unitId);
   if (!unit) return null;
   const stripTowed = isHelicopter(unit) || isTowed(unit);
   const towedLoad = Array.isArray(e.towedLoad)
-    ? e.towedLoad.map((p) => ({ ...p, id: migrateUnitId(p.id) })).filter((p) => getUnit(p.id))
+    ? e.towedLoad
+        .map((p) => ({ ...p, id: migrateUnitId(p.id, p.missileId) }))
+        .filter((p) => getUnit(p.id))
     : [];
   return {
     id: e.id || uid(),
@@ -51,7 +53,8 @@ function normalizeEntry(e: Partial<ListEntry>): ListEntry | null {
     quantity: Math.max(1, Number(e.quantity) || 1),
     quality: migrateQuality(e.quality) || DEFAULT_QUALITY.experience,
     missileId: e.missileId ?? null,
-    heloPods: isHelicopter(unit) && Array.isArray(e.heloPods) ? sanitizeHeloPicks(unit, e.heloPods) : [],
+    heloPods:
+      isHelicopter(unit) && Array.isArray(e.heloPods) ? sanitizeHeloPicks(unit, e.heloPods) : [],
     towedLoad: stripTowed ? [] : towedLoad,
     dedicated: Boolean(e.dedicated) && isTransportHelo(unit),
   };
@@ -264,9 +267,7 @@ function createForce() {
 
 export const force = createForce();
 
-export const standCount = derived(force, ($f) =>
-  $f.entries.reduce((n, e) => n + e.quantity, 0),
-);
+export const standCount = derived(force, ($f) => $f.entries.reduce((n, e) => n + e.quantity, 0));
 
 export const totalPoints = derived(force, ($f) =>
   $f.entries.reduce((sum, entry) => {

@@ -15,18 +15,25 @@
   import { sanitizeTowedPicks, towedPicksEqual } from "../../lib/ffot3/towed";
   import { force } from "../../lib/ffot3/store";
   import type { HeloPodPick, TowedPick, Vehicle } from "../../lib/ffot3/types";
+  import { variantOptions } from "../../lib/ffot3/variants";
 
   let {
-    unit,
+    variants,
     yearMin,
     yearMax,
     bw = false,
   }: {
-    unit: Vehicle;
+    /** Same-name cards, sorted by era; the picker switches between them. */
+    variants: Vehicle[];
     yearMin: number;
     yearMax: number;
     bw?: boolean;
   } = $props();
+
+  let selectedId = $state(untrack(() => variants[0]!.id));
+  // Falls back to the first variant when the year filter hides the selected one.
+  const unit = $derived(variants.find((v) => v.id === selectedId) ?? variants[0]!);
+  const variantList = $derived(variants.length > 1 ? variantOptions(variants) : []);
 
   let qualityId = $state(DEFAULT_QUALITY.experience);
   let missileId = $state<string | null>(untrack(() => defaultMissileId(unit, yearMin, yearMax)));
@@ -38,7 +45,9 @@
 
   const options = $derived(visibleMissiles(unit, yearMin, yearMax));
   const wide = $derived(
-    unitHasMissiles(unit, yearMin, yearMax) ||
+    Boolean(unit.infantry && (unit.infantry.law || unit.infantry.maw || unit.infantry.sam)) ||
+      Boolean(unit.indirect) ||
+      unitHasMissiles(unit, yearMin, yearMax) ||
       (isHelicopter(unit) && (unit.pods ?? 0) > 0 && (unit.podOptionKeys?.length ?? 0) > 0) ||
       unitHasTowedOptions(unit, yearMin, yearMax),
   );
@@ -88,6 +97,8 @@
       {heloPods}
       {towedLoad}
       {dedicated}
+      variants={variantList}
+      onVariant={(id) => (selectedId = id)}
       {yearMin}
       {yearMax}
       onQuality={(id) => (qualityId = id)}

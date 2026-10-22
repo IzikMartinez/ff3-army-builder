@@ -2,6 +2,7 @@ import type { Vehicle } from "./types";
 import { isCarrier, isTowed } from "./towed";
 
 export type UnitClassId =
+  | "infantry"
   | "light-tank"
   | "medium-tank"
   | "heavy-tank"
@@ -26,6 +27,7 @@ export type UnitClassId =
 export type WeaponKind = "mg" | "autocannon" | "gun" | "none";
 
 export const UNIT_CLASSES: { id: UnitClassId; label: string }[] = [
+  { id: "infantry", label: "Infantry" },
   { id: "light-tank", label: "Light Tank" },
   { id: "medium-tank", label: "Medium Tank" },
   { id: "heavy-tank", label: "Heavy Tank" },
@@ -113,9 +115,13 @@ export function classifyUnit(unit: Vehicle): UnitClassId {
   if (unit.kind === "helicopter" || (unit.move_type ?? []).includes("helicopter")) {
     return "helicopter";
   }
+  if (unit.kind === "infantry") return "infantry";
   const n = unit.Name.toLowerCase();
   const mv = unit.move_type ?? [];
   const towed = mv.includes("towed");
+  // Indirect-fire weapons: towed guns and mortars are artillery; anything
+  // self-propelled (SP guns, SP mortars, MRL launchers) is SPA.
+  if (unit.indirect) return towed ? "artillery" : "spa";
   const wheeled = mv.includes("wheeled");
   const cap = Number(unit.infantry_capacity) || 0;
   const cal = parseCaliber(unit.gun_name || "");
