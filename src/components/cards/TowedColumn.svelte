@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { Quality, Vehicle } from "../../lib/ffot3/types";
   import { formatRange, missileHit, resolveLoadout } from "../../lib/ffot3/combat";
-  import { defaultMissileId, visibleMissiles } from "../../lib/ffot3/catalog";
+  import { visibleMissiles } from "../../lib/ffot3/catalog";
   import { weaponCaption, weaponKind } from "../../lib/ffot3/classify";
   import { formatCap, towedCap } from "../../lib/ffot3/towed";
   import { CELL_RANGE, CELL_VALUE, STAT_HEAD, nationSurface } from "../../lib/ffot3/ui";
@@ -11,6 +11,7 @@
   let {
     weapon,
     count = 1,
+    missileId = null,
     quality,
     yearMin,
     yearMax,
@@ -18,6 +19,7 @@
   }: {
     weapon: Vehicle;
     count?: number;
+    missileId?: string | null;
     quality: Quality;
     yearMin?: number;
     yearMax?: number;
@@ -27,12 +29,8 @@
   const system = $derived($force.rangeSystem);
   const kind = $derived(weaponKind(weapon));
   const options = $derived(visibleMissiles(weapon, yearMin, yearMax));
-  const loadout = $derived(
-    resolveLoadout(
-      { ...weapon, missiles: options },
-      weapon.missileRequired ? defaultMissileId(weapon, yearMin, yearMax) : null,
-    ),
-  );
+  // Same resolution as unitStandBase prices it with.
+  const loadout = $derived(resolveLoadout(weapon, missileId));
   const mslStats = $derived(loadout ? missileHit(loadout.generation, loadout.unlimited) : null);
   const showGun = $derived(weapon.Gun_Rng > 0 && kind !== "none");
   const optionalMsl = $derived(!weapon.missileRequired ? options : []);

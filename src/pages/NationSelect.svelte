@@ -11,7 +11,6 @@
     .filter((elem) => elem.id === "soviets" || elem.id === "east-germany")
     .concat(warpacAlt);
 
-  console.log(warpacFantasy);
   let fantasyToggle = $state(false);
 </script>
 

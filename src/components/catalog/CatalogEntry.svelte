@@ -54,7 +54,14 @@
   });
 
   $effect(() => {
-    const next = sanitizeTowedPicks(unit, towedLoad, TOWED_WEAPONS, yearMin, yearMax, getUnit);
+    const next = sanitizeTowedPicks(unit, towedLoad, TOWED_WEAPONS, yearMin, yearMax, getUnit).map(
+      (p) => {
+        const w = getUnit(p.id);
+        if (!w || !w.missileRequired) return p;
+        const visible = visibleMissiles(w, yearMin, yearMax).some((m) => m.id === p.missileId);
+        return visible ? p : { ...p, missileId: defaultMissileId(w, yearMin, yearMax) };
+      },
+    );
     if (!towedPicksEqual(towedLoad, next)) {
       towedLoad = next;
     }

@@ -54,13 +54,13 @@ export function remainingCap(
 export function towedExtraPoints(
   picks: TowedPick[] | null | undefined,
   resolve: (id: string) => Vehicle | undefined,
-  pointsOf?: (weapon: Vehicle) => number,
+  pointsOf?: (weapon: Vehicle, pick: TowedPick) => number,
 ): number {
   let sum = 0;
   for (const p of picks ?? []) {
     const w = resolve(p.id);
     if (!w) continue;
-    const pts = pointsOf ? pointsOf(w) : Number(w.Points) || 0;
+    const pts = pointsOf ? pointsOf(w, p) : Number(w.Points) || 0;
     sum += pts * Math.max(0, p.count);
   }
   return sum;
@@ -69,12 +69,12 @@ export function towedExtraPoints(
 export function selectedTowed(
   picks: TowedPick[] | null | undefined,
   resolve: (id: string) => Vehicle | undefined,
-): { weapon: Vehicle; count: number }[] {
-  const out: { weapon: Vehicle; count: number }[] = [];
+): { weapon: Vehicle; count: number; missileId: string | null }[] {
+  const out: { weapon: Vehicle; count: number; missileId: string | null }[] = [];
   for (const p of picks ?? []) {
     if (p.count <= 0) continue;
     const w = resolve(p.id);
-    if (w) out.push({ weapon: w, count: p.count });
+    if (w) out.push({ weapon: w, count: p.count, missileId: p.missileId ?? null });
   }
   return out;
 }
@@ -101,12 +101,17 @@ export function setTowedCount(
   weapon: Vehicle,
   count: number,
   resolve: (id: string) => Vehicle | undefined,
+  missileId: string | null = null,
 ): TowedPick[] {
   if (isTowed(unit) || isHelicopterUnit(unit)) return picks.filter((p) => p.count > 0);
   const nextCount = Math.max(0, Math.round(count));
+  const existing = picks.find((p) => p.id === weapon.id);
   const rest = picks.filter((p) => p.id !== weapon.id);
   if (nextCount === 0) return rest;
-  const candidate = [...rest, { id: weapon.id, count: nextCount }];
+  const candidate = [
+    ...rest,
+    { id: weapon.id, count: nextCount, missileId: existing ? (existing.missileId ?? null) : missileId },
+  ];
   if (remainingCap(unit, candidate, resolve) < -1e-6) return picks;
   return candidate;
 }
@@ -115,7 +120,12 @@ export function towedPicksEqual(a: TowedPick[] | null | undefined, b: TowedPick[
   const aa = [...(a ?? [])].filter((p) => p.count > 0).sort((x, y) => x.id.localeCompare(y.id));
   const bb = [...(b ?? [])].filter((p) => p.count > 0).sort((x, y) => x.id.localeCompare(y.id));
   if (aa.length !== bb.length) return false;
-  return aa.every((p, i) => p.id === bb[i]!.id && p.count === bb[i]!.count);
+  return aa.every(
+    (p, i) =>
+      p.id === bb[i]!.id &&
+      p.count === bb[i]!.count &&
+      (p.missileId ?? null) === (bb[i]!.missileId ?? null),
+  );
 }
 
 export function visibleTowed(
@@ -159,7 +169,7 @@ export function sanitizeTowedPicks(
   const next: TowedPick[] = [];
   for (const p of picks ?? []) {
     if (!allowed.has(p.id) || p.count <= 0) continue;
-    next.push({ id: p.id, count: p.count });
+    next.push({ id: p.id, count: p.count, missileId: p.missileId ?? null });
   }
   if (!resolve) return next;
   let acc: TowedPick[] = [];

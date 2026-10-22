@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { TowedPick, Vehicle } from "../../lib/ffot3/types";
-  import { TOWED_WEAPONS, getUnit, towedWeaponPoints } from "../../lib/ffot3/catalog";
+  import { TOWED_WEAPONS, defaultMissileId, getUnit, towedWeaponPoints } from "../../lib/ffot3/catalog";
   import {
     canAddTowed,
     formatCap,
@@ -34,7 +34,16 @@
 
   function inc(weapon: Vehicle) {
     const pick = pickForTowed(picks, weapon.id);
-    onChange?.(setTowedCount(unit, picks, weapon, (pick?.count ?? 0) + 1, getUnit));
+    onChange?.(
+      setTowedCount(
+        unit,
+        picks,
+        weapon,
+        (pick?.count ?? 0) + 1,
+        getUnit,
+        defaultMissileId(weapon, yearMin, yearMax),
+      ),
+    );
   }
 
   function dec(weapon: Vehicle) {

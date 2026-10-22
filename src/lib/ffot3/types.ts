@@ -39,6 +39,8 @@ export type HeloPodPick = {
 export type TowedPick = {
   id: string;
   count: number;
+  /** Missile chosen when the weapon was picked; null/absent = weapon's default. */
+  missileId?: string | null;
 };
 
 export type Vehicle = {

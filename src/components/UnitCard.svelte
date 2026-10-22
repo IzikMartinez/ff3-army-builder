@@ -18,7 +18,7 @@
     resolveLoadout,
     terrainMove,
   } from "../lib/ffot3/combat";
-  import { getUnit, TOWED_WEAPONS, unitStandBase, visibleMissiles } from "../lib/ffot3/catalog";
+  import { getUnit, missileChoices, TOWED_WEAPONS, unitStandBase } from "../lib/ffot3/catalog";
   import { weaponKind } from "../lib/ffot3/classify";
   import { isHelicopter, selectedHeloWeapons } from "../lib/ffot3/helo";
   import {
@@ -75,14 +75,14 @@
   const move = $derived(Number(unit.move_value) || 0);
   const moveType = $derived(unit.move_type[0] ?? "tracked");
   const terrain = $derived(terrainMove(move, moveType));
-  const basePts = $derived(unitStandBase(unit, missileId, heloPods, towedLoad, yearMin, yearMax));
+  const basePts = $derived(unitStandBase(unit, missileId, heloPods, towedLoad));
   const standCost = $derived(Math.round(basePts * quality.point_mod));
   const armor = $derived(
     helo
       ? [{ label: "Armor", value: unit.armorSoft ? "Soft" : (unit.armor[0] ?? 0) }]
       : armorLabels(unit.armor),
   );
-  const options = $derived(visibleMissiles(unit, yearMin, yearMax));
+  const options = $derived(missileChoices(unit, missileId, yearMin, yearMax));
   const hasMissileFeature = $derived(!helo && options.length > 0);
   const hasPods = $derived(helo && (unit.pods ?? 0) > 0 && (unit.podOptionKeys?.length ?? 0) > 0);
   const towedOptions = $derived(visibleTowed(unit, TOWED_WEAPONS, yearMin, yearMax));
@@ -92,7 +92,8 @@
   const showCapacity = $derived(!towedUnit && towedCap(unit) > 0);
   const capMax = $derived(towedCap(unit));
   const capRemain = $derived(remainingCap(unit, towedLoad, getUnit));
-  const loadout = $derived(resolveLoadout({ ...unit, missiles: options }, missileId));
+  // Same resolution as unitBasePoints, so the shown missile is the one priced.
+  const loadout = $derived(resolveLoadout(unit, missileId));
   const mslStats = $derived(loadout ? missileHit(loadout.generation, loadout.unlimited) : null);
   const equip = $derived(decodeEquip(unit.Equip));
   const system = $derived($force.rangeSystem);
@@ -385,6 +386,7 @@
         weapon={row.weapon}
         count={row.count}
         {quality}
+        missileId={row.missileId}
         {yearMin}
         {yearMax}
         nationId={unit.nation}

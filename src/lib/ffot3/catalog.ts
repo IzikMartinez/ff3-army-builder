@@ -37,11 +37,16 @@ type RawHelo = {
   maxKeyPods?: Record<string, number>;
 };
 
-function unitId(u: { nation: string; Name: string; era: { start_era: string; end_era: string }; Points: number }): string {
-  return [u.nation, u.Name, u.era.start_era, u.era.end_era, String(u.Points)].join("::");
+/**
+ * Stable across data edits: nation + name + era is unique in the data, and
+ * leaving out Points / array position means re-pricing or adding rows doesn't
+ * orphan saved lists.
+ */
+function unitId(u: { nation: string; Name: string; era: { start_era: string; end_era: string } }): string {
+  return [u.nation, u.Name, u.era.start_era, u.era.end_era].join("::");
 }
 
-function normalizeUnit(u: RawVehicle, index: number): Vehicle {
+function normalizeUnit(u: RawVehicle): Vehicle {
   return {
     AI: u.AI ?? 0,
     Equip: u.Equip ?? "",
@@ -67,11 +72,11 @@ function normalizeUnit(u: RawVehicle, index: number): Vehicle {
     podOptionKeys: [],
     maxMissilePods: null,
     maxKeyPods: {},
-    id: `${unitId(u)}::${index}`,
+    id: unitId(u),
   };
 }
 
-function normalizeHelo(raw: RawHelo, index: number): Vehicle {
+function normalizeHelo(raw: RawHelo): Vehicle {
   const armorSoft = raw.armor === "s";
   const armorVal = armorSoft ? 0 : Number(raw.armor) || 0;
   return {
@@ -99,13 +104,13 @@ function normalizeHelo(raw: RawHelo, index: number): Vehicle {
     podOptionKeys: raw.podOptionKeys ?? [],
     maxMissilePods: raw.maxMissilePods ?? null,
     maxKeyPods: raw.maxKeyPods ?? {},
-    id: `helo::${unitId(raw)}::${index}`,
+    id: `helo::${unitId(raw)}`,
   };
 }
 
 const ALL: Vehicle[] = [
-  ...(unitsJson as RawVehicle[]).map(normalizeUnit),
-  ...(helosJson as RawHelo[]).map(normalizeHelo),
+  ...(unitsJson as RawVehicle[]).map((u) => normalizeUnit(u)),
+  ...(helosJson as RawHelo[]).map((h) => normalizeHelo(h)),
 ];
 
 export const TOWED_WEAPONS: Vehicle[] = ALL.filter(isTowed);
@@ -126,6 +131,13 @@ const BY_ID = new Map(ALL.map((u) => [u.id, u]));
 
 export function getUnit(id: string): Vehicle | undefined {
   return BY_ID.get(id);
+}
+
+/** Old saved lists used `<key>::<Points>::<index>` ids; map them to the current id. */
+export function migrateUnitId(id: string): string {
+  if (BY_ID.has(id)) return id;
+  const legacy = id.replace(/::[^:]*::\d+$/, "");
+  return BY_ID.has(legacy) ? legacy : id;
 }
 
 export function unitsForNation(nationId: string): Vehicle[] {
@@ -180,23 +192,41 @@ export function towedWeaponPoints(weapon: Vehicle, yearMin?: number, yearMax?: n
   return unitBasePoints(weapon, defaultMissileId(weapon, yearMin, yearMax));
 }
 
+/**
+ * Missile options for the picker. Always includes the selected loadout, even
+ * when label de-duping or the year filter would hide it, so the card never
+ * shows a different missile than the one being paid for.
+ */
+export function missileChoices(
+  unit: Vehicle,
+  selectedId: string | null | undefined,
+  yearMin?: number,
+  yearMax?: number,
+): MissileLoadout[] {
+  const opts = visibleMissiles(unit, yearMin, yearMax);
+  const selected = selectedId ? unit.missiles.find((m) => m.id === selectedId) : undefined;
+  if (!selected || opts.some((m) => m.id === selected.id)) return opts;
+  return [...opts.filter((m) => m.label !== selected.label), selected].sort(
+    (a, b) => a.points - b.points || a.label.localeCompare(b.label),
+  );
+}
+
 export function unitHasTowedOptions(unit: Vehicle, yearMin?: number, yearMax?: number): boolean {
   return visibleTowed(unit, TOWED_WEAPONS, yearMin, yearMax).length > 0;
 }
 
+/** Points for one stand, from the saved picks only (independent of the catalog year filter). */
 export function unitStandBase(
   unit: Vehicle,
   missileId?: string | null,
   heloPods?: HeloPodPick[] | null,
   towedLoad?: TowedPick[] | null,
-  yearMin?: number,
-  yearMax?: number,
 ): number {
   const chassis = isHelicopter(unit)
     ? unit.Points + heloExtraPoints(sanitizeHeloPicks(unit, heloPods))
     : unitBasePoints(unit, missileId);
   const cargo = isHelicopter(unit) ? [] : (towedLoad ?? []);
-  return chassis + towedExtraPoints(cargo, getUnit, (w) => towedWeaponPoints(w, yearMin, yearMax));
+  return chassis + towedExtraPoints(cargo, getUnit, (w, pick) => unitBasePoints(w, pick.missileId));
 }
 
 export type UnitFilter = {

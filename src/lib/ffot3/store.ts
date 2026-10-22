@@ -1,7 +1,7 @@
 import { derived, get, writable } from "svelte/store";
 import type { HeloPodPick, ListEntry, RangeSystem, ThemeMode, TowedPick } from "./types";
 import { YEAR_MAX, YEAR_MIN } from "./combat";
-import { DEFAULT_QUALITY, QUALITY_BY_ID, getUnit, unitStandBase } from "./catalog";
+import { DEFAULT_QUALITY, QUALITY_BY_ID, getUnit, migrateUnitId, unitStandBase } from "./catalog";
 import { heloPicksEqual, isHelicopter } from "./helo";
 import { isTowed, towedPicksEqual } from "./towed";
 
@@ -32,17 +32,22 @@ function applyTheme(theme: ThemeMode) {
   if (meta) meta.setAttribute("content", theme === "light" ? "#efe6d4" : "#0c0d0a");
 }
 
-function normalizeEntry(e: Partial<ListEntry>): ListEntry {
-  const unit = e.unitId ? getUnit(e.unitId) : undefined;
-  const stripTowed = !unit || isHelicopter(unit) || isTowed(unit);
+function normalizeEntry(e: Partial<ListEntry>): ListEntry | null {
+  const unitId = e.unitId ? migrateUnitId(e.unitId) : "";
+  const unit = getUnit(unitId);
+  if (!unit) return null;
+  const stripTowed = isHelicopter(unit) || isTowed(unit);
+  const towedLoad = Array.isArray(e.towedLoad)
+    ? e.towedLoad.map((p) => ({ ...p, id: migrateUnitId(p.id) })).filter((p) => getUnit(p.id))
+    : [];
   return {
     id: e.id || uid(),
-    unitId: e.unitId || "",
+    unitId,
     quantity: Math.max(1, Number(e.quantity) || 1),
     quality: e.quality || DEFAULT_QUALITY.experience,
     missileId: e.missileId ?? null,
     heloPods: Array.isArray(e.heloPods) ? e.heloPods : [],
-    towedLoad: stripTowed ? [] : Array.isArray(e.towedLoad) ? e.towedLoad : [],
+    towedLoad: stripTowed ? [] : towedLoad,
   };
 }
 
@@ -64,7 +69,9 @@ function loadState(): ForceState {
     if (listRaw) {
       const parsed = JSON.parse(listRaw) as { name?: string; entries?: Partial<ListEntry>[] };
       base.listName = parsed.name?.trim() || base.listName;
-      base.entries = Array.isArray(parsed.entries) ? parsed.entries.map(normalizeEntry) : [];
+      base.entries = Array.isArray(parsed.entries)
+        ? parsed.entries.map(normalizeEntry).filter((e): e is ListEntry => e !== null)
+        : [];
     }
     const prefsRaw = window.localStorage.getItem(PREFS_KEY);
     if (prefsRaw) {
@@ -248,7 +255,7 @@ export const totalPoints = derived(force, ($f) =>
     const unit = getUnit(entry.unitId);
     if (!unit) return sum;
     const quality = QUALITY_BY_ID[entry.quality] ?? DEFAULT_QUALITY;
-    const base = unitStandBase(unit, entry.missileId, entry.heloPods, entry.towedLoad, $f.yearMin, $f.yearMax);
+    const base = unitStandBase(unit, entry.missileId, entry.heloPods, entry.towedLoad);
     return sum + Math.round(base * quality.point_mod * entry.quantity);
   }, 0),
 );

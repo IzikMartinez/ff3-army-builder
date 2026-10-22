@@ -112,7 +112,14 @@
                   min="1"
                   class="h-10 w-16 rounded-[10px] border border-line bg-ink px-2 text-paper tabular-nums"
                   value={row.entry.quantity}
-                  oninput={(e) => force.setQuantity(row.entry.id, Number(e.currentTarget.value))}
+                  oninput={(e) => {
+                    // Ignore the transient empty/0 state while retyping; Remove deletes.
+                    const n = Math.round(Number(e.currentTarget.value));
+                    if (n >= 1) force.setQuantity(row.entry.id, n);
+                  }}
+                  onchange={(e) => {
+                    e.currentTarget.value = String(row.entry.quantity);
+                  }}
                 />
               </label>
               <button
