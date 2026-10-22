@@ -1,4 +1,5 @@
-export type RangeSystem = "imperial" | "metric";
+/** Table scale: 1:5 uses the printed inch values; 1:1 multiplies them by 2.5. */
+export type Scale = "1:5" | "1:1";
 export type Alliance = "nato" | "warpac" | "warpac-alt" | "other";
 export type HeaderInk = "light" | "dark";
 export type ThemeMode = "dark" | "light";

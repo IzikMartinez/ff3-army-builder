@@ -32,10 +32,8 @@
     missileCount?: number;
   } = $props();
 
-  $inspect("Weapon", weapon);
-  $inspect("count", missileCount);
 
-  const system = $derived($force.rangeSystem);
+  const scale = $derived($force.scale);
   const isMissile = $derived(weapon.kind === "missile" || weapon.kind === "aam");
   const isRocket = $derived(weapon.kind === "rocket");
   const isMg = $derived(weapon.kind === "mg");
@@ -45,8 +43,8 @@
   const title = $derived(formatAutocannonName(weapon.label));
   const rangeLabel = $derived(
     weapon.range[0] > 0
-      ? `${formatRangeBand(weapon.range, system)}`
-      : formatRange(weapon.range[1], system),
+      ? `${formatRangeBand(weapon.range, scale)}`
+      : formatRange(weapon.range[1], scale),
   );
   const pen = $derived(parsePen([weapon.pen]));
   const bands = $derived(gunBands(weapon.range[1]));
@@ -73,7 +71,7 @@
         return -1;
     }
   });
-  const rocketRange = $derived(formatRange(30, system));
+  const rocketRange = $derived(formatRange(30, scale));
 </script>
 
 <section class="min-w-0 sm:col-span-2 xl:col-span-1">
@@ -131,7 +129,7 @@
       {#each bands as band (band.band)}
         {@const bandHit = adjustedHit(band.hitBase, quality)}
         <div class="grid {grid} gap-1">
-          <span class={CELL_RANGE}>{formatRange(band.range, system)}</span>
+          <span class={CELL_RANGE}>{formatRange(band.range, scale)}</span>
           <span class={CELL_VALUE}>{adjustedRof(weapon.rof, quality)}</span>
           <span class={CELL_VALUE}>{bandHit}</span>
           <span class={CELL_VALUE}>{hitInf(bandHit, weapon.ai)}</span>

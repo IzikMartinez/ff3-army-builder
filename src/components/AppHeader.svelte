@@ -15,7 +15,7 @@
     if (backHref) navigate(backHref);
   }
 
-  const isNormal = $derived($force.rangeSystem === "imperial");
+  const isNormal = $derived($force.scale === "1:5");
   const count = $derived($standCount);
   const isDark = $derived($force.theme === "dark");
 </script>
@@ -62,7 +62,7 @@
       <div
         class="flex h-11 min-w-0 flex-1 items-center overflow-hidden rounded-[12px] border border-line bg-ink-2 p-1 sm:flex-none"
         role="group"
-        aria-label="Range"
+        aria-label="Scale"
       >
         <span class="shrink-0 px-2 text-[11px] font-medium uppercase tracking-[0.16em] text-muted"
           >Scale</span
@@ -73,7 +73,7 @@
             ? 'bg-paper text-ink'
             : 'text-muted'}"
           aria-pressed={isNormal}
-          onclick={() => force.setRange("imperial")}
+          onclick={() => force.setScale("1:5")}
         >
           1:5
         </button>
@@ -83,7 +83,7 @@
             ? 'text-muted'
             : 'bg-paper text-ink'}"
           aria-pressed={!isNormal}
-          onclick={() => force.setRange("metric")}
+          onclick={() => force.setScale("1:1")}
         >
           1:1
         </button>

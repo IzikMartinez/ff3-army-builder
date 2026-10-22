@@ -96,7 +96,7 @@
   const loadout = $derived(resolveLoadout(unit, missileId));
   const mslStats = $derived(loadout ? missileHit(loadout.generation, loadout.unlimited) : null);
   const equip = $derived(decodeEquip(unit.Equip));
-  const system = $derived($force.rangeSystem);
+  const scale = $derived($force.scale);
   const kind = $derived(weaponKind(unit));
   const showWeapon = $derived(kind !== "none");
   const colCount = $derived(
@@ -124,7 +124,6 @@
     onMissile?.(id);
   }
 
-  $inspect("Mounted Weapons", heloMounted);
   let missileCount = $derived(
     heloMounted
       .map((item) => (item.weapon.kind === "missile" ? item.count : 0))
@@ -237,7 +236,7 @@
               <span
                 class="flex flex-1 items-center justify-center bg-paper text-ink tabular-nums bw:bg-white bw:text-black"
               >
-                {formatRange(move, system)}
+                {formatRange(move, scale)}
               </span>
             </li>
             <li class="flex h-7 overflow-hidden rounded-md text-sm font-display">
@@ -248,7 +247,7 @@
               <span
                 class="flex flex-1 items-center justify-center bg-paper text-ink tabular-nums bw:bg-white bw:text-black"
               >
-                {formatRange(-1, system)}
+                {formatRange(-1, scale)}
               </span>
             </li>
           </ul>
@@ -263,7 +262,7 @@
                 <span
                   class="flex flex-1 items-center justify-center bg-paper text-ink tabular-nums bw:bg-white bw:text-black"
                 >
-                  {formatRange(Number(row[1]), system)}
+                  {formatRange(Number(row[1]), scale)}
                 </span>
               </li>
             {/each}
@@ -331,7 +330,7 @@
           </div>
           <div class="mt-1 grid grid-cols-5 gap-1">
             <span class={CELL_RANGE}>
-              {formatRange(loadout.range[0], system)}–{formatRange(loadout.range[1], system)}
+              {formatRange(loadout.range[0], scale)}–{formatRange(loadout.range[1], scale)}
             </span>
             <span class={CELL_VALUE}>{loadout.rof}</span>
             <span class={CELL_VALUE}>{loadout.pen}</span>

@@ -1,5 +1,5 @@
 import { derived, get, writable } from "svelte/store";
-import type { HeloPodPick, ListEntry, RangeSystem, ThemeMode, TowedPick } from "./types";
+import type { HeloPodPick, ListEntry, Scale, ThemeMode, TowedPick } from "./types";
 import { YEAR_MAX, YEAR_MIN } from "./combat";
 import { DEFAULT_QUALITY, QUALITY_BY_ID, getUnit, migrateUnitId, unitStandBase } from "./catalog";
 import { heloPicksEqual, isHelicopter } from "./helo";
@@ -15,7 +15,7 @@ function uid(): string {
 export type ForceState = {
   listName: string;
   entries: ListEntry[];
-  rangeSystem: RangeSystem;
+  scale: Scale;
   qualityId: string;
   bwMode: boolean;
   search: string;
@@ -55,7 +55,7 @@ function loadState(): ForceState {
   const base: ForceState = {
     listName: "Unnamed Force",
     entries: [],
-    rangeSystem: "imperial",
+    scale: "1:5",
     qualityId: DEFAULT_QUALITY.experience,
     bwMode: false,
     search: "",
@@ -76,12 +76,14 @@ function loadState(): ForceState {
     const prefsRaw = window.localStorage.getItem(PREFS_KEY);
     if (prefsRaw) {
       const parsed = JSON.parse(prefsRaw) as {
-        range?: RangeSystem;
+        scale?: Scale;
+        /** Pre-rename prefs stored "imperial" | "metric". */
+        range?: string;
         quality?: string;
         bw?: boolean;
         theme?: ThemeMode;
       };
-      base.rangeSystem = parsed.range === "metric" ? "metric" : "imperial";
+      base.scale = parsed.scale === "1:1" || parsed.range === "metric" ? "1:1" : "1:5";
       base.qualityId = parsed.quality || base.qualityId;
       base.bwMode = Boolean(parsed.bw);
       base.theme = parsed.theme === "light" ? "light" : "dark";
@@ -102,7 +104,7 @@ function persist(state: ForceState) {
   window.localStorage.setItem(
     PREFS_KEY,
     JSON.stringify({
-      range: state.rangeSystem,
+      scale: state.scale,
       quality: state.qualityId,
       bw: state.bwMode,
       theme: state.theme,
@@ -135,8 +137,8 @@ function createForce() {
         yearMax: Math.max(YEAR_MIN, Math.min(YEAR_MAX, hi)),
       }));
     },
-    setRange(rangeSystem: RangeSystem) {
-      patch({ rangeSystem });
+    setScale(scale: Scale) {
+      patch({ scale });
     },
     setQuality(qualityId: string) {
       patch({ qualityId });

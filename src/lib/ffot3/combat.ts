@@ -1,4 +1,4 @@
-import type { EquipMark, GunBand, MissileLoadout, MoveTable, Quality, RangeSystem, Vehicle } from "./types";
+import type { EquipMark, GunBand, MissileLoadout, MoveTable, Quality, Scale, Vehicle } from "./types";
 
 export const YEAR_MIN = 1950;
 export const YEAR_MAX = 2015;
@@ -103,10 +103,12 @@ export function eraOverlaps(unit: Vehicle, minY: number, maxY: number): boolean 
   return a <= maxY && b >= minY;
 }
 
-export function inchesToCm(inches: number): number {
-  const raw = Number(inches) === 1
-    ? 1
-    : Number(inches) * 2.5;
+/**
+ * Convert a 1:5 distance to 1:1 (×2.5), rounded to a tape-friendly step
+ * (12/6/3/2″). A 1″ minimum range stays 1″.
+ */
+export function toOneToOne(inches: number): number {
+  const raw = Number(inches) === 1 ? 1 : Number(inches) * 2.5;
   if (!Number.isFinite(raw) || raw <= 0) return 0;
 
   const nearest = (step: number) => Math.round(raw / step) * step;
@@ -123,25 +125,19 @@ export function inchesToCm(inches: number): number {
   return n2 > 0 ? n2 : nearest(2) || Math.round(raw);
 }
 
-function roundInch(inch: number): number {
-  return Math.round(Number(inch) || 0);
+/** Inches at the chosen scale, without the ″ mark. */
+export function scaleDistance(inches: number, scale: Scale): number {
+  const n = Math.round(Number(inches) || 0);
+  return scale === "1:1" ? toOneToOne(n) : n;
 }
 
-export function formatRangeBand(inches: number[], system: RangeSystem): string {
-  if (inches[0] === 1) {
-    return system === "metric"
-      ? `1 - ${inchesToCm(roundInch(inches[1]))}"`
-      : `1 - ${roundInch(inches[1])}"`
-  }
-  else
-    return system === "metric"
-      ? `${inchesToCm(roundInch(inches[0]))}-${inchesToCm(roundInch(inches[1]))}"`
-      : `${roundInch(inches[0])}-${roundInch(inches[1])}"`
+export function formatRangeBand(inches: number[], scale: Scale): string {
+  return `${scaleDistance(inches[0] ?? 0, scale)}–${scaleDistance(inches[1] ?? 0, scale)}″`;
 }
 
-export function formatRange(inches: number, system: RangeSystem): string {
-  if (inches === -1) return `∞`
-  return system === "metric" ? `${inchesToCm(roundInch(inches))}"` : `${roundInch(inches)}″`;
+export function formatRange(inches: number, scale: Scale): string {
+  if (inches === -1) return "∞";
+  return `${scaleDistance(inches, scale)}″`;
 }
 
 export function gunBands(range: number): GunBand[] {

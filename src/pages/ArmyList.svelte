@@ -14,7 +14,7 @@
       .filter((row): row is NonNullable<typeof row> => row !== null),
   );
   const bw = $derived($force.bwMode);
-  const normalRange = $derived($force.rangeSystem === "imperial");
+  const scale = $derived($force.scale);
   const name = $derived($force.listName);
   const empty = $derived($force.entries.length === 0);
   const count = $derived($standCount);
@@ -77,7 +77,7 @@
         </div>
       </div>
       <p class="mt-3 text-sm text-muted">
-        {count} stands · {points} base points · {normalRange ? "1:5 scale" : "1:1 scale"}
+        {count} stands · {points} base points · {scale} scale
         {#if bw}
           · black-and-white print
         {/if}
@@ -88,7 +88,7 @@
       <h2 class="font-display text-3xl text-ink">{name}</h2>
       <p class="text-sm">
         FFOT3 · {count} stands · {points} pts ·
-        {normalRange ? "1:5" : "1:1"}
+        {scale}
       </p>
     </div>
 

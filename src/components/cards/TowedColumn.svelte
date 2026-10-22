@@ -26,7 +26,7 @@
     nationId?: string;
   } = $props();
 
-  const system = $derived($force.rangeSystem);
+  const scale = $derived($force.scale);
   const kind = $derived(weaponKind(weapon));
   const options = $derived(visibleMissiles(weapon, yearMin, yearMax));
   // Same resolution as unitStandBase prices it with.
@@ -66,7 +66,7 @@
     </div>
     <div class="mt-1 grid grid-cols-5 gap-1">
       <span class="{CELL_RANGE}">
-        {formatRange(loadout.range[0], system)}–{formatRange(loadout.range[1], system)}
+        {formatRange(loadout.range[0], scale)}–{formatRange(loadout.range[1], scale)}
       </span>
       <span class="{CELL_VALUE}">{loadout.rof}</span>
       <span class="{CELL_VALUE}">{loadout.pen}</span>

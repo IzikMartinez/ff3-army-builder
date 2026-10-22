@@ -27,7 +27,7 @@
     bare?: boolean;
   } = $props();
 
-  const system = $derived($force.rangeSystem);
+  const scale = $derived($force.scale);
   const kind = $derived(weaponKind(unit));
   const title = $derived(
     heading ??
@@ -65,7 +65,7 @@
       {#each bands as band (band.band)}
         {@const hit = adjustedHit(band.hitBase, quality)}
         <div class="grid {grid} gap-1 text-center font-display text-sm">
-          <span class={CELL_RANGE}>{formatRange(band.range, system)}</span>
+          <span class={CELL_RANGE}>{formatRange(band.range, scale)}</span>
           <span class={CELL_VALUE}>{adjustedRof(unit.Gun_ROF, quality)}</span>
           <span class={CELL_VALUE}>{hit}</span>
           {#if kind === "mg"}

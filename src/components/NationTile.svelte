@@ -30,6 +30,6 @@
     <span class="rounded-full px-2 py-0.5 font-display text-xs tracking-wider uppercase {surface}">
       {nation.short}
     </span>
-    <span class="text-xs tabular-nums text-muted">{count} cards</span>
+    <span class="text-xs tabular-nums text-muted">{count} {count === 1 ? "card" : "cards"}</span>
   </span>
 </button>
