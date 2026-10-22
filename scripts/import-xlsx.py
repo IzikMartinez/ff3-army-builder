@@ -128,12 +128,14 @@ def move(v):
 
 
 def armor(v):
+    """'10 B 7' -> ([10, 7], soft=False, h-class letter 'B'); 's' -> soft."""
     s = (v or "").strip()
     if s in ("", "s"):
-        return [0], True
+        return [0], True, None
     parts = s.split()
     vals = [0 if p == "s" else int(p) for p in parts if re.fullmatch(r"s|\d+", p)]
-    return vals or [0], False
+    letter = next((p for p in parts if re.fullmatch(r"[-A-F]", p)), None)
+    return vals or [0], False, letter
 
 
 def pen_list(v):
@@ -159,7 +161,7 @@ def parse_mrl(notes):
 
 def vehicle_row(nation, r, name):
     move_value, move_type = move(r.get("D"))
-    arm, soft = armor(r.get("E"))
+    arm, soft, letter = armor(r.get("E"))
     notes = (r.get("R") or "").strip()
     mrl = parse_mrl(notes)
     points = r.get("C", "").strip()
@@ -180,6 +182,7 @@ def vehicle_row(nation, r, name):
         "nation": nation,
         "armor": arm,
         "armorSoft": soft,
+        **({"armorH": letter} if letter else {}),
         "unlimited_missiles": (r.get("Q") or "").strip() == "u",
         "infantry_capacity": num(r.get("P")),
         "missiles": [],

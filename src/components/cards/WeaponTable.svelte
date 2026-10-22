@@ -10,7 +10,16 @@
     parsePen,
   } from "../../lib/ffot3/combat";
   import { gunLabel, weaponCaption, weaponKind } from "../../lib/ffot3/classify";
-  import { CELL_RANGE, CELL_VALUE, GUN_HEAD, STAT_HEAD } from "../../lib/ffot3/ui";
+  import {
+    AMMO_HEAD,
+    AMMO_HINT,
+    CELL_AP,
+    CELL_HEAT,
+    CELL_RANGE,
+    CELL_VALUE,
+    GUN_HEAD,
+    STAT_HEAD,
+  } from "../../lib/ffot3/ui";
   import { force } from "../../lib/ffot3/store";
 
   let {
@@ -37,8 +46,13 @@
   const sub = $derived(caption ?? weaponCaption(kind));
   const bands = $derived(gunBands(unit.Gun_Rng));
   const pen = $derived(parsePen(unit.Gun_Pen));
-  const cols = $derived(kind === "mg" ? 4 : kind === "autocannon" ? 6 : 5);
-  const grid = $derived(cols === 4 ? "grid-cols-4" : cols === 6 ? "grid-cols-6" : "grid-cols-5");
+  const showHitInf = $derived(kind === "mg" || kind === "autocannon");
+  // Only the ammo this gun actually has. Flat (HEAT, HE) columns go last so
+  // their row-spanning cells sit at the end of each grid row.
+  const cols = $derived(
+    3 + (showHitInf ? 1 : 0) + (pen.ap !== null ? 1 : 0) + (pen.heat !== null ? 1 : 0) + (pen.he !== null ? 1 : 0),
+  );
+  const gridStyle = $derived(`grid-template-columns: repeat(${cols}, minmax(0, 1fr))`);
 </script>
 
 {#snippet table()}
@@ -46,39 +60,42 @@
     <p class="mb-1 text-center text-[10px] uppercase tracking-[0.16em] text-muted">{sub}</p>
   {/if}
   {#if unit.Gun_Rng > 0 && kind !== "none"}
-    <div class="{GUN_HEAD} grid {grid}">
+    <div class="{GUN_HEAD} grid gap-1" style={gridStyle}>
       <span class="py-1">Range</span>
       <span class="py-1">ROF</span>
       <span class="py-1">Hit</span>
-      {#if kind === "mg"}
-        <span class="py-1">Hit Inf</span>
-      {:else if kind === "autocannon"}
-        <span class="py-1">Hit Inf</span>
-        <span class="py-1">HE</span>
-        <span class="py-1">HEAT</span>
-      {:else}
-        <span class="py-1">HE</span>
-        <span class="py-1">HEAT</span>
+      {#if showHitInf}<span class="py-1">Hit Inf</span>{/if}
+      {#if pen.ap !== null}
+        <span class="{AMMO_HEAD} bg-ammo-ap text-white" title={AMMO_HINT.ap}>AP</span>
+      {/if}
+      {#if pen.heat !== null}
+        <span class="{AMMO_HEAD} bg-ammo-heat text-[#1a1406]" title={AMMO_HINT.heat}>HEAT</span>
+      {/if}
+      {#if pen.he !== null}
+        <span class="{AMMO_HEAD} bg-ammo-ap text-white" title={AMMO_HINT.he}>HE</span>
       {/if}
     </div>
-    <div class="flex flex-col gap-1 pt-1">
-      {#each bands as band (band.band)}
+    <div class="grid gap-1 pt-1" style={gridStyle}>
+      {#each bands as band, i (band.band)}
         {@const hit = adjustedHit(band.hitBase, quality)}
-        <div class="grid {grid} gap-1 text-center font-display text-sm">
-          <span class={CELL_RANGE}>{formatRange(band.range, scale)}</span>
-          <span class={CELL_VALUE}>{adjustedRof(unit.Gun_ROF, quality)}</span>
-          <span class={CELL_VALUE}>{hit}</span>
-          {#if kind === "mg"}
-            <span class={CELL_VALUE}>{hitInf(hit, unit.AI)}</span>
-          {:else if kind === "autocannon"}
-            <span class={CELL_VALUE}>{hitInf(hit, unit.AI)}</span>
-            <span class={CELL_VALUE}>{formatPen(pen.he, band.penMod)}</span>
-            <span class={CELL_VALUE}>{formatPen(pen.heat)}</span>
-          {:else}
-            <span class={CELL_VALUE}>{formatPen(pen.he, band.penMod)}</span>
-            <span class={CELL_VALUE}>{formatPen(pen.heat)}</span>
+        <span class={CELL_RANGE}>{formatRange(band.range, scale)}</span>
+        <span class={CELL_VALUE}>{adjustedRof(unit.Gun_ROF, quality)}</span>
+        <span class={CELL_VALUE}>{hit}</span>
+        {#if showHitInf}<span class={CELL_VALUE}>{hitInf(hit, unit.AI)}</span>{/if}
+        {#if pen.ap !== null}
+          <span class={CELL_AP}>{formatPen(pen.ap, band.penMod)}</span>
+        {/if}
+        {#if i === 0}
+          <!-- HEAT and HE ignore range: one cell across all three bands. -->
+          {#if pen.heat !== null}
+            <span class="{CELL_HEAT} row-span-3" title={AMMO_HINT.heat}>{pen.heat}</span>
           {/if}
-        </div>
+          {#if pen.he !== null}
+            <span class="{CELL_AP} row-span-3 flex items-center justify-center" title={AMMO_HINT.he}
+              >{pen.he}</span
+            >
+          {/if}
+        {/if}
       {/each}
     </div>
   {:else}

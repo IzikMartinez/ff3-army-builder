@@ -84,6 +84,7 @@ function normalizeUnit(u: RawVehicle): Vehicle {
     notes: u.notes ?? "",
     kind: u.kind === "infantry" ? "infantry" : "ground",
     armorSoft: Boolean(u.armorSoft),
+    ...(u.armorH ? { armorH: u.armorH } : {}),
     ...(u.indirect ? { indirect: u.indirect } : {}),
     ...(u.infantry ? { infantry: u.infantry } : {}),
     pods: 0,

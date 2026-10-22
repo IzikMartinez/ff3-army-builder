@@ -24,6 +24,7 @@
       1
     ],
     "armorSoft": false,
+    "armorH": "-",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -144,6 +145,7 @@
       0
     ],
     "armorSoft": false,
+    "armorH": "-",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -219,6 +221,7 @@
       4
     ],
     "armorSoft": false,
+    "armorH": "A",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -257,6 +260,7 @@
       4
     ],
     "armorSoft": false,
+    "armorH": "A",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -406,6 +410,7 @@
       0
     ],
     "armorSoft": false,
+    "armorH": "A",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -444,6 +449,7 @@
       0
     ],
     "armorSoft": false,
+    "armorH": "A",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -482,6 +488,7 @@
       0
     ],
     "armorSoft": false,
+    "armorH": "A",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -520,6 +527,7 @@
       0
     ],
     "armorSoft": false,
+    "armorH": "A",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -558,6 +566,7 @@
       0
     ],
     "armorSoft": false,
+    "armorH": "A",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -707,6 +716,7 @@
       6
     ],
     "armorSoft": false,
+    "armorH": "A",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -745,6 +755,7 @@
       0
     ],
     "armorSoft": false,
+    "armorH": "A",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -783,6 +794,7 @@
       2
     ],
     "armorSoft": false,
+    "armorH": "-",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -822,6 +834,7 @@
       1
     ],
     "armorSoft": false,
+    "armorH": "C",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -861,6 +874,7 @@
       1
     ],
     "armorSoft": false,
+    "armorH": "C",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -1018,6 +1032,7 @@
       6
     ],
     "armorSoft": false,
+    "armorH": "D",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -1094,6 +1109,7 @@
       0
     ],
     "armorSoft": false,
+    "armorH": "-",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -1132,6 +1148,7 @@
       0
     ],
     "armorSoft": false,
+    "armorH": "-",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -1170,6 +1187,7 @@
       0
     ],
     "armorSoft": false,
+    "armorH": "-",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -1208,6 +1226,7 @@
       0
     ],
     "armorSoft": false,
+    "armorH": "-",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -1357,6 +1376,7 @@
       1
     ],
     "armorSoft": false,
+    "armorH": "-",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -1988,6 +2008,7 @@
       0
     ],
     "armorSoft": false,
+    "armorH": "-",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -2027,6 +2048,7 @@
       0
     ],
     "armorSoft": false,
+    "armorH": "-",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -2066,6 +2088,7 @@
       0
     ],
     "armorSoft": false,
+    "armorH": "A",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -2855,6 +2878,7 @@
       6
     ],
     "armorSoft": false,
+    "armorH": "A",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -2897,6 +2921,7 @@
       0
     ],
     "armorSoft": false,
+    "armorH": "-",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -2935,6 +2960,7 @@
       0
     ],
     "armorSoft": false,
+    "armorH": "-",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -3084,6 +3110,7 @@
       1
     ],
     "armorSoft": false,
+    "armorH": "-",
     "unlimited_missiles": false,
     "infantry_capacity": 1,
     "missiles": [],
@@ -3122,6 +3149,7 @@
       1
     ],
     "armorSoft": false,
+    "armorH": "A",
     "unlimited_missiles": false,
     "infantry_capacity": 1,
     "missiles": [],
@@ -3353,6 +3381,7 @@
       2
     ],
     "armorSoft": false,
+    "armorH": "-",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -3391,6 +3420,7 @@
       1
     ],
     "armorSoft": false,
+    "armorH": "-",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -3429,6 +3459,7 @@
       0
     ],
     "armorSoft": false,
+    "armorH": "-",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -3467,6 +3498,7 @@
       1
     ],
     "armorSoft": false,
+    "armorH": "-",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -3505,6 +3537,7 @@
       1
     ],
     "armorSoft": false,
+    "armorH": "-",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -3543,6 +3576,7 @@
       1
     ],
     "armorSoft": false,
+    "armorH": "-",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -3581,6 +3615,7 @@
       1
     ],
     "armorSoft": false,
+    "armorH": "-",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -3619,6 +3654,7 @@
       1
     ],
     "armorSoft": false,
+    "armorH": "A",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -3658,6 +3694,7 @@
       1
     ],
     "armorSoft": false,
+    "armorH": "A",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -3697,6 +3734,7 @@
       1
     ],
     "armorSoft": false,
+    "armorH": "A",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -3736,6 +3774,7 @@
       1
     ],
     "armorSoft": false,
+    "armorH": "A",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -3775,6 +3814,7 @@
       1
     ],
     "armorSoft": false,
+    "armorH": "A",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -3814,6 +3854,7 @@
       1
     ],
     "armorSoft": false,
+    "armorH": "A",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -3853,6 +3894,7 @@
       2
     ],
     "armorSoft": false,
+    "armorH": "A",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -3892,6 +3934,7 @@
       2
     ],
     "armorSoft": false,
+    "armorH": "A",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -3931,6 +3974,7 @@
       2
     ],
     "armorSoft": false,
+    "armorH": "A",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -4599,6 +4643,7 @@
       1
     ],
     "armorSoft": false,
+    "armorH": "A",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -4638,6 +4683,7 @@
       1
     ],
     "armorSoft": false,
+    "armorH": "C",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -4677,6 +4723,7 @@
       1
     ],
     "armorSoft": false,
+    "armorH": "C",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -4716,6 +4763,7 @@
       1
     ],
     "armorSoft": false,
+    "armorH": "C",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -4755,6 +4803,7 @@
       1
     ],
     "armorSoft": false,
+    "armorH": "-",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -4794,6 +4843,7 @@
       3
     ],
     "armorSoft": false,
+    "armorH": "B",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -4833,6 +4883,7 @@
       4
     ],
     "armorSoft": false,
+    "armorH": "C",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -4872,6 +4923,7 @@
       1
     ],
     "armorSoft": false,
+    "armorH": "C",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -4910,6 +4962,7 @@
       4
     ],
     "armorSoft": false,
+    "armorH": "C",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -4948,6 +5001,7 @@
       4
     ],
     "armorSoft": false,
+    "armorH": "E",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -4986,6 +5040,7 @@
       4
     ],
     "armorSoft": false,
+    "armorH": "F",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -5025,6 +5080,7 @@
       4
     ],
     "armorSoft": false,
+    "armorH": "F",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -5363,6 +5419,7 @@
       0
     ],
     "armorSoft": false,
+    "armorH": "-",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -5405,6 +5462,7 @@
       0
     ],
     "armorSoft": false,
+    "armorH": "-",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -5797,6 +5855,7 @@
       1
     ],
     "armorSoft": false,
+    "armorH": "C",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -5836,6 +5895,7 @@
       1
     ],
     "armorSoft": false,
+    "armorH": "C",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],

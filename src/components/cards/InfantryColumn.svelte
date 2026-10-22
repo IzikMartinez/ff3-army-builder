@@ -10,7 +10,7 @@
     hitInf,
     missileHit,
   } from "../../lib/ffot3/combat";
-  import { CELL_RANGE, CELL_VALUE, GUN_HEAD, STAT_HEAD } from "../../lib/ffot3/ui";
+  import { CELL_RANGE, CELL_VALUE, GUN_HEAD, STAT_HEAD, penCell } from "../../lib/ffot3/ui";
   import { force } from "../../lib/ffot3/store";
 
   let { unit, quality }: { unit: Vehicle; quality: Quality } = $props();
@@ -99,7 +99,7 @@
       {#each weapons as w (w.type)}
         <div class="grid grid-cols-5 gap-1">
           <span class={CELL_RANGE}>{w.type}</span>
-          <span class={CELL_VALUE}>{w.pen}</span>
+          <span class={w.type === "SAM" ? CELL_VALUE : penCell(w.pen)}>{w.pen}</span>
           <span class={CELL_VALUE}>{w.rof}</span>
           <span class={CELL_VALUE}>{w.rng}</span>
           <span class={CELL_VALUE}>{w.hit}</span>

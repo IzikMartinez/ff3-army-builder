@@ -14,7 +14,7 @@
     parsePen,
   } from "../../lib/ffot3/combat";
   import { formatAutocannonName, isAutocannonName, weaponKind } from "../../lib/ffot3/classify";
-  import { CELL_RANGE, CELL_VALUE, GUN_HEAD, STAT_HEAD, nationSurface } from "../../lib/ffot3/ui";
+  import { CELL_RANGE, CELL_VALUE, GUN_HEAD, STAT_HEAD, nationSurface, penCell } from "../../lib/ffot3/ui";
   import { force } from "../../lib/ffot3/store";
   import EquipBubbles from "./EquipBubbles.svelte";
 
@@ -93,7 +93,7 @@
     <div class="mt-1 grid grid-cols-5 gap-1 text-center font-display text-sm">
       <span class={CELL_RANGE}>{rangeLabel}</span>
       <span class={CELL_VALUE}>{weapon.rof}</span>
-      <span class={CELL_VALUE}>{!weapon.pen || weapon.pen === "-" ? "—" : weapon.pen}</span>
+      <span class={penCell(weapon.pen)}>{!weapon.pen || weapon.pen === "-" ? "—" : weapon.pen}</span>
       <span class={CELL_VALUE}>{hit.hit}</span>
     </div>
   {:else if isRocket}
@@ -108,7 +108,7 @@
     <div class="mt-1 grid grid-cols-5 gap-1 text-center font-display text-sm">
       <span class={CELL_RANGE}>{rocketRange}</span>
       <span class={CELL_VALUE}>{weapon.rof}</span>
-      <span class={CELL_VALUE}>{!weapon.pen || weapon.pen === "-" ? "—" : weapon.pen}</span>
+      <span class={penCell(weapon.pen)}>{!weapon.pen || weapon.pen === "-" ? "—" : weapon.pen}</span>
       <span class="{CELL_VALUE} text-xs">Area</span>
     </div>
   {:else if isAc || isMg}
@@ -117,7 +117,7 @@
       <span class="py-1">ROF</span>
       <span class="py-1">Hit</span>
       <span class="py-1">Hit Inf</span>
-      <span class="py-1">Pen</span>
+      <span class="py-1">AP</span>
     </div>
     <div class="flex flex-col gap-1 pt-1">
       {#each bands as band (band.band)}
@@ -127,7 +127,7 @@
           <span class={CELL_VALUE}>{adjustedRof(weapon.rof, quality)}</span>
           <span class={CELL_VALUE}>{bandHit}</span>
           <span class={CELL_VALUE}>{hitInf(bandHit, weapon.ai)}</span>
-          <span class={CELL_VALUE}>{formatPen(pen.he, band.penMod)}</span>
+          <span class={penCell(pen.ap)}>{formatPen(pen.ap, band.penMod)}</span>
         </div>
       {/each}
     </div>
@@ -141,7 +141,7 @@
     <div class="mt-1 grid grid-cols-4 gap-1">
       <span class={CELL_RANGE}>{rangeLabel}</span>
       <span class={CELL_VALUE}>{weapon.rof}</span>
-      <span class={CELL_VALUE}>{!weapon.pen || weapon.pen === "-" ? "—" : weapon.pen}</span>
+      <span class={penCell(weapon.pen)}>{!weapon.pen || weapon.pen === "-" ? "—" : weapon.pen}</span>
     </div>
     {#if weapon.oneShot}
       <p class="mt-1 text-center text-[11px] uppercase tracking-wider text-muted">1 shot/pod</p>

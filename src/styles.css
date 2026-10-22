@@ -20,6 +20,10 @@
   --color-danger: #8f2d2a;
   --color-ok: #4f6b3a;
   --color-stat-head: #0f3a3f;
+  /* Ammo colour code, shared by firer and target cards (13.6.1):
+     grey = AP / HE vs normal armor, amber = HEAT vs armor + h-class bonus. */
+  --color-ammo-ap: #5c6773;
+  --color-ammo-heat: #c98a1a;
 
   --color-nation-us: #4b5320;
   --color-nation-baor: #004225;
@@ -62,6 +66,8 @@ html[data-theme="light"] {
   --color-line-2: #c4bba4;
   --color-danger: #8f2d2a;
   --color-ok: #4f6b3a;
+  --color-ammo-ap: #4d5864;
+  --color-ammo-heat: #b0740f;
 }
 
 @layer base {

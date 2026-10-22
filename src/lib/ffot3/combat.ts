@@ -1,4 +1,12 @@
-import type { EquipMark, GunBand, MissileLoadout, MoveTable, Quality, Scale, Vehicle } from "./types";
+import type {
+  EquipMark,
+  GunBand,
+  MissileLoadout,
+  MoveTable,
+  Quality,
+  Scale,
+  Vehicle,
+} from "./types";
 
 export const YEAR_MIN = 1950;
 export const YEAR_MAX = 2015;
@@ -15,11 +23,13 @@ const EQUIP_NOTES: Record<string, { name: string; effect: string }> = {
   },
   t: {
     name: "1st generation thermal sights",
-    effect: "Night vis 20″. No night to-hit penalty. −1 through normal smoke, −2 through incendiary.",
+    effect:
+      "Night vis 20″. No night to-hit penalty. −1 through normal smoke, −2 through incendiary.",
   },
   "2": {
     name: "2nd generation thermal sights",
-    effect: "Night vis 40″. No night to-hit penalty. Better thermal vision through smoke than 1st gen.",
+    effect:
+      "Night vis 40″. No night to-hit penalty. Better thermal vision through smoke than 1st gen.",
   },
   i: {
     name: "IR / image-intensification sights",
@@ -31,11 +41,13 @@ const EQUIP_NOTES: Record<string, { name: string; effect: string }> = {
   },
   c: {
     name: "CITV",
-    effect: "Commander’s Independent Thermal Viewer. Engage extra targets without the multiple-target ROF penalty.",
+    effect:
+      "Commander’s Independent Thermal Viewer. Engage extra targets without the multiple-target ROF penalty.",
   },
   v: {
     name: "IVIS",
-    effect: "Inter-Vehicular Information System. Each stand is a forward observer and cohesion distance is doubled.",
+    effect:
+      "Inter-Vehicular Information System. Each stand is a forward observer and cohesion distance is doubled.",
   },
   o: {
     name: "Open-topped vehicle",
@@ -149,19 +161,52 @@ export function gunBands(range: number): GunBand[] {
   ];
 }
 
-export function parsePen(values: string[]): { he: number | null; heat: number | null } {
-  let he: number | null = null;
+/**
+ * Split a gun's Pen ratings by attack type (13.6.1): a plain number is a
+ * normal (kinetic AP) attack and gets range modifiers; "12h" is h-class
+ * (HEAT/HEAP/HESH) and "7he" is he-class (plain HE shell), both flat.
+ */
+export function parsePen(values: string[]): {
+  ap: number | null;
+  heat: number | null;
+  he: number | null;
+} {
+  let ap: number | null = null;
   let heat: number | null = null;
+  let he: number | null = null;
   for (const raw of values ?? []) {
     const s = String(raw).trim().toLowerCase();
-    if (!s || s === "-" || s === "—" || s === "n/a") continue;
-    const heatFlag = /h$/.test(s);
     const n = Number.parseInt(s, 10);
     if (Number.isNaN(n)) continue;
-    if (heatFlag) heat = n;
-    else he = n;
+    if (/he$/.test(s)) he = n;
+    else if (/h/.test(s)) heat = n;
+    else ap = n;
   }
-  return { he, heat };
+  return { ap, heat, he };
+}
+
+/** h-class armor modifier letters (13.6.1): added to armor vs HEAT/HEAP/HESH. */
+export const H_CLASS_BONUS: Record<string, number> = { "-": 0, A: 1, B: 2, C: 3, D: 4, E: 5, F: 6 };
+
+export type ArmorTable = {
+  soft: boolean;
+  /** Front/flank rows: armor vs AP & HE, and vs HEAT (armor + h-class bonus). */
+  rows: { label: string; ap: number; heat: number }[];
+  /** h-class bonus, or null when the letter is unknown. */
+  bonus: number | null;
+};
+
+export function armorTable(unit: Vehicle): ArmorTable {
+  const bonus = unit.armorH ? (H_CLASS_BONUS[unit.armorH] ?? null) : null;
+  const labels = unit.armor.length >= 2 ? ["Front", "Flank"] : ["Armor"];
+  return {
+    soft: unit.armorSoft,
+    bonus,
+    rows: labels.map((label, i) => {
+      const ap = unit.armor[i] ?? 0;
+      return { label, ap, heat: ap + (bonus ?? 0) };
+    }),
+  };
 }
 
 export function formatPen(value: number | null, mod = 0): string {

@@ -3,15 +3,22 @@
   import type { VariantOption } from "../lib/ffot3/variants";
   import { NATION_BY_ID } from "../lib/ffot3/nations";
   import {
+    AMMO_HEAD,
+    AMMO_HINT,
+    CELL_AP,
+    CELL_HEAT,
     CELL_RANGE,
     CELL_VALUE,
+    GUN_HEAD,
     STAT_HEAD,
+    penCell,
     nationSurface,
     qualityBtnClass,
   } from "../lib/ffot3/ui";
   import { force } from "../lib/ffot3/store";
   import {
     armorLabels,
+    armorTable,
     decodeEquip,
     formatEra,
     formatRange,
@@ -92,6 +99,7 @@
   const basePts = $derived(unitStandBase(unit, missileId, heloPods, towedLoad, isDedicated));
   const standCost = $derived(Math.round(basePts * quality.point_mod));
   const infantry = $derived(unit.kind === "infantry" && unit.infantry ? unit.infantry : null);
+  const armorTbl = $derived(armorTable(unit));
   const armor = $derived(
     helo || unit.armorSoft
       ? [{ label: "Armor", value: unit.armorSoft ? "Soft" : (unit.armor[0] ?? 0) }]
@@ -248,20 +256,50 @@
   <div class="grid grid-cols-1 gap-3 p-3 sm:grid-cols-2 {gridClass}">
     <section>
       <div class="{STAT_HEAD} h-8 text-lg">Armor</div>
-      <ul class="flex flex-col gap-1">
-        {#each armor as row (row.label)}
-          <li class="flex h-7 overflow-hidden rounded-md text-sm font-display">
-            <span
-              class="flex w-14 items-center justify-start bg-ink-3 px-2 text-paper bw:bg-black bw:text-white"
-              >{row.label}</span
-            >
-            <span
-              class="flex flex-1 items-center justify-center bg-paper text-ink tabular-nums bw:bg-white bw:text-black"
-              >{row.value}</span
-            >
-          </li>
-        {/each}
-      </ul>
+      {#if helo || armorTbl.soft}
+        <ul class="flex flex-col gap-1">
+          {#each armor as row (row.label)}
+            <li class="flex h-7 overflow-hidden rounded-md text-sm font-display">
+              <span
+                class="flex w-14 items-center justify-start bg-ink-3 px-2 text-paper bw:bg-black bw:text-white"
+                >{row.label}</span
+              >
+              <span
+                class="flex flex-1 items-center justify-center bg-paper text-ink tabular-nums bw:bg-white bw:text-black"
+                >{row.value}</span
+              >
+            </li>
+          {/each}
+        </ul>
+      {:else}
+        <!-- Target side of the ammo colour code: grey vs AP/HE, amber vs HEAT. -->
+        {@const split = (armorTbl.bonus ?? 0) > 0}
+        <div class="{GUN_HEAD} grid gap-1 {split ? 'grid-cols-[3.5rem_1fr_1fr]' : 'grid-cols-[3.5rem_1fr]'}">
+          <span class="py-1"></span>
+          {#if split}
+            <span class="{AMMO_HEAD} bg-ammo-ap text-white" title={AMMO_HINT.ap}>AP / HE</span>
+            <span class="{AMMO_HEAD} bg-ammo-heat text-[#1a1406]" title={AMMO_HINT.heat}>HEAT</span>
+          {:else}
+            <span class="py-1">{armorTbl.bonus === 0 ? "All ammo" : "Armor"}</span>
+          {/if}
+        </div>
+        <div class="mt-1 grid gap-1 {split ? 'grid-cols-[3.5rem_1fr_1fr]' : 'grid-cols-[3.5rem_1fr]'}">
+          {#each armorTbl.rows as row (row.label)}
+            <span class={CELL_RANGE}>{row.label}</span>
+            {#if split}
+              <span class={CELL_AP}>{row.ap}</span>
+              <span class={CELL_HEAT}>{row.heat}</span>
+            {:else}
+              <span class={CELL_VALUE}>{row.ap}</span>
+            {/if}
+          {/each}
+        </div>
+        {#if armorTbl.bonus !== null}
+          <p class="mt-1 text-center text-[10px] uppercase tracking-[0.14em] text-muted">
+            {split ? `h-class ${unit.armorH} · +${armorTbl.bonus} vs HEAT` : "No h-class bonus"}
+          </p>
+        {/if}
+      {/if}
 
       {#if showCapacity}
         <div class="{STAT_HEAD} mt-3 h-8 text-lg">Capacity</div>
@@ -413,7 +451,7 @@
               {formatRange(loadout.range[0], scale)}–{formatRange(loadout.range[1], scale)}
             </span>
             <span class={CELL_VALUE}>{loadout.rof}</span>
-            <span class={CELL_VALUE}>{loadout.pen}</span>
+            <span class={penCell(loadout.pen, { missile: !loadout.sam })}>{loadout.pen}</span>
             <span class={CELL_VALUE}>{mslStats.hit}</span>
             <span class={CELL_VALUE}>{mslStats.moveShoot ? "Yes" : "No"}</span>
           </div>

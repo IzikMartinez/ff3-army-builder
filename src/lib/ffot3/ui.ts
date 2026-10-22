@@ -10,6 +10,39 @@ export const CELL_RANGE =
 export const CELL_VALUE =
   "gun-cell rounded-xs bg-paper py-1 text-center font-display text-sm tabular-nums text-ink bw:border bw:border-black bw:bg-white bw:text-black";
 
+/** Ammo colour code (13.6.1): grey = AP/HE vs normal armor, amber = HEAT vs armor + h-class bonus. */
+export const AMMO_HINT = {
+  ap: "AP: +2 pen at close range, −2 at long range. Compare with the target's grey (AP / HE) armor.",
+  heat: "HEAT: same at every range. Compare with the target's amber (HEAT) armor, which includes its h-class bonus.",
+  he: "HE shell: same at every range. Compare with the target's grey (AP / HE) armor.",
+} as const;
+
+export const AMMO_HEAD = "rounded-xs py-1 bw:bg-black bw:text-white";
+
+/** AP / HE value: a normal cell with a grey stripe. */
+export const CELL_AP = `${CELL_VALUE} shadow-[inset_0_-3px_0_var(--color-ammo-ap)] bw:shadow-none`;
+
+/** HEAT value: amber fill, usually spanning all range bands (it ignores range). */
+export const CELL_HEAT =
+  "gun-cell flex items-center justify-center rounded-xs bg-ammo-heat py-1 text-center font-display text-sm tabular-nums text-[#1a1406] bw:border bw:border-black bw:bg-white bw:text-black";
+
+/**
+ * Cell style for a Pen value: "12h" (HEAT/HEAP/HESH) amber, "7he" or a plain
+ * number grey. Guided anti-tank missiles are HEAT even when stored as numbers.
+ */
+export function penCell(
+  pen: string | number | null | undefined,
+  opts: { missile?: boolean } = {},
+): string {
+  const s = String(pen ?? "")
+    .trim()
+    .toLowerCase();
+  if (!s || s === "-" || s === "—") return CELL_VALUE;
+  if (/he$/.test(s)) return CELL_AP;
+  if (/h/.test(s) || opts.missile) return CELL_HEAT;
+  return CELL_AP;
+}
+
 export const STEP_BTN =
   "inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-sm border border-line bg-ink font-display text-xl leading-none text-paper disabled:cursor-default disabled:opacity-35 bw:border-black bw:bg-white bw:text-black";
 

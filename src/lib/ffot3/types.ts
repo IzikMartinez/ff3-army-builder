@@ -86,6 +86,8 @@ export type Vehicle = {
   nation: string;
   armor: number[];
   armorSoft: boolean;
+  /** h-class armor modifier letter ("-", "A"–"F"): adds 0–6 vs HEAT/HEAP/HESH (13.6.1). */
+  armorH?: string;
   unlimited_missiles: boolean;
   infantry_capacity: number;
   missiles: MissileLoadout[];

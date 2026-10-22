@@ -4,7 +4,7 @@
   import { visibleMissiles } from "../../lib/ffot3/catalog";
   import { weaponCaption, weaponKind } from "../../lib/ffot3/classify";
   import { formatCap, towedCap } from "../../lib/ffot3/towed";
-  import { CELL_RANGE, CELL_VALUE, STAT_HEAD, nationSurface } from "../../lib/ffot3/ui";
+  import { CELL_RANGE, CELL_VALUE, STAT_HEAD, nationSurface, penCell } from "../../lib/ffot3/ui";
   import { force } from "../../lib/ffot3/store";
   import WeaponTable from "./WeaponTable.svelte";
 
@@ -69,7 +69,7 @@
         {formatRange(loadout.range[0], scale)}–{formatRange(loadout.range[1], scale)}
       </span>
       <span class="{CELL_VALUE}">{loadout.rof}</span>
-      <span class="{CELL_VALUE}">{loadout.pen}</span>
+      <span class={penCell(loadout.pen, { missile: !loadout.sam })}>{loadout.pen}</span>
       <span class="{CELL_VALUE}">{mslStats.hit}</span>
       <span class="{CELL_VALUE}">{mslStats.moveShoot ? "Yes" : "No"}</span>
     </div>

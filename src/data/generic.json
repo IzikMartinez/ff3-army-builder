@@ -24,6 +24,7 @@
       0
     ],
     "armorSoft": false,
+    "armorH": "-",
     "unlimited_missiles": false,
     "infantry_capacity": 0,
     "missiles": [],
@@ -56,6 +57,7 @@
       1
     ],
     "armorSoft": false,
+    "armorH": "-",
     "unlimited_missiles": false,
     "infantry_capacity": 1,
     "missiles": [],
@@ -88,6 +90,7 @@
       0
     ],
     "armorSoft": false,
+    "armorH": "-",
     "unlimited_missiles": false,
     "infantry_capacity": 1,
     "missiles": [],

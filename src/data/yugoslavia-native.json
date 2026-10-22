@@ -28,7 +28,8 @@
     "infantry_capacity": 0,
     "missiles": [],
     "missileRequired": false,
-    "notes": "Derived (App. B): licence T-72M1, 10 B 7; 780hp/41.5t → 9t"
+    "notes": "Derived (App. B): licence T-72M1, 10 B 7; 780hp/41.5t → 9t",
+    "armorH": "B"
   },
   {
     "AI": -1,
@@ -59,7 +60,8 @@
     "infantry_capacity": 0,
     "missiles": [],
     "missileRequired": false,
-    "notes": "Derived (App. B): licence T-72M1, 10 B 7; 780hp/41.5t → 9t"
+    "notes": "Derived (App. B): licence T-72M1, 10 B 7; 780hp/41.5t → 9t",
+    "armorH": "B"
   },
   {
     "AI": -1,
@@ -90,7 +92,8 @@
     "infantry_capacity": 0,
     "missiles": [],
     "missileRequired": false,
-    "notes": "Derived (App. B): T-72M1 88+ armor 11 D 8; 1000hp/42t → 11t"
+    "notes": "Derived (App. B): T-72M1 88+ armor 11 D 8; 1000hp/42t → 11t",
+    "armorH": "D"
   },
   {
     "AI": 0,
@@ -142,7 +145,8 @@
       }
     ],
     "missileRequired": false,
-    "notes": "Derived (App. B): BMP-1 armor 3 A 2; 315hp/14t → 11t; twin AT-3 (limited)"
+    "notes": "Derived (App. B): BMP-1 armor 3 A 2; 315hp/14t → 11t; twin AT-3 (limited)",
+    "armorH": "A"
   },
   {
     "AI": 0,
@@ -194,7 +198,8 @@
       }
     ],
     "missileRequired": false,
-    "notes": "Derived (App. B): BMP-1 armor 3 A 2; 315hp/14t → 11t; twin AT-3 (limited)"
+    "notes": "Derived (App. B): BMP-1 armor 3 A 2; 315hp/14t → 11t; twin AT-3 (limited)",
+    "armorH": "A"
   },
   {
     "AI": -1,
@@ -224,7 +229,8 @@
     "infantry_capacity": 1,
     "missiles": [],
     "missileRequired": false,
-    "notes": "Derived (App. B): 25mm steel, 2 - 1; 140hp/11t → 6t"
+    "notes": "Derived (App. B): 25mm steel, 2 - 1; 140hp/11t → 6t",
+    "armorH": "-"
   },
   {
     "AI": -1,
@@ -254,7 +260,8 @@
     "infantry_capacity": 1,
     "missiles": [],
     "missileRequired": false,
-    "notes": "Derived (App. B): 8mm steel, 0 - 0; 148hp/9.4t 4×4 → 7w"
+    "notes": "Derived (App. B): 8mm steel, 0 - 0; 148hp/9.4t 4×4 → 7w",
+    "armorH": "-"
   },
   {
     "AI": -1,
@@ -305,7 +312,8 @@
       }
     ],
     "missileRequired": true,
-    "notes": "Derived (App. B): BOV hull 0 - 0, 7w; 6 ready + 6 reload AT-3 (unlimited)"
+    "notes": "Derived (App. B): BOV hull 0 - 0, 7w; 6 ready + 6 reload AT-3 (unlimited)",
+    "armorH": "-"
   },
   {
     "AI": -1,
@@ -356,6 +364,7 @@
       }
     ],
     "missileRequired": true,
-    "notes": "Derived (App. B): BOV hull 0 - 0, 7w; 6 ready + 6 reload AT-3 (unlimited)"
+    "notes": "Derived (App. B): BOV hull 0 - 0, 7w; 6 ready + 6 reload AT-3 (unlimited)",
+    "armorH": "-"
   }
 ]
