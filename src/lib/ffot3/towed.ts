@@ -18,6 +18,7 @@ export function towedCap(unit: Vehicle): number {
 }
 
 export function isCarrier(unit: Vehicle): boolean {
+  // Helicopter towing (17.2.1) is deliberately not supported for now.
   if (isHelicopterUnit(unit) || isTowed(unit)) return false;
   return towedCap(unit) > 0;
 }

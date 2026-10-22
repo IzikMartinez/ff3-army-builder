@@ -108,6 +108,8 @@ export type ListEntry = {
   missileId: string | null;
   heloPods: HeloPodPick[];
   towedLoad: TowedPick[];
+  /** Transport helicopter bought as a dedicated transport (17.10): double cost. */
+  dedicated: boolean;
 };
 
 export type GunBand = {

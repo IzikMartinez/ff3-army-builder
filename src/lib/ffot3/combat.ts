@@ -202,14 +202,23 @@ export function standPoints(base: number, pointMod: number): { size: number; cos
   }));
 }
 
+/** A natural 1 always misses and a natural 6 always hits (13.4.1, 13.4.6). */
+export function clampHit(n: number): number {
+  return Math.min(6, Math.max(2, n));
+}
+
+/**
+ * Missile to-hit by generation and ammo (13.4.6): 1st gen 6+ (5+ unlimited),
+ * 2nd 4+ (3+), 3rd 3+ (2+). Troop quality to-hit modifiers apply.
+ */
 export function missileHit(
   gen: number,
   unlimited: boolean,
+  quality?: Quality,
 ): { hit: number; moveShoot: boolean } {
   const unlim = unlimited ? 1 : 0;
-  if (gen <= 1) return { hit: 6 - unlim, moveShoot: false };
-  if (gen <= 2) return { hit: 4 - unlim, moveShoot: true };
-  return { hit: 3 - unlim, moveShoot: true };
+  const base = gen <= 1 ? 6 : gen <= 2 ? 4 : 3;
+  return { hit: clampHit(base - unlim - (quality?.hit_mod ?? 0)), moveShoot: gen > 1 };
 }
 
 export function resolveLoadout(
@@ -232,15 +241,17 @@ export function unitBasePoints(unit: Vehicle, missileId: string | null | undefin
 }
 
 export function adjustedHit(base: number, quality: Quality): number {
-  return Math.max(2, base - quality.hit_mod);
+  return clampHit(base - quality.hit_mod);
 }
 
 export function hitInf(hit: number, ai: number | null | undefined): number {
-  return Math.max(2, hit - (Number(ai) || 0));
+  return clampHit(hit - (Number(ai) || 0));
 }
 
+/** Gun ROF with quality modifier; a reduced ROF cannot drop below 1 (5.2). */
 export function adjustedRof(base: number, quality: Quality): number {
-  return Math.max(0, base + quality.rof_mod);
+  if (base <= 0) return base;
+  return Math.max(1, base + quality.rof_mod);
 }
 
 export function armorLabels(armor: number[]): { label: string; value: number | string }[] {
@@ -274,7 +285,7 @@ export function qualityShort(q: Quality): string {
     average: "Avg",
     good: "Good",
     excellent: "Exc",
-    elite: "Elite",
+    superb: "Sup",
   };
   return map[q.experience] ?? qualityLabel(q);
 }

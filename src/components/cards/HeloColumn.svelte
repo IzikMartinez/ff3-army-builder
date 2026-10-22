@@ -38,7 +38,11 @@
   const isRocket = $derived(weapon.kind === "rocket");
   const isMg = $derived(weapon.kind === "mg");
   const isAc = $derived(weapon.kind === "ac");
-  const hit = $derived(isMissile ? missileHit(weapon.generation ?? 2, false) : null);
+  // 17.3.1: 4 missile pods = unlimited ammo; fewer = limited.
+  const unlimitedMissiles = $derived(missileCount >= 4);
+  const hit = $derived(
+    isMissile ? missileHit(weapon.generation ?? 2, unlimitedMissiles, quality) : null,
+  );
   const cost = $derived(podCost(weapon, count));
   const title = $derived(formatAutocannonName(weapon.label));
   const rangeLabel = $derived(
@@ -58,19 +62,6 @@
 
   const grid = $derived(isMg ? "grid-cols-5" : isAc ? "grid-cols-5" : "grid-cols-4");
   const surface = $derived(nationSurface(nationId));
-  const unlimitedMissiles = $derived(missileCount >= 4);
-  const derivedHit = $derived.by(() => {
-    switch (weapon.generation) {
-      case 1:
-        return 6;
-      case 2:
-        return 4;
-      case 3:
-        return 3;
-      default:
-        return -1;
-    }
-  });
   const rocketRange = $derived(formatRange(30, scale));
 </script>
 
@@ -100,7 +91,7 @@
       <span class={CELL_RANGE}>{rangeLabel}</span>
       <span class={CELL_VALUE}>{weapon.rof}</span>
       <span class={CELL_VALUE}>{!weapon.pen || weapon.pen === "-" ? "—" : weapon.pen}</span>
-      <span class={CELL_VALUE}>{derivedHit - (unlimitedMissiles ? 1 : 0)}</span>
+      <span class={CELL_VALUE}>{hit.hit}</span>
     </div>
   {:else if isRocket}
     <div
@@ -115,7 +106,7 @@
       <span class={CELL_RANGE}>{rocketRange}</span>
       <span class={CELL_VALUE}>{weapon.rof}</span>
       <span class={CELL_VALUE}>{!weapon.pen || weapon.pen === "-" ? "—" : weapon.pen}</span>
-      <span class={CELL_VALUE}>{derivedHit - (unlimitedMissiles ? 1 : 0)}</span>
+      <span class="{CELL_VALUE} text-xs">Area</span>
     </div>
   {:else if isAc || isMg}
     <div class="{GUN_HEAD} grid {grid}">

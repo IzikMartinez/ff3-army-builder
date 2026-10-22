@@ -10,6 +10,7 @@ import {
   heloHasMissileLabel,
   heloMissileLabels,
   isHelicopter,
+  isTransportHelo,
   sanitizeHeloPicks,
 } from "./helo";
 import { isZeroMoveTowed, isTowed, towedExtraPoints, visibleTowed } from "./towed";
@@ -221,12 +222,15 @@ export function unitStandBase(
   missileId?: string | null,
   heloPods?: HeloPodPick[] | null,
   towedLoad?: TowedPick[] | null,
+  dedicated = false,
 ): number {
   const chassis = isHelicopter(unit)
     ? unit.Points + heloExtraPoints(sanitizeHeloPicks(unit, heloPods))
     : unitBasePoints(unit, missileId);
+  // 17.10: dedicated transports cost double, including pods (17.9).
+  const mult = dedicated && isTransportHelo(unit) ? 2 : 1;
   const cargo = isHelicopter(unit) ? [] : (towedLoad ?? []);
-  return chassis + towedExtraPoints(cargo, getUnit, (w, pick) => unitBasePoints(w, pick.missileId));
+  return chassis * mult + towedExtraPoints(cargo, getUnit, (w, pick) => unitBasePoints(w, pick.missileId));
 }
 
 export type UnitFilter = {

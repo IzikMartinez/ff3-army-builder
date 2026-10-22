@@ -20,7 +20,7 @@
   } from "../lib/ffot3/combat";
   import { getUnit, missileChoices, TOWED_WEAPONS, unitStandBase } from "../lib/ffot3/catalog";
   import { weaponKind } from "../lib/ffot3/classify";
-  import { isHelicopter, selectedHeloWeapons } from "../lib/ffot3/helo";
+  import { isHelicopter, isTransportHelo, selectedHeloWeapons } from "../lib/ffot3/helo";
   import {
     formatCap,
     isTowed,
@@ -46,10 +46,12 @@
     missileId = null,
     heloPods = [],
     towedLoad = [],
+    dedicated = false,
     onQuality,
     onMissile,
     onHeloPods,
     onTowed,
+    onDedicated,
     yearMin,
     yearMax,
   }: {
@@ -60,10 +62,12 @@
     missileId?: string | null;
     heloPods?: HeloPodPick[];
     towedLoad?: TowedPick[];
+    dedicated?: boolean;
     onQuality?: (id: string) => void;
     onMissile?: (id: string | null) => void;
     onHeloPods?: (picks: HeloPodPick[]) => void;
     onTowed?: (picks: TowedPick[]) => void;
+    onDedicated?: (dedicated: boolean) => void;
     yearMin?: number;
     yearMax?: number;
   } = $props();
@@ -75,7 +79,9 @@
   const move = $derived(Number(unit.move_value) || 0);
   const moveType = $derived(unit.move_type[0] ?? "tracked");
   const terrain = $derived(terrainMove(move, moveType));
-  const basePts = $derived(unitStandBase(unit, missileId, heloPods, towedLoad));
+  const transport = $derived(isTransportHelo(unit));
+  const isDedicated = $derived(transport && dedicated);
+  const basePts = $derived(unitStandBase(unit, missileId, heloPods, towedLoad, isDedicated));
   const standCost = $derived(Math.round(basePts * quality.point_mod));
   const armor = $derived(
     helo
@@ -94,7 +100,7 @@
   const capRemain = $derived(remainingCap(unit, towedLoad, getUnit));
   // Same resolution as unitBasePoints, so the shown missile is the one priced.
   const loadout = $derived(resolveLoadout(unit, missileId));
-  const mslStats = $derived(loadout ? missileHit(loadout.generation, loadout.unlimited) : null);
+  const mslStats = $derived(loadout ? missileHit(loadout.generation, loadout.unlimited, quality) : null);
   const equip = $derived(decodeEquip(unit.Equip));
   const scale = $derived($force.scale);
   const kind = $derived(weaponKind(unit));
@@ -147,6 +153,12 @@
       <span class="font-display text-sm tabular-nums opacity-90"
         >{formatEra(unit.era.start_era, unit.era.end_era)}</span
       >
+      {#if isDedicated}
+        <span
+          class="self-center truncate rounded-sm bg-brass px-1.5 py-0.5 font-display text-[0.7rem] tracking-[0.14em] text-ink uppercase bw:bg-white bw:text-black"
+          title="Dedicated transport: double cost (Rule 17.10)">Dedicated · 2× pts</span
+        >
+      {/if}
     </div>
     <div class="flex shrink-0 items-center gap-2">
       <span
@@ -396,7 +408,29 @@
   <footer
     class="flex flex-wrap items-center justify-end gap-2 border-t border-line px-3 py-2 bw:border-black"
   >
-    {#if helo && unit.Gun_Rng <= 0}
+    {#if transport && onDedicated}
+      <div class="mr-auto flex min-w-0 items-center gap-2 print:hidden">
+        <button
+          type="button"
+          role="switch"
+          aria-checked={isDedicated}
+          class="flex h-8 shrink-0 items-center gap-2 rounded-full border px-3 font-display text-xs tracking-[0.14em] uppercase transition-colors duration-150 {isDedicated
+            ? 'border-brass bg-brass text-ink'
+            : 'border-line-2 text-muted hover:border-brass hover:text-paper'}"
+          onclick={() => onDedicated?.(!isDedicated)}
+        >
+          <span class="h-2 w-2 rounded-full {isDedicated ? 'bg-ink' : 'bg-line-2'}" aria-hidden="true"
+          ></span>
+          Dedicated transport
+        </button>
+        <span class="min-w-0 text-[11px] leading-tight text-muted">
+          {isDedicated
+            ? "Stays after dropping cargo · cost doubled"
+            : "Must leave after dropping cargo (17.10)"}
+        </span>
+      </div>
+    {/if}
+    {#if helo && unit.Gun_Rng <= 0 && !(transport && onDedicated)}
       <span class="mr-auto text-[11px] uppercase tracking-[0.16em] text-muted">Helicopter</span>
     {/if}
     <EquipBubbles marks={equip} />

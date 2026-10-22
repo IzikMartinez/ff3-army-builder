@@ -2,7 +2,7 @@ import { derived, get, writable } from "svelte/store";
 import type { HeloPodPick, ListEntry, Scale, ThemeMode, TowedPick } from "./types";
 import { YEAR_MAX, YEAR_MIN } from "./combat";
 import { DEFAULT_QUALITY, QUALITY_BY_ID, getUnit, migrateUnitId, unitStandBase } from "./catalog";
-import { heloPicksEqual, isHelicopter } from "./helo";
+import { heloPicksEqual, isHelicopter, isTransportHelo, sanitizeHeloPicks } from "./helo";
 import { isTowed, towedPicksEqual } from "./towed";
 
 const LIST_KEY = "ffot3-force-list-v2";
@@ -32,6 +32,11 @@ function applyTheme(theme: ThemeMode) {
   if (meta) meta.setAttribute("content", theme === "light" ? "#efe6d4" : "#0c0d0a");
 }
 
+/** Rulebook name is "superb"; early saves used "elite". */
+function migrateQuality(q: string | undefined): string | undefined {
+  return q === "elite" ? "superb" : q;
+}
+
 function normalizeEntry(e: Partial<ListEntry>): ListEntry | null {
   const unitId = e.unitId ? migrateUnitId(e.unitId) : "";
   const unit = getUnit(unitId);
@@ -44,10 +49,11 @@ function normalizeEntry(e: Partial<ListEntry>): ListEntry | null {
     id: e.id || uid(),
     unitId,
     quantity: Math.max(1, Number(e.quantity) || 1),
-    quality: e.quality || DEFAULT_QUALITY.experience,
+    quality: migrateQuality(e.quality) || DEFAULT_QUALITY.experience,
     missileId: e.missileId ?? null,
-    heloPods: Array.isArray(e.heloPods) ? e.heloPods : [],
+    heloPods: isHelicopter(unit) && Array.isArray(e.heloPods) ? sanitizeHeloPicks(unit, e.heloPods) : [],
     towedLoad: stripTowed ? [] : towedLoad,
+    dedicated: Boolean(e.dedicated) && isTransportHelo(unit),
   };
 }
 
@@ -84,7 +90,7 @@ function loadState(): ForceState {
         theme?: ThemeMode;
       };
       base.scale = parsed.scale === "1:1" || parsed.range === "metric" ? "1:1" : "1:5";
-      base.qualityId = parsed.quality || base.qualityId;
+      base.qualityId = migrateQuality(parsed.quality) || base.qualityId;
       base.bwMode = Boolean(parsed.bw);
       base.theme = parsed.theme === "light" ? "light" : "dark";
     }
@@ -164,6 +170,7 @@ function createForce() {
       missileId?: string | null,
       heloPods?: HeloPodPick[] | null,
       towedLoad?: TowedPick[] | null,
+      dedicated = false,
     ) {
       patch((s) => {
         const unit = getUnit(unitId);
@@ -171,13 +178,15 @@ function createForce() {
         const msl = missileId ?? null;
         const pods = heloPods ?? [];
         const load = unit && !isHelicopter(unit) && !isTowed(unit) ? (towedLoad ?? []) : [];
+        const ded = Boolean(dedicated && unit && isTransportHelo(unit));
         const existing = s.entries.find(
           (e) =>
             e.unitId === unitId &&
             e.quality === q &&
             (e.missileId ?? null) === msl &&
             heloPicksEqual(e.heloPods, pods) &&
-            towedPicksEqual(e.towedLoad, load),
+            towedPicksEqual(e.towedLoad, load) &&
+            e.dedicated === ded,
         );
         if (existing) {
           return {
@@ -199,6 +208,7 @@ function createForce() {
               missileId: msl,
               heloPods: pods,
               towedLoad: load,
+              dedicated: ded,
             },
           ],
         };
@@ -237,6 +247,12 @@ function createForce() {
         entries: s.entries.map((e) => (e.id === id ? { ...e, towedLoad } : e)),
       }));
     },
+    setEntryDedicated(id: string, dedicated: boolean) {
+      patch((s) => ({
+        ...s,
+        entries: s.entries.map((e) => (e.id === id ? { ...e, dedicated } : e)),
+      }));
+    },
     remove(id: string) {
       patch((s) => ({ ...s, entries: s.entries.filter((e) => e.id !== id) }));
     },
@@ -257,7 +273,13 @@ export const totalPoints = derived(force, ($f) =>
     const unit = getUnit(entry.unitId);
     if (!unit) return sum;
     const quality = QUALITY_BY_ID[entry.quality] ?? DEFAULT_QUALITY;
-    const base = unitStandBase(unit, entry.missileId, entry.heloPods, entry.towedLoad);
+    const base = unitStandBase(
+      unit,
+      entry.missileId,
+      entry.heloPods,
+      entry.towedLoad,
+      entry.dedicated,
+    );
     return sum + Math.round(base * quality.point_mod * entry.quantity);
   }, 0),
 );

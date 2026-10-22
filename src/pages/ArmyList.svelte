@@ -138,10 +138,12 @@
               missileId={row.entry.missileId}
               heloPods={row.entry.heloPods}
               towedLoad={row.entry.towedLoad}
+              dedicated={row.entry.dedicated}
               onQuality={(id) => force.setEntryQuality(row.entry.id, id)}
               onMissile={(id) => force.setEntryMissile(row.entry.id, id)}
               onHeloPods={(picks) => force.setEntryHeloPods(row.entry.id, picks)}
               onTowed={(picks) => force.setEntryTowedLoad(row.entry.id, picks)}
+              onDedicated={(next) => force.setEntryDedicated(row.entry.id, next)}
             />
           </div>
         {/each}

@@ -32,6 +32,7 @@
   let missileId = $state<string | null>(untrack(() => defaultMissileId(unit, yearMin, yearMax)));
   let heloPods = $state<HeloPodPick[]>([]);
   let towedLoad = $state<TowedPick[]>([]);
+  let dedicated = $state(false);
   let added = $state(false);
   let addedTimer: ReturnType<typeof setTimeout> | null = null;
 
@@ -68,7 +69,7 @@
   });
 
   function add() {
-    force.addUnit(unit.id, qualityId, missileId, heloPods, towedLoad);
+    force.addUnit(unit.id, qualityId, missileId, heloPods, towedLoad, dedicated);
     added = true;
     if (addedTimer) clearTimeout(addedTimer);
     addedTimer = setTimeout(() => {
@@ -86,12 +87,14 @@
       {missileId}
       {heloPods}
       {towedLoad}
+      {dedicated}
       {yearMin}
       {yearMax}
       onQuality={(id) => (qualityId = id)}
       onMissile={(id) => (missileId = id)}
       onHeloPods={(next) => (heloPods = next)}
       onTowed={(next) => (towedLoad = next)}
+      onDedicated={(next) => (dedicated = next)}
     />
     <div class="print:hidden flex justify-end">
       <button

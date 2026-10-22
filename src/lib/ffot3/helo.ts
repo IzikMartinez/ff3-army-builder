@@ -546,6 +546,14 @@ export const HELO_WEAPONS: HeloWeapon[] = [
 
 const BY_ID = new Map(HELO_WEAPONS.map((w) => [w.id, w]));
 
+/**
+ * Transport helicopters (capacity ≥ 1) must leave after dropping cargo unless
+ * bought as dedicated transports at double cost. Mi-24 Hinds are exempt (17.10).
+ */
+export function isTransportHelo(unit: Vehicle): boolean {
+  return isHelicopter(unit) && (Number(unit.infantry_capacity) || 0) >= 1 && !/^Mi-24/i.test(unit.Name);
+}
+
 export function isHelicopter(unit: Vehicle): boolean {
   return unit.kind === "helicopter" || (unit.move_type ?? []).includes("helicopter");
 }
@@ -755,7 +763,28 @@ export function sanitizeHeloPicks(
     if (!variant) continue;
     next.push({ key: p.key, variantId: variant.id, count: p.count });
   }
-  return next;
+  return clampPodCounts(unit, next);
+}
+
+/** Trim saved picks to the helicopter's pod limits (total, per-key, missile pods). */
+function clampPodCounts(unit: Vehicle, picks: HeloPodPick[]): HeloPodPick[] {
+  let total = 0;
+  let missiles = 0;
+  const out: HeloPodPick[] = [];
+  for (const p of picks) {
+    const w = BY_ID.get(p.variantId);
+    if (!w) continue;
+    const isMsl = w.kind === "missile" || w.kind === "aam";
+    let n = Math.min(p.count, (unit.pods || 0) - total);
+    const maxForKey = unit.maxKeyPods?.[p.key] ?? w.maxPods;
+    if (maxForKey != null) n = Math.min(n, maxForKey - keyCount(out, p.key));
+    if (isMsl && unit.maxMissilePods != null) n = Math.min(n, unit.maxMissilePods - missiles);
+    if (n <= 0) continue;
+    out.push({ ...p, count: n });
+    total += n;
+    if (isMsl) missiles += n;
+  }
+  return out;
 }
 
 export function heloPicksEqual(a: HeloPodPick[] | null | undefined, b: HeloPodPick[] | null | undefined): boolean {

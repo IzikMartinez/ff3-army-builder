@@ -31,7 +31,7 @@
   const options = $derived(visibleMissiles(weapon, yearMin, yearMax));
   // Same resolution as unitStandBase prices it with.
   const loadout = $derived(resolveLoadout(weapon, missileId));
-  const mslStats = $derived(loadout ? missileHit(loadout.generation, loadout.unlimited) : null);
+  const mslStats = $derived(loadout ? missileHit(loadout.generation, loadout.unlimited, quality) : null);
   const showGun = $derived(weapon.Gun_Rng > 0 && kind !== "none");
   const optionalMsl = $derived(!weapon.missileRequired ? options : []);
   const surface = $derived(nationSurface(nationId));
