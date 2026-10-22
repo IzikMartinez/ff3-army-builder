@@ -23,13 +23,11 @@
     count = 1,
     quality,
     nationId = "",
-    missileCount = 0,
   }: {
     weapon: HeloWeapon;
     count?: number;
     quality: Quality;
     nationId?: string;
-    missileCount?: number;
   } = $props();
 
 
@@ -38,8 +36,13 @@
   const isRocket = $derived(weapon.kind === "rocket");
   const isMg = $derived(weapon.kind === "mg");
   const isAc = $derived(weapon.kind === "ac");
-  // 17.3.1: 4 missile pods = unlimited ammo; fewer = limited.
-  const unlimitedMissiles = $derived(missileCount >= 4);
+  // 17.3.1, counted per missile type: 4 pods = unlimited, 2–3 = limited,
+  // 1 = very limited (fires twice per game, limited-ammo to-hit). One-shot
+  // AAMs fire once per pod and have no ammo status.
+  const ammo = $derived(
+    weapon.oneShot ? null : count >= 4 ? "unlimited" : count >= 2 ? "limited" : "very-limited",
+  );
+  const unlimitedMissiles = $derived(ammo === "unlimited");
   const hit = $derived(
     isMissile ? missileHit(weapon.generation ?? 2, unlimitedMissiles, quality) : null,
   );
@@ -148,8 +151,8 @@
   <div
     class="bg-paper-2 px-2 py-1 rounded-b-lg flex gap-1 items-center justify-start text-center mt-2"
   >
-    {#if isMissile}
-      {#if unlimitedMissiles}
+    {#if isMissile && ammo}
+      {#if ammo === "unlimited"}
         <EquipBubbles
           marks={[
             {
@@ -160,13 +163,23 @@
             },
           ]}
         />
-      {:else}
+      {:else if ammo === "limited"}
         <EquipBubbles
           marks={[
             {
               code: "hl",
               name: "Limited Ammo",
               effect: "Limited ammo results in thin missile barages. Reduced chance to hit",
+            },
+          ]}
+        />
+      {:else}
+        <EquipBubbles
+          marks={[
+            {
+              code: "vl",
+              name: "Very Limited Ammo",
+              effect: "One pod: may fire missiles only twice per game, at the limited-ammo to-hit.",
             },
           ]}
         />

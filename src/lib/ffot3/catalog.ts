@@ -14,6 +14,7 @@ import {
   sanitizeHeloPicks,
 } from "./helo";
 import { isZeroMoveTowed, isTowed, towedExtraPoints, visibleTowed } from "./towed";
+import { fantasyUnits } from "./fantasy";
 
 type RawVehicle = Partial<Vehicle> & Omit<Vehicle, "id" | "kind" | "armorSoft" | "pods" | "podOptionKeys" | "maxMissilePods" | "maxKeyPods">;
 
@@ -109,8 +110,10 @@ function normalizeHelo(raw: RawHelo): Vehicle {
   };
 }
 
+const RAW_UNITS = unitsJson as RawVehicle[];
+
 const ALL: Vehicle[] = [
-  ...(unitsJson as RawVehicle[]).map((u) => normalizeUnit(u)),
+  ...[...RAW_UNITS, ...fantasyUnits(RAW_UNITS)].map((u) => normalizeUnit(u)),
   ...(helosJson as RawHelo[]).map((h) => normalizeHelo(h)),
 ];
 

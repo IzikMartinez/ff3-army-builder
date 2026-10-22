@@ -130,11 +130,6 @@
     onMissile?.(id);
   }
 
-  let missileCount = $derived(
-    heloMounted
-      .map((item) => (item.weapon.kind === "missile" ? item.count : 0))
-      .reduce((acc, n) => acc + n, 0),
-  );
 </script>
 
 <article
@@ -378,7 +373,6 @@
         count={row.count}
         {quality}
         nationId={unit.nation}
-        {missileCount}
       />
     {/each}
 
@@ -432,6 +426,10 @@
     {/if}
     {#if helo && unit.Gun_Rng <= 0 && !(transport && onDedicated)}
       <span class="mr-auto text-[11px] uppercase tracking-[0.16em] text-muted">Helicopter</span>
+    {/if}
+    {#if !helo && unit.notes}
+      <!-- Helicopter notes already show under the pod picker. -->
+      <p class="mr-auto min-w-0 text-[11px] leading-snug text-muted bw:text-black">{unit.notes}</p>
     {/if}
     <EquipBubbles marks={equip} />
   </footer>

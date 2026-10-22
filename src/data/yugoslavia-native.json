@@ -1,0 +1,361 @@
+[
+  {
+    "AI": -1,
+    "Equip": "s,n,i",
+    "Gun_Pen": [
+      "13",
+      "12h"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 14,
+    "Name": "M-84",
+    "Points": 212,
+    "era": {
+      "start_era": "84",
+      "end_era": "85"
+    },
+    "gun_name": "125mm/L48 SB Export (Russia)",
+    "move_type": [
+      "tracked"
+    ],
+    "move_value": "9",
+    "nation": "yugoslavia",
+    "armor": [
+      10,
+      7
+    ],
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "Derived (App. B): licence T-72M1, 10 B 7; 780hp/41.5t → 9t"
+  },
+  {
+    "AI": -1,
+    "Equip": "s,n,i",
+    "Gun_Pen": [
+      "14",
+      "13h"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 16,
+    "Name": "M-84",
+    "Points": 227,
+    "era": {
+      "start_era": "86",
+      "end_era": "87"
+    },
+    "gun_name": "125mm/L48 SB Export (Russia)",
+    "move_type": [
+      "tracked"
+    ],
+    "move_value": "9",
+    "nation": "yugoslavia",
+    "armor": [
+      10,
+      7
+    ],
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "Derived (App. B): licence T-72M1, 10 B 7; 780hp/41.5t → 9t"
+  },
+  {
+    "AI": -1,
+    "Equip": "s,n,i",
+    "Gun_Pen": [
+      "14",
+      "13h"
+    ],
+    "Gun_ROF": 2,
+    "Gun_Rng": 16,
+    "Name": "M-84A",
+    "Points": 251,
+    "era": {
+      "start_era": "88",
+      "end_era": "90"
+    },
+    "gun_name": "125mm/L48 SB Export (Russia)",
+    "move_type": [
+      "tracked"
+    ],
+    "move_value": "11",
+    "nation": "yugoslavia",
+    "armor": [
+      11,
+      8
+    ],
+    "unlimited_missiles": false,
+    "infantry_capacity": 0,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "Derived (App. B): T-72M1 88+ armor 11 D 8; 1000hp/42t → 11t"
+  },
+  {
+    "AI": 0,
+    "Equip": "n,i",
+    "Gun_Pen": [
+      "2"
+    ],
+    "Gun_ROF": 4,
+    "Gun_Rng": 10,
+    "Name": "M-80A",
+    "Points": 58,
+    "era": {
+      "start_era": "82",
+      "end_era": "89"
+    },
+    "gun_name": "20mm M55 (Yugoslavia)",
+    "move_type": [
+      "tracked",
+      "amphibious"
+    ],
+    "move_value": "11",
+    "nation": "yugoslavia",
+    "armor": [
+      3,
+      2
+    ],
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [
+      {
+        "id": "AT-3c|82-89|81",
+        "key": "AT-3c",
+        "label": "Malyutka-P",
+        "points": 81,
+        "era": {
+          "start_era": "82",
+          "end_era": "89"
+        },
+        "unlimited": false,
+        "pen": 12,
+        "rof": 1,
+        "range": [
+          5,
+          30
+        ],
+        "generation": 2,
+        "topAttack": false,
+        "sam": false
+      }
+    ],
+    "missileRequired": false,
+    "notes": "Derived (App. B): BMP-1 armor 3 A 2; 315hp/14t → 11t; twin AT-3 (limited)"
+  },
+  {
+    "AI": 0,
+    "Equip": "n,i",
+    "Gun_Pen": [
+      "2"
+    ],
+    "Gun_ROF": 4,
+    "Gun_Rng": 10,
+    "Name": "M-80A",
+    "Points": 58,
+    "era": {
+      "start_era": "90",
+      "end_era": "90"
+    },
+    "gun_name": "20mm M55 (Yugoslavia)",
+    "move_type": [
+      "tracked",
+      "amphibious"
+    ],
+    "move_value": "11",
+    "nation": "yugoslavia",
+    "armor": [
+      3,
+      2
+    ],
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [
+      {
+        "id": "AT-3d|90-90|99",
+        "key": "AT-3d",
+        "label": "Malyutka-P1",
+        "points": 99,
+        "era": {
+          "start_era": "90",
+          "end_era": "90"
+        },
+        "unlimited": false,
+        "pen": 15,
+        "rof": 1,
+        "range": [
+          1,
+          30
+        ],
+        "generation": 2,
+        "topAttack": false,
+        "sam": false
+      }
+    ],
+    "missileRequired": false,
+    "notes": "Derived (App. B): BMP-1 armor 3 A 2; 315hp/14t → 11t; twin AT-3 (limited)"
+  },
+  {
+    "AI": -1,
+    "Equip": "",
+    "Gun_Pen": [
+      "1"
+    ],
+    "Gun_ROF": 1,
+    "Gun_Rng": 6,
+    "Name": "M-60P",
+    "Points": 18,
+    "era": {
+      "start_era": "65",
+      "end_era": "90"
+    },
+    "gun_name": "12.7mm HMG",
+    "move_type": [
+      "tracked"
+    ],
+    "move_value": "6",
+    "nation": "yugoslavia",
+    "armor": [
+      2,
+      1
+    ],
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "Derived (App. B): 25mm steel, 2 - 1; 140hp/11t → 6t"
+  },
+  {
+    "AI": -1,
+    "Equip": "",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 1,
+    "Gun_Rng": 6,
+    "Name": "BOV-M",
+    "Points": 6,
+    "era": {
+      "start_era": "84",
+      "end_era": "90"
+    },
+    "gun_name": "7.62mm MG",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "7",
+    "nation": "yugoslavia",
+    "armor": [
+      0,
+      0
+    ],
+    "unlimited_missiles": false,
+    "infantry_capacity": 1,
+    "missiles": [],
+    "missileRequired": false,
+    "notes": "Derived (App. B): 8mm steel, 0 - 0; 148hp/9.4t 4×4 → 7w"
+  },
+  {
+    "AI": -1,
+    "Equip": "i",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "BOV-1",
+    "Points": 46,
+    "era": {
+      "start_era": "84",
+      "end_era": "89"
+    },
+    "gun_name": "7.62mm MG",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "7",
+    "nation": "yugoslavia",
+    "armor": [
+      0,
+      0
+    ],
+    "unlimited_missiles": true,
+    "infantry_capacity": 0,
+    "missiles": [
+      {
+        "id": "AT-3c|84-89|46",
+        "key": "AT-3c",
+        "label": "Malyutka-P",
+        "points": 46,
+        "era": {
+          "start_era": "84",
+          "end_era": "89"
+        },
+        "unlimited": true,
+        "pen": 12,
+        "rof": 1,
+        "range": [
+          5,
+          30
+        ],
+        "generation": 2,
+        "topAttack": false,
+        "sam": false
+      }
+    ],
+    "missileRequired": true,
+    "notes": "Derived (App. B): BOV hull 0 - 0, 7w; 6 ready + 6 reload AT-3 (unlimited)"
+  },
+  {
+    "AI": -1,
+    "Equip": "i",
+    "Gun_Pen": [
+      "-"
+    ],
+    "Gun_ROF": 0,
+    "Gun_Rng": 0,
+    "Name": "BOV-1",
+    "Points": 66,
+    "era": {
+      "start_era": "90",
+      "end_era": "90"
+    },
+    "gun_name": "7.62mm MG",
+    "move_type": [
+      "wheeled"
+    ],
+    "move_value": "7",
+    "nation": "yugoslavia",
+    "armor": [
+      0,
+      0
+    ],
+    "unlimited_missiles": true,
+    "infantry_capacity": 0,
+    "missiles": [
+      {
+        "id": "AT-3d|90-90|66",
+        "key": "AT-3d",
+        "label": "Malyutka-P1",
+        "points": 66,
+        "era": {
+          "start_era": "90",
+          "end_era": "90"
+        },
+        "unlimited": true,
+        "pen": 15,
+        "rof": 1,
+        "range": [
+          1,
+          30
+        ],
+        "generation": 2,
+        "topAttack": false,
+        "sam": false
+      }
+    ],
+    "missileRequired": true,
+    "notes": "Derived (App. B): BOV hull 0 - 0, 7w; 6 ready + 6 reload AT-3 (unlimited)"
+  }
+]
