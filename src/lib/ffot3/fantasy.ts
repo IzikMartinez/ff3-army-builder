@@ -42,7 +42,7 @@ const SOVIET_ONLY: RegExp[] = [
   /^B[MVW]P-1P?D$/, // Afghanistan-era BMP-1D/1PD
 ];
 const sovietOnly = (u: RawUnit) => SOVIET_ONLY.some((re) => re.test(u.Name));
-/** BMP-2 family: Zapad gets only the Czech BVP-2, from '87 (see zapadBvp2). */
+/** BMP-2 family: Zapad gets only the Czech BVP-2, from '87 (see zapadExtras). */
 const BMP2_FAMILY = /^(BMP-2|BVP-2|BWP-2)$/;
 const BVP2_FROM = "87";
 
@@ -94,14 +94,23 @@ function derive(
   return out;
 }
 
-/** Czech licence BMP-2 (BVP-2) rows, starting no earlier than 1987. */
-function zapadBvp2(raw: RawUnit[]): RawUnit[] {
-  const from = parseEraYear(BVP2_FROM);
+/**
+ * Issue another nation's vehicle to a fantasy nation, starting no earlier than
+ * `from` (two-digit era code). Loadouts that ended before then are dropped.
+ */
+function issue(
+  raw: RawUnit[],
+  source: string,
+  name: string,
+  nation: string,
+  from?: string,
+): RawUnit[] {
+  const fromYear = from ? parseEraYear(from) : 0;
   return raw
-    .filter((u) => u.nation === "czechoslovakia" && u.Name === "BVP-2")
-    .filter((u) => parseEraYear(u.era.end_era) >= from)
+    .filter((u) => u.nation === source && u.Name === name)
+    .filter((u) => parseEraYear(u.era.end_era) >= fromYear)
     .map((u) => {
-      const start = parseEraYear(u.era.start_era) < from ? BVP2_FROM : u.era.start_era;
+      const start = from && parseEraYear(u.era.start_era) < fromYear ? from : u.era.start_era;
       const restart = <T extends { era: RawUnit["era"] }>(x: T): T => ({
         ...x,
         era: { ...x.era, start_era: start },
@@ -110,13 +119,27 @@ function zapadBvp2(raw: RawUnit[]): RawUnit[] {
         {
           ...restart(u),
           missiles: (u.missiles ?? [])
-            .filter((m) => parseEraYear(m.era.end_era) >= from)
+            .filter((m) => parseEraYear(m.era.end_era) >= fromYear)
             .map(restart),
         },
-        "zapadoslavia",
+        nation,
       );
     })
     .filter((u): u is RawUnit => u !== null);
+}
+
+/**
+ * Zapad extras: the Czech licence BVP-2 from '87, and Soviet-supplied airborne
+ * kit for the Sokol division (one BMD regiment from '75).
+ */
+function zapadExtras(raw: RawUnit[]): RawUnit[] {
+  return [
+    ...issue(raw, "czechoslovakia", "BVP-2", "zapadoslavia", BVP2_FROM),
+    ...issue(raw, "soviets", "ASU-57", "zapadoslavia"),
+    ...issue(raw, "soviets", "BMD-1", "zapadoslavia", "75"),
+    ...issue(raw, "soviets", "BMD-1P", "zapadoslavia", "75"),
+    ...issue(raw, "soviets", "BTR-D", "zapadoslavia", "75"),
+  ];
 }
 
 export function fantasyUnits(raw: RawUnit[]): RawUnit[] {
@@ -128,5 +151,5 @@ export function fantasyUnits(raw: RawUnit[]): RawUnit[] {
     ZAPAD_NAMES,
   );
   const yugo = derive(raw, ["bulgaria"], "yugoslavia", (u) => !sovietOnly(u));
-  return [...zapad, ...zapadBvp2(raw), ...yugo, ...(yugoNativeJson as RawUnit[])];
+  return [...zapad, ...zapadExtras(raw), ...yugo, ...(yugoNativeJson as RawUnit[])];
 }
