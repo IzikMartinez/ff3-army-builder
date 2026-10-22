@@ -1,0 +1,51 @@
+[
+  {
+    "experience": "poor",
+    "quality": 7,
+    "hit_mod": -3,
+    "rof_mod": -2,
+    "point_mod": 0.29
+  },
+  {
+    "experience": "marginal",
+    "quality": 7,
+    "hit_mod": -2,
+    "rof_mod": -1,
+    "point_mod": 0.45
+  },
+  {
+    "experience": "fair",
+    "quality": 6,
+    "hit_mod": -1,
+    "rof_mod": 0,
+    "point_mod": 0.75
+  },
+  {
+    "experience": "average",
+    "quality": 5,
+    "hit_mod": 0,
+    "rof_mod": 0,
+    "point_mod": 1
+  },
+  {
+    "experience": "good",
+    "quality": 4,
+    "hit_mod": 1,
+    "rof_mod": 0,
+    "point_mod": 1.21
+  },
+  {
+    "experience": "excellent",
+    "quality": 3,
+    "hit_mod": 1,
+    "rof_mod": 1,
+    "point_mod": 1.54
+  },
+  {
+    "experience": "elite",
+    "quality": 2,
+    "hit_mod": 1,
+    "rof_mod": 1,
+    "point_mod": 1.74
+  }
+]

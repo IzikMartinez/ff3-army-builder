@@ -1,0 +1,691 @@
+{
+  "nation": "Zapadoslavia",
+  "year": 1985,
+  "doctrine": "Warsaw Pact combined-arms, Czechoslovak artillery emphasis, Polish airborne and sea-landing tradition",
+  "quality_doctrine": {
+    "note": "Quality ranks use the project's quality.json experience bands. Lower quality number is better.",
+    "pact_1985": [
+      {
+        "nation": "East Germany",
+        "rank": 1,
+        "line": "excellent",
+        "elite": "elite",
+        "notes": "Best trained and best led in the Pact. Tight NCO corps, short frontage, West German threat keeps standards high."
+      },
+      {
+        "nation": "USSR",
+        "rank": 2,
+        "line": "good",
+        "elite": "elite",
+        "notes": "Second overall. Category I and Guards/VDV are the ceiling. Category II/III and mobilization formations drag the mean down. Unique first-line AFVs (T-64, T-80, BMP-2, 2S6) sit here, not in the minors."
+      },
+      {
+        "nation": "Zapadoslavia",
+        "rank": 2,
+        "line": "good",
+        "elite": "excellent",
+        "notes": "Mean troop quality matches a Soviet Category I army. Officers and technical arms (artillery, engineers, tank gunnery) are strong because Czech and Polish schools survived the merger. AFV park is export-standard only: no T-64, T-80, BMP-3, or Tunguska. Gwardia and Sokol close on Soviet Guards/VDV but do not equal them."
+      },
+      {
+        "nation": "Yugoslavia",
+        "rank": 4,
+        "line": "average",
+        "elite": "good",
+        "notes": "WarPac member from 1948 in this timeline, never Non-Aligned. Largest South Slav pool but weakest training, staff work, and logistics of the big four. Export AFVs, mixed territorial-defence habits leftover from the old JNA concept. Proleterska Garda is the only formation that consistently fights at 'good'."
+      }
+    ]
+  },
+  "force_structure_1985": {
+    "fronts": [
+      {
+        "name": "Western Front",
+        "hq": "Prague",
+        "faces": "V Corps / VII Corps (US and Bundeswehr) across the Bohemian Forest",
+        "armies": ["1st Combined Arms Army (Plzeň)", "4th Combined Arms Army (Příbram)"]
+      },
+      {
+        "name": "Northern Front",
+        "hq": "Poznań",
+        "faces": "NORTHAG and the Baltic approaches",
+        "armies": ["2nd Combined Arms Army (Poznań)", "5th Combined Arms Army (Bydgoszcz)", "8th Combined Arms Army (Kraków)"]
+      }
+    ],
+    "strategic_reserve": [
+      "I Gwardia Tank Corps (Wrocław)",
+      "Sokol Airborne Division (Bydgoszcz / Prostějov)",
+      "7th Sea Landing Brigade (Gdańsk — formation exists; the port itself is East German in this timeline, so the brigade is inland-based at Słupsk–Koszalin and lifted by Pact sealift)"
+    ],
+    "line_divisions_approx": "14–16 tank and motor-rifle divisions plus 1 airborne division and 1 sea-landing brigade",
+    "manpower_note": "Peak wartime strength around 1.0–1.1 million with mobilisation. Peacetime cadre is closer to 450–500 thousand."
+  },
+  "experience_defaults": {
+    "motorized": "good",
+    "mechanized": "good",
+    "armor": "good",
+    "guards_mechanized": "excellent",
+    "guards_armor": "excellent",
+    "airborne": "excellent",
+    "airborne_bmd": "excellent",
+    "sea_landing": "good"
+  },
+  "motorized": {
+    "title": "Batalion Piechoty Zmotoryzowanej / Motostřelecký prapor",
+    "short": "Motor Rifle Battalion (wheeled)",
+    "experience": "good",
+    "notes": "Workhorse of Northern Front. Rides OT-64 SKOT, the best wheeled APC in the Pact and a domestic design. Fights dismounted with vz. 58 or AKM depending on which republic raised the battalion.",
+    "bhq": {
+      "command": { "unit": "CAPC", "quantity": 1 },
+      "support": [
+        { "unit": "UAZ-469", "quantity": 1 },
+        { "unit": "PKM", "quantity": 1 },
+        { "unit": "SA-7", "quantity": 1 }
+      ]
+    },
+    "companies": {
+      "chq": {
+        "command": { "unit": "CAPC", "quantity": 1 },
+        "support": [{ "unit": "RPG-7", "quantity": 1 }]
+      },
+      "platoon_quantity": 3,
+      "platoon": {
+        "AFV": [{ "unit": "APC", "quantity": 3 }],
+        "Infantry": [
+          { "unit": "AKM / vz.58", "quantity": 3 },
+          { "unit": "PKM", "quantity": 1 },
+          { "unit": "RPK / Uk vz.59", "quantity": 2 },
+          { "unit": "RPG-7", "quantity": 3 },
+          { "unit": "SA-7", "quantity": 1 }
+        ]
+      }
+    },
+    "artillery": [
+      { "unit": "M120", "quantity": 6 },
+      { "unit": "MT-LB", "quantity": 6 },
+      { "unit": "UAZ-469", "quantity": 1 }
+    ],
+    "antiarmor": [
+      { "unit": "BRDM-2 AT-5", "quantity": 4 },
+      { "unit": "SPG-9", "quantity": 2 },
+      { "unit": "AT-4 Fagot", "quantity": 4 }
+    ],
+    "air_defence": [
+      { "unit": "ZU-23/2", "quantity": 4 },
+      { "unit": "SA-7", "quantity": 4 }
+    ]
+  },
+  "mechanized": {
+    "title": "Batalion Piechoty Zmechanizowanej / Mechanizovaný prapor",
+    "short": "Mechanized Battalion (BVP-1 / BWP-1)",
+    "experience": "good",
+    "notes": "Czech and Slovak battalions almost all on BVP-1; Polish ones on BWP-1. Same vehicle as the Soviet BMP-1 export, including the 73mm 2A28 and AT-3. A few companies in Western Front have BMP-1P with AT-4 instead of AT-3.",
+    "bhq": {
+      "command": { "unit": "BMP-1K", "quantity": 1 },
+      "support": [
+        { "unit": "UAZ-469", "quantity": 1 },
+        { "unit": "PKM", "quantity": 1 },
+        { "unit": "SA-7", "quantity": 1 }
+      ]
+    },
+    "companies": {
+      "chq": {
+        "command": { "unit": "IFV", "quantity": 1 },
+        "support": [{ "unit": "RPG-7", "quantity": 1 }]
+      },
+      "platoon_quantity": 3,
+      "platoon": {
+        "AFV": [{ "unit": "IFV", "quantity": 3 }],
+        "Infantry": [
+          { "unit": "AKM / vz.58", "quantity": 3 },
+          { "unit": "PKM", "quantity": 1 },
+          { "unit": "RPK / Uk vz.59", "quantity": 2 },
+          { "unit": "RPG-7", "quantity": 3 },
+          { "unit": "SA-7", "quantity": 1 }
+        ]
+      }
+    },
+    "artillery": [
+      { "unit": "M120", "quantity": 6 },
+      { "unit": "MT-LB", "quantity": 6 },
+      { "unit": "UAZ-469", "quantity": 1 }
+    ],
+    "antiarmor": [
+      { "unit": "BRDM-2 AT-5", "quantity": 4 },
+      { "unit": "AT-4 Fagot", "quantity": 6 }
+    ],
+    "air_defence": [
+      { "unit": "SA-9", "quantity": 4 },
+      { "unit": "ZU-23/2", "quantity": 2 }
+    ]
+  },
+  "armor": {
+    "title": "Batalion Czołgów / Tankový prapor",
+    "short": "Tank Battalion",
+    "experience": "good",
+    "notes": "Western Front tank battalions are T-72M1. Northern Front still fields a lot of T-55AM Merida / T-55AM2. No T-64, T-72B, or T-80 in national service. Battalion is the late-Pact 31-tank type: HQ tank plus three 10-tank companies.",
+    "bhq": {
+      "command": { "unit": "CT", "quantity": 1 },
+      "support": [
+        { "unit": "T-55ARV / VT-72", "quantity": 1 },
+        { "unit": "UAZ-469", "quantity": 1 }
+      ]
+    },
+    "companies": {
+      "chq": {
+        "command": { "unit": "tank", "quantity": 1 }
+      },
+      "platoon_quantity": 3,
+      "platoon": {
+        "AFV": [{ "unit": "tank", "quantity": 3 }]
+      }
+    },
+    "attached_motor_rifle": {
+      "note": "Tank battalions in tank regiments have no organic infantry. Tank battalions inside motor-rifle regiments habitually pair with a mechanized company.",
+      "AFV": [{ "unit": "IFV", "quantity": 3 }],
+      "Infantry": [
+        { "unit": "AKM / vz.58", "quantity": 3 },
+        { "unit": "RPG-7", "quantity": 3 },
+        { "unit": "SA-7", "quantity": 1 }
+      ]
+    }
+  },
+  "guards_mechanized": {
+    "title": "Batalion Gwardii Zmechanizowanej",
+    "short": "Gwardia Mechanized Battalion",
+    "experience": "excellent",
+    "notes": "I Gwardia Tank Corps infantry. Same export BMP-1P hulls as the line, but full AT-4 fit, extra SA-7s, and priority on conscript quality. Treat as Soviet Guards motor-rifle without the BMP-2.",
+    "bhq": {
+      "command": { "unit": "BMP-1K", "quantity": 1 },
+      "support": [
+        { "unit": "BRDM-2", "quantity": 1 },
+        { "unit": "PKM", "quantity": 1 },
+        { "unit": "SA-7", "quantity": 2 }
+      ]
+    },
+    "companies": {
+      "chq": {
+        "command": { "unit": "IFV", "quantity": 1 },
+        "support": [{ "unit": "AT-4 Fagot", "quantity": 1 }]
+      },
+      "platoon_quantity": 3,
+      "platoon": {
+        "AFV": [{ "unit": "IFV", "quantity": 3 }],
+        "Infantry": [
+          { "unit": "AKM / vz.58", "quantity": 3 },
+          { "unit": "PKM", "quantity": 1 },
+          { "unit": "RPK / Uk vz.59", "quantity": 2 },
+          { "unit": "RPG-7", "quantity": 3 },
+          { "unit": "AT-4 Fagot", "quantity": 1 },
+          { "unit": "SA-7", "quantity": 1 }
+        ]
+      }
+    },
+    "artillery": [
+      { "unit": "2S1 Gvozdika", "quantity": 6 },
+      { "unit": "UAZ-469", "quantity": 1 }
+    ],
+    "antiarmor": [
+      { "unit": "BRDM-2 AT-5", "quantity": 4 },
+      { "unit": "AT-4 Fagot", "quantity": 6 }
+    ],
+    "air_defence": [
+      { "unit": "ZSU-23/4", "quantity": 2 },
+      { "unit": "SA-9", "quantity": 2 }
+    ]
+  },
+  "guards_armor": {
+    "title": "Batalion Czołgów Gwardii",
+    "short": "Gwardia Tank Battalion",
+    "experience": "excellent",
+    "notes": "Best T-72M1s in the inventory, including the small T-72M1M night-sight batch. Still an export 125mm tank: no AT-8/AT-11 gun-launched missiles, no Kontakt-5, no T-80 turbines.",
+    "bhq": {
+      "command": { "unit": "CT", "quantity": 1 },
+      "support": [
+        { "unit": "VT-72", "quantity": 1 },
+        { "unit": "BRDM-2", "quantity": 1 }
+      ]
+    },
+    "companies": {
+      "chq": {
+        "command": { "unit": "tank", "quantity": 1 }
+      },
+      "platoon_quantity": 3,
+      "platoon": {
+        "AFV": [{ "unit": "tank", "quantity": 3 }]
+      }
+    }
+  },
+  "airborne": {
+    "title": "Batalion Desantowy 'Sokol'",
+    "short": "Sokol Airborne Battalion (light)",
+    "experience": "excellent",
+    "notes": "Zapadoslav VDV analogue for the majority of the Sokol Division. Heirs of the Polish 6th Pomeranian Airborne and the Czechoslovak 22nd Airborne. Drop or air-land from An-12/An-26 and Mi-8. No BMD for these battalions — they fight as light motor-rifle once the OT-64s catch up, or purely on foot for the first 12 hours.",
+    "bhq": {
+      "command": { "unit": "CAPC", "quantity": 1 },
+      "support": [
+        { "unit": "UAZ-469", "quantity": 1 },
+        { "unit": "PKM", "quantity": 1 },
+        { "unit": "SA-7", "quantity": 2 }
+      ]
+    },
+    "companies": {
+      "chq": {
+        "command": { "unit": "CAPC", "quantity": 1 },
+        "support": [{ "unit": "AT-4 Fagot", "quantity": 1 }]
+      },
+      "platoon_quantity": 3,
+      "platoon": {
+        "AFV": [{ "unit": "APC", "quantity": 0 }],
+        "Infantry": [
+          { "unit": "AKM / vz.58", "quantity": 3 },
+          { "unit": "PKM", "quantity": 1 },
+          { "unit": "RPK / Uk vz.59", "quantity": 2 },
+          { "unit": "RPG-7", "quantity": 3 },
+          { "unit": "AT-4 Fagot", "quantity": 1 },
+          { "unit": "SA-7", "quantity": 1 }
+        ]
+      }
+    },
+    "lift_followon": {
+      "note": "Follow-on lift, not on the drop zone in wave one.",
+      "AFV": [
+        { "unit": "OT-64 SKOT", "quantity": 10 },
+        { "unit": "UAZ-469 + recoilless", "quantity": 4 }
+      ]
+    },
+    "artillery": [
+      { "unit": "M120", "quantity": 6 },
+      { "unit": "AGS-17 AGL", "quantity": 6 }
+    ],
+    "antiarmor": [
+      { "unit": "SPG-9", "quantity": 6 },
+      { "unit": "AT-4 Fagot", "quantity": 6 }
+    ]
+  },
+  "airborne_bmd": {
+    "title": "Batalion Desantowy BMD 'Sokol Ciężki'",
+    "short": "Sokol Heavy Airborne Battalion",
+    "experience": "excellent",
+    "notes": "One regiment only, Soviet-supplied BMD-1P. This is the closest Zapadoslavia gets to a true VDV battalion. Still a generation behind a 1985 Soviet BMD-2 battalion.",
+    "bhq": {
+      "command": { "unit": "BMD-1K", "quantity": 1 },
+      "support": [
+        { "unit": "BTR-D", "quantity": 1 },
+        { "unit": "SA-7", "quantity": 2 }
+      ]
+    },
+    "companies": {
+      "chq": {
+        "command": { "unit": "BMD", "quantity": 1 },
+        "support": [{ "unit": "AT-4 Fagot", "quantity": 1 }]
+      },
+      "platoon_quantity": 3,
+      "platoon": {
+        "AFV": [{ "unit": "BMD", "quantity": 3 }],
+        "Infantry": [
+          { "unit": "AKM / vz.58", "quantity": 3 },
+          { "unit": "PKM", "quantity": 1 },
+          { "unit": "RPG-7", "quantity": 3 },
+          { "unit": "SA-7", "quantity": 1 }
+        ]
+      }
+    },
+    "artillery": [
+      { "unit": "2S9 Nona-S", "quantity": 0 },
+      { "unit": "M120 on BTR-D", "quantity": 6 }
+    ],
+    "antiarmor": [
+      { "unit": "BTR-RD / AT-5", "quantity": 4 }
+    ],
+    "air_defence": [
+      { "unit": "BTR-ZD / ZU-23", "quantity": 4 }
+    ]
+  },
+  "sea_landing": {
+    "title": "Batalion Wypadkowy",
+    "short": "Sea Landing Battalion",
+    "experience": "good",
+    "notes": "Descended from the Polish 7th Sea Landing Division. In this geography the Baltic beach they would have used sits in East Germany, so the brigade is a Pact amphibious reserve rather than a national coastal-defence force. PT-76B and OT-62 TOPAS, not BMPs.",
+    "bhq": {
+      "command": { "unit": "PT-76B", "quantity": 1 },
+      "support": [
+        { "unit": "BRDM-2", "quantity": 1 },
+        { "unit": "SA-7", "quantity": 2 }
+      ]
+    },
+    "companies": {
+      "chq": {
+        "command": { "unit": "APC", "quantity": 1 }
+      },
+      "platoon_quantity": 3,
+      "platoon": {
+        "AFV": [{ "unit": "APC", "quantity": 3 }],
+        "Infantry": [
+          { "unit": "AKM / vz.58", "quantity": 3 },
+          { "unit": "PKM", "quantity": 1 },
+          { "unit": "RPG-7", "quantity": 3 },
+          { "unit": "SA-7", "quantity": 1 }
+        ]
+      }
+    },
+    "armor_platoon": {
+      "AFV": [{ "unit": "PT-76B", "quantity": 4 }]
+    },
+    "artillery": [
+      { "unit": "M120", "quantity": 6 }
+    ],
+    "antiarmor": [
+      { "unit": "BRDM-2 AT-3c", "quantity": 4 },
+      { "unit": "SPG-9", "quantity": 4 }
+    ]
+  },
+  "weapons": {
+    "APC": [
+      "OT-64 SKOT",
+      "OT-64A",
+      "OT-62 TOPAS",
+      "BTR-60PB",
+      "BTR-70"
+    ],
+    "CAPC": [
+      "OT-64 SKOT-R2 command",
+      "BTR-60PB",
+      "BTR-70"
+    ],
+    "IFV": [
+      "BVP-1",
+      "BWP-1",
+      "BMP-1",
+      "BMP-1P"
+    ],
+    "BMD": [
+      "BMD-1",
+      "BMD-1P"
+    ],
+    "tank": [
+      "T-55AM Merida",
+      "T-55AM2",
+      "T-72 / T-72M Export",
+      "T-72M1 Export"
+    ],
+    "CT": [
+      "T-55K",
+      "T-72K",
+      "T-72M1K",
+      "BMP-1K",
+      "OT-64 SKOT-R2"
+    ],
+    "recon": [
+      "BRDM-2",
+      "BRM-1",
+      "OT-65A",
+      "PT-76B"
+    ],
+    "artillery_sp": [
+      "vz.77 Dana 152mm",
+      "2S1 Gvozdika",
+      "RM-70 122mm",
+      "M120"
+    ],
+    "air_defence": [
+      "ZSU-23/4",
+      "SA-9",
+      "SA-13",
+      "S-60",
+      "ZU-23/2",
+      "SA-7"
+    ],
+    "atgm": [
+      "AT-3c",
+      "AT-4",
+      "AT-5"
+    ]
+  },
+  "equipment_policy": {
+    "allowed_export": [
+      "T-54B",
+      "T-55 / T-55A",
+      "T-55M / T-55AM",
+      "T-72 / T-72M Export",
+      "T-72M1 Export",
+      "T-72M1M Export",
+      "BMP-1",
+      "BMP-1P",
+      "BMD-1",
+      "BMD-1P",
+      "BTR-60PB",
+      "BTR-70",
+      "BTR-D",
+      "BRDM-2",
+      "BRDM-2 AT-3c",
+      "BRDM-2 AT-5",
+      "PT-76B",
+      "ZSU-23/4",
+      "SA-9",
+      "SA-13",
+      "2S1",
+      "MTLB, MT-LBV, MT-LBT"
+    ],
+    "domestic_unique": [
+      "OT-64 SKOT",
+      "OT-62 TOPAS",
+      "OT-65A",
+      "BVP-1",
+      "BWP-1",
+      "T-55AM Merida",
+      "vz.77 Dana",
+      "RM-70"
+    ],
+    "forbidden_soviet_first_line": [
+      "T-64 family",
+      "T-80 family",
+      "T-72B and later with AT-8/AT-11",
+      "BMP-2 as a type issue (token BMP-2s only if a scenario needs a Soviet liaison company)",
+      "BMP-3",
+      "BMD-2 / BMD-3",
+      "BTR-80",
+      "2S6 Tunguska",
+      "SA-15",
+      "2S19"
+    ]
+  },
+  "elite_order_of_battle": {
+    "gwardia": {
+      "name": "I Gwardia Tank Corps",
+      "honorific": "Kościuszko–Žižka",
+      "hq": "Wrocław",
+      "role": "Front exploitation and counter-penetration against NORTHAG / CENTAG breakthroughs",
+      "order_of_battle": [
+        "11th Gwardia Tank Division (Wrocław) — T-72M1",
+        "12th Gwardia Tank Division (Opole) — T-72M1 / T-55AM2 mixed",
+        "15th Gwardia Motor Rifle Division (Katowice) — BVP-1 / BWP-1"
+      ],
+      "experience": "excellent",
+      "compared_to": "A Soviet Guards tank army that was never given T-80s or BMP-2s."
+    },
+    "sokol": {
+      "name": "Sokol Airborne Division",
+      "honorific": "Sokol / Sokół",
+      "hq": "split: Bydgoszcz (divisional HQ and two light regiments), Prostějov (heavy BMD regiment)",
+      "role": "Operational desant onto NORTHAG rear, river crossings on the Elbe–Saale, seizure of Alpine / Bohemian passes",
+      "order_of_battle": [
+        "1st Sokol Airborne Regiment (Bydgoszcz) — light, OT-64 follow-on",
+        "2nd Sokol Airborne Regiment (Kraków) — light",
+        "3rd Sokol Heavy Airborne Regiment (Prostějov) — BMD-1P",
+        "Sokol Artillery Regiment — towed 122mm and M120",
+        "Sokol Aviation — Mi-8T / Mi-17, An-26"
+      ],
+      "experience": "excellent",
+      "compared_to": "A Soviet VDV division missing BMD-2, 2S9, and the late AT-5 density. Still the only Pact airborne force outside the USSR that can put a BMD regiment on a drop zone."
+    }
+  },
+  "yugoslav_contrast": {
+    "nation": "Yugoslavia",
+    "year": 1985,
+    "notes": "Full sibling TOE is artifacts/YugoslaviaTOE.json."
+  },
+  "era_1965_1975": {
+    "note": "Cold-war-gone-hot window. Split at 1970 because OT-64 is already in service but BVP-1, RM-70, and SA-7 are not. Quality is the same relative ladder as 1985, one notch rawer.",
+    "experience_defaults": {
+      "line": "good",
+      "gwardia": "excellent",
+      "sokol": "excellent",
+      "sea_landing": "good"
+    },
+    "early_1965_1970": {
+      "tanks": [
+        "T-34/85 (second line and training)",
+        "T-54",
+        "T-54A",
+        "T-54B",
+        "T-55 / T-55A (Western Front first echelon from ~1964)",
+        "IS-2 / IS-3 (mobilisation only)",
+        "SU-100 (tank destroyer battalions)"
+      ],
+      "apc": [
+        "OT-64 SKOT (from 1964; this is the national advantage already)",
+        "OT-62 TOPAS (from 1962)",
+        "BTR-152",
+        "BTR-50PK",
+        "BTR-40",
+        "Truck"
+      ],
+      "ifv": [],
+      "recon": [
+        "PT-76",
+        "PT-76B",
+        "OT-65A / FUG",
+        "BRDM-1",
+        "BRDM-1 AT-1"
+      ],
+      "artillery": [
+        "M-30 122mm",
+        "wz. 1938/1955 122mm",
+        "D-1 152mm",
+        "M-46 130mm (few)",
+        "RM-51 130mm MLRS",
+        "M120"
+      ],
+      "air_defence": [
+        "ZSU-57/2",
+        "S-60 AAG",
+        "ZPU-4 AAG",
+        "M1939 37mm AAG"
+      ],
+      "at_and_atgm": [
+        "D-44 AT Gun",
+        "D-48 AT Gun",
+        "BS-3 Field Gun",
+        "T-12 AT Gun",
+        "B-10 82mm RR",
+        "B-11 107mm RR",
+        "SPG-9 (from ~1968)",
+        "RPG-2",
+        "RPG-7 (from mid-1960s)",
+        "AT-1 Snapper on BRDM-1 (rare)",
+        "AT-3b from ~1968 in Gwardia"
+      ],
+      "infantry_weapons": [
+        "AK-47 / AKM (Polish republics)",
+        "vz.58 (Czech and Slovak republics)",
+        "RPD / RPK",
+        "Uk vz.59",
+        "DP-28 leftovers"
+      ],
+      "sokol_1965_1970": [
+        "Foot drop",
+        "ASU-57 token battery",
+        "OT-62 follow-on",
+        "no BMD"
+      ],
+      "gwardia_park_1965_1970": [
+        "T-55 / T-55A",
+        "OT-64 SKOT",
+        "OT-62 TOPAS",
+        "BRDM-1 AT-1",
+        "ZSU-57/2"
+      ]
+    },
+    "late_1971_1975": {
+      "tanks": [
+        "T-55 / T-55A (mass tank)",
+        "T-54B (still common on Northern Front)",
+        "T-34/85 (mobilisation only)",
+        "SU-100 (reserve)"
+      ],
+      "apc": [
+        "OT-64 SKOT",
+        "OT-64A",
+        "OT-62 TOPAS",
+        "BTR-60PB (imported fillers)",
+        "BTR-50PK (second line)"
+      ],
+      "ifv": [
+        "BVP-1 (Czech production from 1971)",
+        "BWP-1 (Polish assembly from ~1973)",
+        "BMP-1",
+        "no BMP-1P yet as a type issue"
+      ],
+      "recon": [
+        "PT-76B",
+        "OT-65A",
+        "BRDM-2",
+        "BRDM-2 AT-3b",
+        "BRDM-1 (second line)"
+      ],
+      "artillery": [
+        "D-30 122mm",
+        "M-30 122mm",
+        "D-20 152mm",
+        "RM-70 122mm (from 1972 — national advantage)",
+        "RM-51 (older Czech MLRS)",
+        "M120"
+      ],
+      "air_defence": [
+        "ZSU-57/2",
+        "ZSU-23/4 (Gwardia and Western Front AA from ~1972)",
+        "S-60 AAG",
+        "ZU-23/2",
+        "SA-7 (from ~1971)"
+      ],
+      "at_and_atgm": [
+        "T-12 / MT-12 AT Gun",
+        "SPG-9",
+        "RPG-7",
+        "AT-3b",
+        "AT-3c late in the window, Gwardia first",
+        "no AT-4 / AT-5 yet"
+      ],
+      "infantry_weapons": [
+        "AKM (Polish)",
+        "vz.58 (Czech / Slovak)",
+        "RPK / Uk vz.59",
+        "PK / PKM"
+      ],
+      "sokol_1971_1975": [
+        "Foot drop",
+        "OT-64 follow-on",
+        "SA-7 and RPG-7",
+        "no BMD-1 until the very end of the window, and only a trial company"
+      ],
+      "gwardia_park_1971_1975": [
+        "T-55 / T-55A",
+        "BVP-1 / BWP-1",
+        "OT-64A",
+        "BRDM-2 AT-3b",
+        "ZSU-23/4",
+        "RM-70"
+      ]
+    },
+    "forbidden_this_era": [
+      "T-72 of any mark (Pact minors do not have it yet)",
+      "T-55AM Merida / T-55AM2",
+      "T-64 / T-80",
+      "BMP-1P / BMP-2",
+      "BMD-1 as a type issue",
+      "Dana (1977)",
+      "SA-9 / SA-13 as a type issue",
+      "AT-4 / AT-5",
+      "2S1 as a type issue (arrives after this window)"
+    ]
+  }
+}
