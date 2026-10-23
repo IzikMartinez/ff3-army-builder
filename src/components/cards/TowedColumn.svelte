@@ -1,6 +1,7 @@
 <script lang="ts">
   import type { Quality, Vehicle } from "../../lib/ffot3/types";
-  import { formatRange, missileHit, resolveLoadout } from "../../lib/ffot3/combat";
+  import { formatRange, missileHit, missileMarks, resolveLoadout } from "../../lib/ffot3/combat";
+  import WeaponBadges from "./WeaponBadges.svelte";
   import { visibleMissiles } from "../../lib/ffot3/catalog";
   import { weaponCaption, weaponKind } from "../../lib/ffot3/classify";
   import { formatCap, towedCap } from "../../lib/ffot3/towed";
@@ -57,30 +58,35 @@
       </span>
     </div>
     <p class="mb-1 text-center text-[10px] uppercase tracking-[0.16em] text-muted">Missile</p>
-    <div class="grid grid-cols-5 gap-1 text-center font-display text-[11px] uppercase tracking-wider text-muted">
+    <div class="grid grid-cols-4 gap-1 text-center font-display text-[11px] uppercase tracking-wider text-muted">
       <span>Range</span>
       <span>ROF</span>
-      <span>Pen</span>
       <span>Hit</span>
-      <span>M&S</span>
+      <span>Pen</span>
     </div>
-    <div class="mt-1 grid grid-cols-5 gap-1">
-      <span class="{CELL_RANGE}">
+    <div class="mt-1 grid grid-cols-4 gap-1">
+      <span class={CELL_RANGE}>
         {formatRange(loadout.range[0], scale)}–{formatRange(loadout.range[1], scale)}
       </span>
-      <span class="{CELL_VALUE}">{loadout.rof}</span>
+      <span class={CELL_VALUE}>{loadout.rof}</span>
+      <span class={CELL_VALUE}>{mslStats.hit}</span>
       <span class={penCell(loadout.pen, { missile: !loadout.sam })}>{loadout.pen}</span>
-      <span class="{CELL_VALUE}">{mslStats.hit}</span>
-      <span class="{CELL_VALUE}">{mslStats.moveShoot ? "Yes" : "No"}</span>
     </div>
-    <p class="mt-1 text-center text-[11px] uppercase tracking-wider text-muted">
-      {loadout.unlimited ? "Unlimited ammo" : "Limited ammo"}
-      {#if loadout.topAttack} · Top attack{/if}
-      {#if loadout.sam} · SAM{/if}
-    </p>
   {:else if optionalMsl.length}
     <p class="mt-2 text-center text-[11px] uppercase tracking-wider text-muted">
       Optional {optionalMsl.map((m) => m.label).join(" / ")}
     </p>
+  {/if}
+  {#if loadout}
+    <WeaponBadges
+      marks={missileMarks({
+        generation: loadout.generation,
+        ammo: loadout.unlimited ? "unlimited" : "limited",
+        heat: true,
+        topAttack: loadout.topAttack,
+        sam: loadout.sam,
+        platform: "ground",
+      })}
+    />
   {/if}
 </section>

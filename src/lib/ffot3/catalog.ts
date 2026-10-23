@@ -206,7 +206,9 @@ export function migrateUnitId(id: string, missileId?: string | null): string {
 }
 
 function splitSuccessor(id: string, missileId?: string | null): string | null {
-  const m = /^([^:]+)::(.+)::(\d\d)::(\d\d)$/.exec(id);
+  // Helicopter ids carry a "helo::" prefix (e.g. Mi-24P, split by gun era).
+  const helo = id.startsWith("helo::");
+  const m = /^([^:]+)::(.+)::(\d\d)::(\d\d)$/.exec(helo ? id.slice("helo::".length) : id);
   if (!m) return null;
   const [, nation, name, start, end] = m;
   const lo = parseEraYear(start!);
@@ -216,6 +218,7 @@ function splitSuccessor(id: string, missileId?: string | null): string | null {
   const candidates = ALL.filter(
     (u) =>
       u.nation === nation &&
+      (u.kind === "helicopter") === helo &&
       names.has(u.Name) &&
       parseEraYear(u.era.start_era) <= hi &&
       parseEraYear(u.era.end_era) >= lo,

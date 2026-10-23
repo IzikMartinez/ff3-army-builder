@@ -7,20 +7,24 @@
     formatRange,
     gunBands,
     hitInf,
+    ammoMarks,
     parsePen,
+    splitEquip,
   } from "../../lib/ffot3/combat";
   import { gunLabel, weaponCaption, weaponKind } from "../../lib/ffot3/classify";
   import {
-    AMMO_HEAD,
     AMMO_HINT,
-    CELL_AP,
     CELL_HEAT,
+    CELL_HIT_SPLIT,
+    HIT_HALF_INF,
+    HIT_HALF_VEH,
     CELL_RANGE,
     CELL_VALUE,
     GUN_HEAD,
     STAT_HEAD,
   } from "../../lib/ffot3/ui";
   import { force } from "../../lib/ffot3/store";
+  import WeaponBadges from "./WeaponBadges.svelte";
 
   let {
     unit,
@@ -46,13 +50,22 @@
   const sub = $derived(caption ?? weaponCaption(kind));
   const bands = $derived(gunBands(unit.Gun_Rng));
   const pen = $derived(parsePen(unit.Gun_Pen));
-  const showHitInf = $derived(kind === "mg" || kind === "autocannon");
-  // Only the ammo this gun actually has. Flat (HEAT, HE) columns go last so
-  // their row-spanning cells sit at the end of each grid row.
-  const cols = $derived(
-    3 + (showHitInf ? 1 : 0) + (pen.ap !== null ? 1 : 0) + (pen.heat !== null ? 1 : 0) + (pen.he !== null ? 1 : 0),
+  // One Pen column: white half = AP (range-modified) or HE (flat), orange half =
+  // HEAT (flat). A gun with only one kind gets a single cell in that colour.
+  const white = $derived(pen.ap !== null || pen.he !== null);
+  const orange = $derived(pen.heat !== null);
+  const hasPen = $derived(white || orange);
+  // Pen takes one column's width; with both colours it's two half-width parts
+  // (white | orange) under one header. Values that don't change with range
+  // (HE, HEAT) are one tall cell across all three bands; AP is per band.
+  const penTracks = $derived(
+    white && orange ? "minmax(0, 0.5fr) minmax(0, 0.5fr)" : hasPen ? "minmax(0, 1fr)" : "",
   );
-  const gridStyle = $derived(`grid-template-columns: repeat(${cols}, minmax(0, 1fr))`);
+  const gridStyle = $derived(`grid-template-columns: repeat(3, minmax(0, 1fr)) ${penTracks}`);
+  const whiteFlat = $derived(pen.ap === null && pen.he !== null);
+  const whitePen = (penMod: number) =>
+    pen.ap !== null ? formatPen(pen.ap, penMod) : pen.he !== null ? String(pen.he) : "";
+  const badges = $derived([...ammoMarks(pen), ...splitEquip(unit.Equip).weapon]);
 </script>
 
 {#snippet table()}
@@ -63,16 +76,12 @@
     <div class="{GUN_HEAD} grid gap-1" style={gridStyle}>
       <span class="py-1">Range</span>
       <span class="py-1">ROF</span>
-      <span class="py-1">Hit</span>
-      {#if showHitInf}<span class="py-1">Hit Inf</span>{/if}
-      {#if pen.ap !== null}
-        <span class="{AMMO_HEAD} bg-ammo-ap text-white" title={AMMO_HINT.ap}>AP</span>
-      {/if}
-      {#if pen.heat !== null}
-        <span class="{AMMO_HEAD} bg-ammo-heat text-[#1a1406]" title={AMMO_HINT.heat}>HEAT</span>
-      {/if}
-      {#if pen.he !== null}
-        <span class="{AMMO_HEAD} bg-ammo-ap text-white" title={AMMO_HINT.he}>HE</span>
+      <span class="py-1" title="White: to-hit vs vehicles. Green: to-hit vs infantry.">Hit</span>
+      {#if hasPen}
+        <span
+          class="py-1 {white && orange ? 'col-span-2' : ''}"
+          title="White: AP / HE penetration. Orange: HEAT penetration.">Pen</span
+        >
       {/if}
     </div>
     <div class="grid gap-1 pt-1" style={gridStyle}>
@@ -80,24 +89,36 @@
         {@const hit = adjustedHit(band.hitBase, quality)}
         <span class={CELL_RANGE}>{formatRange(band.range, scale)}</span>
         <span class={CELL_VALUE}>{adjustedRof(unit.Gun_ROF, quality)}</span>
-        <span class={CELL_VALUE}>{hit}</span>
-        {#if showHitInf}<span class={CELL_VALUE}>{hitInf(hit, unit.AI)}</span>{/if}
-        {#if pen.ap !== null}
-          <span class={CELL_AP}>{formatPen(pen.ap, band.penMod)}</span>
+        <span class={CELL_HIT_SPLIT}>
+          <span class={HIT_HALF_VEH} title="To-hit vs vehicles">{hit}</span>
+          <span class={HIT_HALF_INF} title="To-hit vs infantry (AI modifier applied)"
+            >{hitInf(hit, unit.AI)}</span
+          >
+        </span>
+        {#if white && !whiteFlat}
+          <!-- AP: changes with range, one value per band. -->
+          <span class="{CELL_VALUE} {orange ? 'rounded-r-none' : ''}" title={AMMO_HINT.ap}
+            >{whitePen(band.penMod)}</span
+          >
         {/if}
         {#if i === 0}
-          <!-- HEAT and HE ignore range: one cell across all three bands. -->
-          {#if pen.heat !== null}
-            <span class="{CELL_HEAT} row-span-3" title={AMMO_HINT.heat}>{pen.heat}</span>
-          {/if}
-          {#if pen.he !== null}
-            <span class="{CELL_AP} row-span-3 flex items-center justify-center" title={AMMO_HINT.he}
+          <!-- Flat values (HE, HEAT) once, spanning all three bands. Kept last in
+               the row so grid auto-placement fills the bands beside them. -->
+          {#if whiteFlat}
+            <span class="{CELL_VALUE} row-span-3 flex items-center justify-center" title={AMMO_HINT.he}
               >{pen.he}</span
+            >
+          {/if}
+          {#if orange}
+            <span
+              class="{CELL_HEAT} row-span-3 {white ? '-ml-1 rounded-l-none' : ''}"
+              title={AMMO_HINT.heat}>{pen.heat}</span
             >
           {/if}
         {/if}
       {/each}
     </div>
+    <WeaponBadges ai={unit.AI} marks={badges} />
   {:else}
     <p class="py-3 text-center text-sm text-muted">{kind === "mg" ? "No MG listed" : "Unarmed"}</p>
   {/if}

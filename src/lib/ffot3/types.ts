@@ -29,6 +29,13 @@ export type EquipMark = {
   code: string;
   name: string;
   effect: string;
+  /** Text shown on the badge (defaults to a short form of `code`). */
+  label?: string;
+  /**
+   * Badge colour, matching the card's colour code: "inf" green (vs-infantry Hit),
+   * "white" AP / HE Pen, "heat" orange HEAT Pen.
+   */
+  tone?: "inf" | "white" | "heat";
 };
 
 /** Indirect / area fire (artillery, mortars, MRLs). */

@@ -7,15 +7,28 @@ import { formatEra, parseEraYear } from "./combat";
  */
 
 /**
- * Marks of one tank family share a card: "Chieftain Mk 9" and "Chieftain Mk 10"
- * are variants of "Chieftain". Specialist versions (AVRE, AVLB…) aren't marks
- * and keep their own cards.
+ * Marks of one family share a card: "Chieftain Mk 9" and "Chieftain Mk 10" are
+ * variants of "Chieftain"; "Mi-24D" and "Mi-35M" of the Hind. Specialist
+ * versions (AVRE, AVLB…) aren't marks and keep their own cards.
  */
-const FAMILY = /^(Centurion|Chieftain|Vickers MBT) Mk\s/;
+const FAMILIES: [RegExp, (m: RegExpExecArray) => string][] = [
+  [/^(Centurion|Chieftain|Vickers MBT) Mk\s/, (m) => m[1]!],
+  [/^Mi-(24|35)/, () => "Mi-24 / Mi-35 Hind"],
+  [/^Mi-(8|17)(?!\d)/, () => "Mi-8 / Mi-17 Hip"],
+  [/^Mi-28/, () => "Mi-28 Havoc"],
+  [/^AH-1[A-Z]/, () => "AH-1 Cobra"],
+  [/^(AH-64|Apache)/, () => "AH-64 Apache"],
+  [/^UH-1/, () => "UH-1 Huey"],
+  [/^OH-58/, () => "OH-58 Kiowa"],
+];
 
-/** The card a unit belongs to: its mark family, or its own name. */
+/** The card a unit belongs to: its family, or its own name. */
 export function cardName(u: Vehicle): string {
-  return FAMILY.exec(u.Name)?.[1] ?? u.Name;
+  for (const [re, name] of FAMILIES) {
+    const m = re.exec(u.Name);
+    if (m) return name(m);
+  }
+  return u.Name;
 }
 
 /** Group units into cards (same name or mark family), keeping first-seen order; variants sorted by era. */
@@ -100,7 +113,11 @@ export function variantOptions(variants: Vehicle[]): VariantOption[] {
   };
   return variants.map((v) => ({
     id: v.id,
-    mark: marks ? v.Name.slice(cardName(v).length).trim() || v.Name : null,
+    mark: marks
+      ? v.Name.startsWith(cardName(v))
+        ? v.Name.slice(cardName(v).length).trim() || v.Name
+        : v.Name
+      : null,
     era:
       v.era.start_era === v.era.end_era
         ? String(parseEraYear(v.era.start_era))

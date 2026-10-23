@@ -26,54 +26,116 @@ function era(start: string, end: string): Era {
   return { start_era: start, end_era: end };
 }
 
+/**
+ * Helicopter weapon pods. Book systems follow the F.5.1 charts; pods the book
+ * lacks are rated from the book's own ratings for the same gun on other
+ * platforms and priced like the book's pods: pod PV = 7 × gun PV (B.4), where
+ * a "-" pen MG's first ROF is free (book MG pod: -/2/6 = 16).
+ */
 export const HELO_WEAPONS: HeloWeapon[] = [
+  {
+    id: "mg",
+    key: "mg",
+    label: "MG Pod",
+    kind: "mg",
+    era: era("60", "10"),
+    costPerPod: 16,
+    pen: "-",
+    rof: 2,
+    range: [0, 6],
+    ai: -1,
+    notes: "Book MG pod: door guns or a 7.62mm pod.",
+  },
   {
     id: "mg-guv8700",
     key: "mg-guv8700",
-    label: "GUV-8700 Tri-Rotary",
+    label: "GUV-8700 (YakB-12.7 + 2× GShG)",
     kind: "mg",
-    era: era("60", "10"),
-    costPerPod: 64,
+    era: era("80", "10"),
+    costPerPod: 77,
     pen: "1",
     rof: 8,
     range: [0, 6],
     ai: 0,
+    notes: "9-A-624 pod: one 4-barrel 12.7mm and two 4-barrel 7.62mm guns.",
   },
   {
     id: "mg-guv1",
     key: "mg-guv1",
-    label: "GUV-1 Twin AGS",
+    label: "GUV AP-30 (AGS-17)",
     kind: "mg",
-    era: era("60", "10"),
-    costPerPod: 72,
+    era: era("80", "10"),
+    costPerPod: 99,
     pen: "3he",
-    rof: 4,
+    rof: 3,
     range: [0, 8],
     ai: 0,
+    notes: "9-A-800 pod: one 30mm AGS-17 grenade launcher (book AGS-17: 3he/3/8).",
   },
   {
     id: "ac-upk23",
     key: "ac-upk23",
     label: "UPK-23 Twin 23mm",
     kind: "ac",
-    era: era("60", "10"),
+    era: era("70", "10"),
     costPerPod: 106,
     pen: "2",
     rof: 4,
     range: [0, 10],
     ai: 0,
+    notes: "UPK-23-250: GSh-23L twin-barrel 23mm.",
   },
   {
     id: "ac-upk23-dl",
     key: "ac-upk23-dl",
     label: "Dual-Linked UPK-23",
     kind: "ac",
-    era: era("60", "10"),
-    costPerPod: 106,
+    era: era("70", "10"),
+    costPerPod: 119,
     pen: "2",
     rof: 6,
     range: [0, 10],
     ai: 0,
+  },
+  {
+    id: "m134",
+    key: "m134",
+    label: "M134 Minigun Pod",
+    kind: "mg",
+    era: era("62", "10"),
+    costPerPod: 39,
+    pen: "-",
+    rof: 4,
+    range: [0, 6],
+    ai: 0,
+    notes: "7.62mm six-barrel minigun (M18/SUU-11, XM27, M21 systems).",
+  },
+  {
+    id: "gl-40",
+    key: "gl-40",
+    label: "40mm Grenade Launcher",
+    kind: "mg",
+    era: era("64", "90"),
+    costPerPod: 59,
+    pen: "2he",
+    rof: 2,
+    range: [0, 6],
+    ai: 0,
+    notes:
+      "Low-velocity 40mm (M5 nose turret, M129): rated below the book's high-velocity 40mm AGL (3he/3/8).",
+  },
+  {
+    id: "hmp-127",
+    key: "hmp-127",
+    label: "HMP .50 Pod",
+    kind: "mg",
+    era: era("90", "10"),
+    costPerPod: 47,
+    pen: "1",
+    rof: 2,
+    range: [0, 6],
+    ai: -1,
+    notes: "12.7mm heavy MG pod (FN HMP, M296): book HMG pen 1, range 6.",
   },
   {
     id: "mg-pk762",
@@ -542,6 +604,22 @@ export const HELO_WEAPONS: HeloWeapon[] = [
     maxPods: 2,
     notes: "One shot per pod. Maximum 2 pods.",
   },
+  {
+    id: "mistral",
+    key: "mistral",
+    label: "Mistral",
+    kind: "aam",
+    era: era("89", "15"),
+    costPerPod: 331,
+    pen: "2A",
+    rof: 2,
+    range: [3, 40],
+    generation: 2,
+    oneShot: true,
+    maxPods: 4,
+    notes:
+      "One shot per pod. Maximum 4 pods. Like Stinger/Igla (265) but 6 km reach: effective range 40, priced in proportion (B.11 SAM PV ∝ range).",
+  },
 ];
 
 const BY_ID = new Map(HELO_WEAPONS.map((w) => [w.id, w]));
@@ -551,7 +629,9 @@ const BY_ID = new Map(HELO_WEAPONS.map((w) => [w.id, w]));
  * bought as dedicated transports at double cost. Mi-24 Hinds are exempt (17.10).
  */
 export function isTransportHelo(unit: Vehicle): boolean {
-  return isHelicopter(unit) && (Number(unit.infantry_capacity) || 0) >= 1 && !/^Mi-24/i.test(unit.Name);
+  return (
+    isHelicopter(unit) && (Number(unit.infantry_capacity) || 0) >= 1 && !/^Mi-24/i.test(unit.Name)
+  );
 }
 
 export function isHelicopter(unit: Vehicle): boolean {
@@ -583,14 +663,20 @@ export function variantsForKey(key: string, yearMin?: number, yearMax?: number):
   );
 }
 
-export function defaultVariant(key: string, yearMin?: number, yearMax?: number): HeloWeapon | undefined {
+export function defaultVariant(
+  key: string,
+  yearMin?: number,
+  yearMax?: number,
+): HeloWeapon | undefined {
   const list = variantsForKey(key, yearMin, yearMax);
   if (!list.length) return undefined;
   return list.reduce((best, w) => betterVariant(best, w));
 }
 
 export function visibleHeloKeys(unit: Vehicle, yearMin?: number, yearMax?: number): string[] {
-  return (unit.podOptionKeys ?? []).filter((key) => variantsForKey(key, yearMin, yearMax).length > 0);
+  return (unit.podOptionKeys ?? []).filter(
+    (key) => variantsForKey(key, yearMin, yearMax).length > 0,
+  );
 }
 
 export function familyLabel(key: string): string {
@@ -615,7 +701,10 @@ export function missilePodCount(picks: HeloPodPick[] | null | undefined): number
   }, 0);
 }
 
-export function pickForKey(picks: HeloPodPick[] | null | undefined, key: string): HeloPodPick | undefined {
+export function pickForKey(
+  picks: HeloPodPick[] | null | undefined,
+  key: string,
+): HeloPodPick | undefined {
   return (picks ?? []).find((p) => p.key === key);
 }
 
@@ -630,9 +719,7 @@ export function podCost(weapon: HeloWeapon, count: number): number {
   return table[2];
 }
 
-export function heloExtraPoints(
-  picks: HeloPodPick[] | null | undefined,
-): number {
+export function heloExtraPoints(picks: HeloPodPick[] | null | undefined): number {
   let sum = 0;
   for (const p of picks ?? []) {
     const w = BY_ID.get(p.variantId);
@@ -655,9 +742,7 @@ export function canIncrement(
 ): boolean {
   if (!unit.podOptionKeys.includes(key)) return false;
   const variant = pickForKey(picks, key);
-  const weapon = variant
-    ? BY_ID.get(variant.variantId)
-    : defaultVariant(key, yearMin, yearMax);
+  const weapon = variant ? BY_ID.get(variant.variantId) : defaultVariant(key, yearMin, yearMax);
   if (!weapon) return false;
   const next = usedPodCount(picks) + 1;
   if (next > (unit.pods || 0)) return false;
@@ -682,8 +767,7 @@ export function setHeloCount(
   if (nextCount === 0) return rest;
   const prev = pickForKey(picks, key);
   const variant =
-    (prev ? BY_ID.get(prev.variantId) : undefined) ??
-    defaultVariant(key, yearMin, yearMax);
+    (prev ? BY_ID.get(prev.variantId) : undefined) ?? defaultVariant(key, yearMin, yearMax);
   if (!variant) return picks;
   const candidate = [...rest, { key, variantId: variant.id, count: nextCount }];
   if (usedPodCount(candidate) > (unit.pods || 0)) return picks;
@@ -704,12 +788,16 @@ export function setHeloVariant(
   if (!w || w.key !== key) return picks;
   const prev = pickForKey(picks, key);
   if (!prev) {
-    return [...picks, { key, variantId, count: 0 }].filter((p) => p.count > 0 || p.variantId === variantId);
+    return [...picks, { key, variantId, count: 0 }].filter(
+      (p) => p.count > 0 || p.variantId === variantId,
+    );
   }
   return picks.map((p) => (p.key === key ? { ...p, variantId } : p));
 }
 
-export function selectedHeloWeapons(picks: HeloPodPick[] | null | undefined): { weapon: HeloWeapon; count: number }[] {
+export function selectedHeloWeapons(
+  picks: HeloPodPick[] | null | undefined,
+): { weapon: HeloWeapon; count: number }[] {
   const out: { weapon: HeloWeapon; count: number }[] = [];
   for (const p of picks ?? []) {
     if (p.count <= 0) continue;
@@ -719,11 +807,7 @@ export function selectedHeloWeapons(picks: HeloPodPick[] | null | undefined): { 
   return out;
 }
 
-export function heloMissileLabels(
-  unit: Vehicle,
-  yearMin: number,
-  yearMax: number,
-): string[] {
+export function heloMissileLabels(unit: Vehicle, yearMin: number, yearMax: number): string[] {
   const labels = new Set<string>();
   for (const key of visibleHeloKeys(unit, yearMin, yearMax)) {
     for (const w of variantsForKey(key, yearMin, yearMax)) {
@@ -740,11 +824,6 @@ export function heloHasMissileLabel(
   yearMax: number,
 ): boolean {
   return heloMissileLabels(unit, yearMin, yearMax).includes(label);
-}
-
-export function heloFireNote(generation: number | undefined): string {
-  if (!generation || generation <= 1) return "Fire if the helicopter moved half or less.";
-  return "May fire after a full move.";
 }
 
 export function sanitizeHeloPicks(
@@ -787,7 +866,10 @@ function clampPodCounts(unit: Vehicle, picks: HeloPodPick[]): HeloPodPick[] {
   return out;
 }
 
-export function heloPicksEqual(a: HeloPodPick[] | null | undefined, b: HeloPodPick[] | null | undefined): boolean {
+export function heloPicksEqual(
+  a: HeloPodPick[] | null | undefined,
+  b: HeloPodPick[] | null | undefined,
+): boolean {
   const aa = [...(a ?? [])].filter((p) => p.count > 0).sort((x, y) => x.key.localeCompare(y.key));
   const bb = [...(b ?? [])].filter((p) => p.count > 0).sort((x, y) => x.key.localeCompare(y.key));
   if (aa.length !== bb.length) return false;

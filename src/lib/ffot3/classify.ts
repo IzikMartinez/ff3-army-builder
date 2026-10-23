@@ -240,7 +240,9 @@ export function classifyUnit(unit: Vehicle): UnitClassId {
 }
 
 function classifyTowed(n: string, cal: number | null): UnitClassId {
-  if (has(n, /\b(at gun|pdr|2a45|mt-12|t-12|wombat|mobat|conbat|\bbat\b|pak|d-44|d-48|bs-3|rr\b)/)) {
+  if (
+    has(n, /\b(at gun|pdr|2a45|mt-12|t-12|wombat|mobat|conbat|\bbat\b|pak|d-44|d-48|bs-3|rr\b)/)
+  ) {
     return "at-gun";
   }
   if (has(n, /\b(field gun|howitzer|mortar)\b/)) return "artillery";
@@ -257,6 +259,43 @@ export function matchesClass(unit: Vehicle, classId: string | null | undefined):
   if (SELF_PROPELLED.has(classId) && isTowed(unit)) return false;
   return classifyUnit(unit) === classId;
 }
+
+/**
+ * Catalog filter families: the top-level type chips. Each groups the detailed
+ * classes, which appear as sub-type chips once a family is picked.
+ */
+export const CLASS_FAMILIES: { id: string; label: string; classes: UnitClassId[] }[] = [
+  { id: "tanks", label: "Tanks", classes: ["mbt", "medium-tank", "light-tank", "heavy-tank"] },
+  { id: "infantry", label: "Infantry", classes: ["infantry"] },
+  { id: "carriers", label: "Carriers & IFVs", classes: ["ifv", "apc"] },
+  { id: "recon", label: "Recon", classes: ["recon", "armored-car"] },
+  { id: "anti-tank", label: "Anti-tank", classes: ["td", "at-gun"] },
+  { id: "artillery", label: "Artillery", classes: ["spa", "artillery"] },
+  { id: "air-defence", label: "Air defence", classes: ["spaa", "sam"] },
+  { id: "helicopters", label: "Helicopters", classes: ["helicopter"] },
+  { id: "support", label: "Support", classes: ["engineer", "utility", "support"] },
+];
+
+/** Short labels for sub-type chips (the family already gives context). */
+export const SUBTYPE_LABEL: Partial<Record<UnitClassId, string>> = {
+  mbt: "MBT",
+  "medium-tank": "Medium",
+  "light-tank": "Light",
+  "heavy-tank": "Heavy",
+  ifv: "IFV",
+  apc: "APC",
+  recon: "Recon",
+  "armored-car": "Armored car",
+  td: "Tank destroyer",
+  "at-gun": "AT gun",
+  spa: "Self-propelled",
+  artillery: "Towed & mortars",
+  spaa: "AA guns",
+  sam: "SAM",
+  engineer: "Engineer",
+  utility: "Soft-skin",
+  support: "Support",
+};
 
 export function classLabel(id: UnitClassId): string {
   return CLASS_LABEL[id];

@@ -18,8 +18,9 @@
   import { force } from "../lib/ffot3/store";
   import {
     armorLabels,
+    missileMarks,
     armorTable,
-    decodeEquip,
+    splitEquip,
     formatEra,
     formatRange,
     missileHit,
@@ -40,6 +41,7 @@
   } from "../lib/ffot3/towed";
   import QualityPicker from "./QualityPicker.svelte";
   import EquipBubbles from "./cards/EquipBubbles.svelte";
+  import WeaponBadges from "./cards/WeaponBadges.svelte";
   import HeloPods from "./cards/HeloPods.svelte";
   import HeloColumn from "./cards/HeloColumn.svelte";
   import TowedPicker from "./cards/TowedPicker.svelte";
@@ -118,11 +120,17 @@
   // Same resolution as unitBasePoints, so the shown missile is the one priced.
   const loadout = $derived(resolveLoadout(unit, missileId));
   const mslStats = $derived(loadout ? missileHit(loadout.generation, loadout.unlimited, quality) : null);
-  const equip = $derived(decodeEquip(unit.Equip));
   const scale = $derived($force.scale);
   const kind = $derived(weaponKind(unit));
   // Infantry anti-infantry fire has its own column; Gun_* holds its AI ratings.
   const showWeapon = $derived(kind !== "none" && !infantry);
+  // Gun badges (stabilised, traverse) live on the weapon sub-card: the gun table
+  // if shown, else the missile sub-card; only with neither do they stay here.
+  const equipSplit = $derived(splitEquip(unit.Equip));
+  const weaponBadgesInMissile = $derived(!showWeapon && hasMissileFeature);
+  const equip = $derived(
+    showWeapon || weaponBadgesInMissile ? equipSplit.unit : [...equipSplit.unit, ...equipSplit.weapon],
+  );
   const colCount = $derived(
     (showMove ? 2 : 1) +
       (showWeapon ? 1 : 0) +
@@ -277,7 +285,7 @@
         <div class="{GUN_HEAD} grid gap-1 {split ? 'grid-cols-[3.5rem_1fr_1fr]' : 'grid-cols-[3.5rem_1fr]'}">
           <span class="py-1"></span>
           {#if split}
-            <span class="{AMMO_HEAD} bg-ammo-ap text-white" title={AMMO_HINT.ap}>AP / HE</span>
+            <span class="{AMMO_HEAD} bg-paper text-ink" title={AMMO_HINT.ap}>AP / HE</span>
             <span class="{AMMO_HEAD} bg-ammo-heat text-[#1a1406]" title={AMMO_HINT.heat}>HEAT</span>
           {:else}
             <span class="py-1">{armorTbl.bonus === 0 ? "All ammo" : "Armor"}</span>
@@ -438,33 +446,39 @@
 
         {#if loadout && mslStats}
           <div
-            class="grid grid-cols-5 gap-1 text-center font-display text-[11px] uppercase tracking-wider text-muted"
+            class="grid grid-cols-4 gap-1 text-center font-display text-[11px] uppercase tracking-wider text-muted"
           >
             <span>Range</span>
             <span>ROF</span>
-            <span>Pen</span>
             <span>Hit</span>
-            <span>M&S</span>
+            <span>Pen</span>
           </div>
-          <div class="mt-1 grid grid-cols-5 gap-1">
+          <div class="mt-1 grid grid-cols-4 gap-1">
             <span class={CELL_RANGE}>
               {formatRange(loadout.range[0], scale)}–{formatRange(loadout.range[1], scale)}
             </span>
             <span class={CELL_VALUE}>{loadout.rof}</span>
-            <span class={penCell(loadout.pen, { missile: !loadout.sam })}>{loadout.pen}</span>
             <span class={CELL_VALUE}>{mslStats.hit}</span>
-            <span class={CELL_VALUE}>{mslStats.moveShoot ? "Yes" : "No"}</span>
+            <span class={penCell(loadout.pen, { missile: !loadout.sam })}>{loadout.pen}</span>
           </div>
-          <p class="mt-1 text-center text-[11px] uppercase tracking-wider text-muted">
-            {loadout.unlimited ? "Unlimited ammo" : "Limited ammo"}
-            {#if loadout.topAttack}
-              · Top attack{/if}
-            {#if loadout.sam}
-              · SAM{/if}
-          </p>
         {:else}
           <p class="py-3 text-center text-sm text-muted">Gun tank · missile stowed</p>
         {/if}
+        <WeaponBadges
+          marks={[
+            ...(loadout
+              ? missileMarks({
+                  generation: loadout.generation,
+                  ammo: loadout.unlimited ? "unlimited" : "limited",
+                  heat: true,
+                  topAttack: loadout.topAttack,
+                  sam: loadout.sam,
+                  platform: "ground",
+                })
+              : []),
+            ...(weaponBadgesInMissile ? equipSplit.weapon : []),
+          ]}
+        />
       </section>
     {/if}
 

@@ -10,17 +10,17 @@ export const CELL_RANGE =
 export const CELL_VALUE =
   "gun-cell rounded-xs bg-paper py-1 text-center font-display text-sm tabular-nums text-ink bw:border bw:border-black bw:bg-white bw:text-black";
 
-/** Ammo colour code (13.6.1): grey = AP/HE vs normal armor, amber = HEAT vs armor + h-class bonus. */
+/** Ammo colour code (13.6.1): white = AP / HE vs normal armor, orange = HEAT vs armor + h-class bonus. */
 export const AMMO_HINT = {
-  ap: "AP: +2 pen at close range, −2 at long range. Compare with the target's grey (AP / HE) armor.",
-  heat: "HEAT: same at every range. Compare with the target's amber (HEAT) armor, which includes its h-class bonus.",
-  he: "HE shell: same at every range. Compare with the target's grey (AP / HE) armor.",
+  ap: "AP: +2 Pen at close range, −2 at long range (already worked in). Compare with the target's white (AP / HE) armor.",
+  heat: "HEAT: same Pen at every range. Compare with the target's orange (HEAT) armor, which includes its h-class bonus.",
+  he: "HE shell: same Pen at every range. Compare with the target's white (AP / HE) armor.",
 } as const;
 
 export const AMMO_HEAD = "rounded-xs py-1 bw:bg-black bw:text-white";
 
-/** AP / HE value: a normal cell with a grey stripe. */
-export const CELL_AP = `${CELL_VALUE} shadow-[inset_0_-3px_0_var(--color-ammo-ap)] bw:shadow-none`;
+/** AP / HE value: plain white, matching the target's white AP / HE armor. */
+export const CELL_AP = CELL_VALUE;
 
 /** HEAT value: amber fill, usually spanning all range bands (it ignores range). */
 export const CELL_HEAT =
@@ -42,6 +42,13 @@ export function penCell(
   if (/h/.test(s) || opts.missile) return CELL_HEAT;
   return CELL_AP;
 }
+
+/** Hit cell split in two: vs vehicles (paper) | vs infantry (green, AI applied). */
+export const CELL_HIT_SPLIT =
+  "gun-cell flex overflow-hidden rounded-xs font-display text-sm tabular-nums bw:border bw:border-black";
+export const HIT_HALF_VEH = "flex-1 bg-paper py-1 text-center text-ink bw:bg-white bw:text-black";
+export const HIT_HALF_INF =
+  "flex-1 bg-vs-inf py-1 text-center text-vs-inf-ink bw:border-l bw:border-black bw:bg-white bw:text-black bw:italic";
 
 export const STEP_BTN =
   "inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-sm border border-line bg-ink font-display text-xl leading-none text-paper disabled:cursor-default disabled:opacity-35 bw:border-black bw:bg-white bw:text-black";

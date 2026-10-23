@@ -99,6 +99,21 @@ export function decodeEquip(raw: string | null | undefined): EquipMark[] {
   });
 }
 
+/** Equipment codes that describe the gun rather than the vehicle: stabilisation, limited traverse. */
+const WEAPON_EQUIP = new Set(["s", "ss", "f", "r"]);
+
+/** Split equipment badges into weapon sub-card badges and unit (card footer) badges. */
+export function splitEquip(raw: string | null | undefined): {
+  weapon: EquipMark[];
+  unit: EquipMark[];
+} {
+  const marks = decodeEquip(raw);
+  return {
+    weapon: marks.filter((m) => WEAPON_EQUIP.has(m.code)),
+    unit: marks.filter((m) => !WEAPON_EQUIP.has(m.code)),
+  };
+}
+
 export function parseEraYear(code: string): number {
   const n = Number.parseInt(String(code).replace(/\D/g, ""), 10);
   if (Number.isNaN(n)) return YEAR_MIN;
@@ -298,6 +313,142 @@ export function hitInf(hit: number, ai: number | null | undefined): number {
 }
 
 /** Gun ROF with quality modifier; a reduced ROF cannot drop below 1 (5.2). */
+/** Ammo badges for a weapon's Pen: white AP / HE, orange HEAT (13.6.1), explained in tooltips. */
+export function ammoMarks(pen: {
+  ap: number | null;
+  heat: number | null;
+  he: number | null;
+}): EquipMark[] {
+  const marks: EquipMark[] = [];
+  if (pen.ap !== null)
+    marks.push({
+      code: "ap",
+      label: "AP",
+      tone: "white",
+      name: "Armor-piercing (white Pen)",
+      effect:
+        "+2 Pen at close range, −2 at long range — already worked into the white Pen. Compare with the target's white (AP / HE) armor.",
+    });
+  if (pen.he !== null)
+    marks.push({
+      code: "he",
+      label: "HE",
+      tone: "white",
+      name: "High-explosive shell (white Pen)",
+      effect: "Same Pen at every range. Compare with the target's white (AP / HE) armor.",
+    });
+  if (pen.heat !== null) marks.push(heatMark());
+  return marks;
+}
+
+/** HEAT badge (guns' orange Pen, and missiles, which are shaped-charge too). */
+export function heatMark(): EquipMark {
+  return {
+    code: "heat",
+    label: "HEAT",
+    tone: "heat",
+    name: "Shaped charge (orange Pen)",
+    effect:
+      "Same Pen at every range. Compare with the target's orange (HEAT) armor, which already includes its h-class bonus.",
+  };
+}
+
+export type MissileBadgeOpts = {
+  generation?: number;
+  ammo: "unlimited" | "limited" | "very-limited" | null;
+  heat: boolean;
+  topAttack?: boolean;
+  sam?: boolean;
+  oneShot?: boolean;
+  /** Firing after moving differs for ground stands (13.4.6) and helicopters (17.3.1). */
+  platform: "ground" | "helo";
+};
+
+/** Badges for a missile sub-card: ammo, generation (move-and-fire rule), HEAT, top attack, SAM. */
+export function missileMarks(o: MissileBadgeOpts): EquipMark[] {
+  const marks: EquipMark[] = [];
+  if (o.ammo === "unlimited")
+    marks.push({
+      code: "unlim",
+      label: "UNLIM",
+      name: "Unlimited missile ammo",
+      effect: "−1 to the to-hit number — already in Hit.",
+    });
+  else if (o.ammo === "limited")
+    marks.push({
+      code: "lim",
+      label: "LIM",
+      name: "Limited missile ammo",
+      effect: "Uses the limited-ammo to-hit number — already in Hit.",
+    });
+  else if (o.ammo === "very-limited")
+    marks.push({
+      code: "vlim",
+      label: "V.LIM",
+      name: "Very limited missile ammo",
+      effect: "One pod: may fire missiles only twice per game, at the limited-ammo to-hit.",
+    });
+  if (o.generation) {
+    const g = o.generation;
+    const ord = g === 1 ? "1st" : g === 2 ? "2nd" : "3rd";
+    const move =
+      o.platform === "helo"
+        ? g <= 1
+          ? "Fire only if the helicopter moved half or less."
+          : "May fire after a full move."
+        : g <= 1
+          ? "Can't fire if the stand moved this turn (pivoting is fine)."
+          : "Can fire if the stand moved half its move or less.";
+    marks.push({
+      code: `g${g}`,
+      label: `G${g}`,
+      name: `${ord} generation missile`,
+      effect: `${move} Its to-hit is already in Hit.`,
+    });
+  }
+  if (o.heat && !o.sam) marks.push(heatMark());
+  if (o.topAttack)
+    marks.push({
+      code: "top",
+      label: "TOP",
+      name: "Top attack",
+      effect: "Hits the target's flank armor, whatever the angle.",
+    });
+  if (o.sam)
+    marks.push({
+      code: "sam",
+      label: "SAM",
+      name: "Surface-to-air missile",
+      effect: "Anti-aircraft missile.",
+    });
+  if (o.oneShot)
+    marks.push({
+      code: "1shot",
+      label: "1 SHOT",
+      name: "One shot per pod",
+      effect: "Each pod fires once per game.",
+    });
+  return marks;
+}
+
+/** Badge for a weapon's anti-infantry (AI) modifier, explained in its tooltip (14.3). */
+export function aiMark(ai: number): EquipMark {
+  const label = `AI ${ai > 0 ? `+${ai}` : ai < 0 ? `−${-ai}` : "±0"}`;
+  const effect =
+    ai > 0
+      ? `+${ai} to your die roll vs infantry: they are easier to hit.`
+      : ai < 0
+        ? `−${-ai} to your die roll vs infantry: they are harder to hit.`
+        : "No change to your die roll vs infantry.";
+  return {
+    code: "ai",
+    label,
+    tone: "inf",
+    name: "Anti-infantry modifier",
+    effect: `${effect} The green half of the Hit column is your to-hit vs infantry, already calculated.`,
+  };
+}
+
 export function adjustedRof(base: number, quality: Quality): number {
   if (base <= 0) return base;
   return Math.max(1, base + quality.rof_mod);

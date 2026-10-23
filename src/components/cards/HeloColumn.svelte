@@ -1,9 +1,12 @@
 <script lang="ts">
   import type { Quality } from "../../lib/ffot3/types";
   import type { HeloWeapon } from "../../lib/ffot3/helo";
-  import { heloFireNote, podCost } from "../../lib/ffot3/helo";
+  import { podCost } from "../../lib/ffot3/helo";
   import {
     adjustedHit,
+    aiMark,
+    ammoMarks,
+    missileMarks,
     adjustedRof,
     formatPen,
     formatRange,
@@ -14,7 +17,17 @@
     parsePen,
   } from "../../lib/ffot3/combat";
   import { formatAutocannonName, isAutocannonName, weaponKind } from "../../lib/ffot3/classify";
-  import { CELL_RANGE, CELL_VALUE, GUN_HEAD, STAT_HEAD, nationSurface, penCell } from "../../lib/ffot3/ui";
+  import {
+    CELL_HIT_SPLIT,
+    CELL_RANGE,
+    CELL_VALUE,
+    GUN_HEAD,
+    HIT_HALF_INF,
+    HIT_HALF_VEH,
+    STAT_HEAD,
+    nationSurface,
+    penCell,
+  } from "../../lib/ffot3/ui";
   import { force } from "../../lib/ffot3/store";
   import EquipBubbles from "./EquipBubbles.svelte";
 
@@ -63,7 +76,7 @@
     ["missile", "Missile Pod"],
   ]);
 
-  const grid = $derived(isMg ? "grid-cols-5" : isAc ? "grid-cols-5" : "grid-cols-4");
+  const grid = "grid-cols-4";
   const surface = $derived(nationSurface(nationId));
   const rocketRange = $derived(formatRange(30, scale));
 </script>
@@ -83,18 +96,18 @@
 
   {#if isMissile && hit}
     <div
-      class="grid grid-cols-5 gap-1 text-center font-display text-[11px] uppercase tracking-wider text-muted"
+      class="grid grid-cols-4 gap-1 text-center font-display text-[11px] uppercase tracking-wider text-muted"
     >
       <span>Range</span>
       <span>ROF</span>
-      <span>Pen</span>
       <span>Hit</span>
+      <span>Pen</span>
     </div>
-    <div class="mt-1 grid grid-cols-5 gap-1 text-center font-display text-sm">
+    <div class="mt-1 grid grid-cols-4 gap-1 text-center font-display text-sm">
       <span class={CELL_RANGE}>{rangeLabel}</span>
       <span class={CELL_VALUE}>{weapon.rof}</span>
-      <span class={penCell(weapon.pen)}>{!weapon.pen || weapon.pen === "-" ? "—" : weapon.pen}</span>
       <span class={CELL_VALUE}>{hit.hit}</span>
+      <span class={penCell(weapon.pen)}>{!weapon.pen || weapon.pen === "-" ? "—" : weapon.pen}</span>
     </div>
   {:else if isRocket}
     <div
@@ -115,9 +128,8 @@
     <div class="{GUN_HEAD} grid {grid}">
       <span class="py-1">Range</span>
       <span class="py-1">ROF</span>
-      <span class="py-1">Hit</span>
-      <span class="py-1">Hit Inf</span>
-      <span class="py-1">AP</span>
+      <span class="py-1" title="White: to-hit vs vehicles. Green: to-hit vs infantry.">Hit</span>
+      <span class="py-1" title="White: AP penetration.">Pen</span>
     </div>
     <div class="flex flex-col gap-1 pt-1">
       {#each bands as band (band.band)}
@@ -125,8 +137,12 @@
         <div class="grid {grid} gap-1">
           <span class={CELL_RANGE}>{formatRange(band.range, scale)}</span>
           <span class={CELL_VALUE}>{adjustedRof(weapon.rof, quality)}</span>
-          <span class={CELL_VALUE}>{bandHit}</span>
-          <span class={CELL_VALUE}>{hitInf(bandHit, weapon.ai)}</span>
+          <span class={CELL_HIT_SPLIT}>
+            <span class={HIT_HALF_VEH} title="To-hit vs vehicles">{bandHit}</span>
+            <span class={HIT_HALF_INF} title="To-hit vs infantry (AI modifier applied)"
+              >{hitInf(bandHit, weapon.ai)}</span
+            >
+          </span>
           <span class={penCell(pen.ap)}>{formatPen(pen.ap, band.penMod)}</span>
         </div>
       {/each}
@@ -151,61 +167,20 @@
   <div
     class="bg-paper-2 px-2 py-1 rounded-b-lg flex gap-1 items-center justify-start text-center mt-2"
   >
-    {#if isMissile && ammo}
-      {#if ammo === "unlimited"}
-        <EquipBubbles
-          marks={[
-            {
-              code: "Unlim",
-              name: "Unlimited Ammo",
-              effect:
-                "The amount of ammo for this weapon is functionally limitless. Inceases chance to hit",
-            },
-          ]}
-        />
-      {:else if ammo === "limited"}
-        <EquipBubbles
-          marks={[
-            {
-              code: "hl",
-              name: "Limited Ammo",
-              effect: "Limited ammo results in thin missile barages. Reduced chance to hit",
-            },
-          ]}
-        />
-      {:else}
-        <EquipBubbles
-          marks={[
-            {
-              code: "vl",
-              name: "Very Limited Ammo",
-              effect: "One pod: may fire missiles only twice per game, at the limited-ammo to-hit.",
-            },
-          ]}
-        />
-      {/if}
-    {/if}
-    {#if weapon.generation}
+    {#if isMissile}
       <EquipBubbles
-        marks={[
-          {
-            code: `G${weapon.generation}`,
-            name: `Generation ${weapon.generation} Missile`,
-            effect: heloFireNote(weapon.generation),
-          },
-        ]}
+        marks={missileMarks({
+          generation: weapon.generation,
+          ammo: weapon.oneShot ? null : ammo,
+          heat: /h\d?$/.test(weapon.pen),
+          topAttack: weapon.topAttack,
+          oneShot: weapon.oneShot,
+          platform: "helo",
+        })}
       />
     {/if}
-    {#if weapon.pen.endsWith("h")}
-      <EquipBubbles
-        marks={[
-          {
-            code: "Heat",
-            name: "High Explosive Anti-Tank",
-            effect: "Armor Penetration does not degrade with range",
-          },
-        ]}
-      />
+    {#if isAc || isMg}
+      <EquipBubbles marks={[aiMark(weapon.ai ?? 0), ...ammoMarks(pen)]} />
     {/if}
     {#if isRocket}
       <EquipBubbles
@@ -218,10 +193,6 @@
         ]}
       />
     {/if}
-    {#if weapon.topAttack}
-      · Top attack{/if}
-    {#if weapon.oneShot}
-      · 1 shot/pod{/if}
   </div>
   {#if weapon.notes}
     <p class="mt-1 text-center text-[11px] leading-snug text-muted">{weapon.notes}</p>
