@@ -30,17 +30,21 @@
   } from "../../lib/ffot3/ui";
   import { force } from "../../lib/ffot3/store";
   import EquipBubbles from "./EquipBubbles.svelte";
+  import GunLadder from "./GunLadder.svelte";
 
   let {
     weapon,
     count = 1,
     quality,
     nationId = "",
+    bare = false,
   }: {
     weapon: HeloWeapon;
     count?: number;
     quality: Quality;
     nationId?: string;
+    /** Portrait loadout card: the wrapper names the pod, guns use the sideways ladder. */
+    bare?: boolean;
   } = $props();
 
 
@@ -81,7 +85,8 @@
   const rocketRange = $derived(formatRange(30, scale));
 </script>
 
-<section class="min-w-0 sm:col-span-2 xl:col-span-1">
+<section class={bare ? "min-w-0" : "min-w-0 sm:col-span-2 xl:col-span-1"}>
+  {#if !bare}
   <div
     class="mb-1 flex min-h-9 items-center justify-center rounded-sm px-2 py-1.5 text-center {surface} bw:bg-black bw:text-white"
   >
@@ -93,6 +98,7 @@
   <p class="mb-1 text-center text-[10px] uppercase tracking-[0.16em] text-muted">
     {kindCaptionMap.get(weapon.kind)} · {cost} pts
   </p>
+  {/if}
 
   {#if isMissile && hit}
     <div
@@ -124,6 +130,8 @@
       <span class={penCell(weapon.pen)}>{!weapon.pen || weapon.pen === "-" ? "—" : weapon.pen}</span>
       <span class="{CELL_VALUE} text-xs">Area</span>
     </div>
+  {:else if (isAc || isMg) && bare}
+    <GunLadder range={weapon.range[1]} rof={weapon.rof} pen={[weapon.pen]} ai={weapon.ai ?? 0} {quality} />
   {:else if isAc || isMg}
     <div class="{GUN_HEAD} grid {grid}">
       <span class="py-1">Range</span>
@@ -164,8 +172,9 @@
     {/if}
   {/if}
 
+  {#if !((isAc || isMg) && bare)}
   <div
-    class="bg-paper-2 px-2 py-1 rounded-b-lg flex gap-1 items-center justify-start text-center mt-2"
+    class="badge-strip bg-strip px-2 py-1 rounded-b-lg flex gap-1 items-center justify-start text-center mt-2"
   >
     {#if isMissile}
       <EquipBubbles
@@ -194,6 +203,7 @@
       />
     {/if}
   </div>
+  {/if}
   {#if weapon.notes}
     <p class="mt-1 text-center text-[11px] leading-snug text-muted">{weapon.notes}</p>
   {/if}

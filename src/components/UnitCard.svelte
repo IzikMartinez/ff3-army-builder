@@ -11,20 +11,16 @@
     CELL_VALUE,
     GUN_HEAD,
     STAT_HEAD,
-    penCell,
     nationSurface,
     qualityBtnClass,
   } from "../lib/ffot3/ui";
   import { force } from "../lib/ffot3/store";
   import {
     armorLabels,
-    missileMarks,
     armorTable,
     splitEquip,
     formatEra,
     formatRange,
-    missileHit,
-    resolveLoadout,
     terrainMove,
   } from "../lib/ffot3/combat";
   import { getUnit, missileChoices, TOWED_WEAPONS, unitStandBase } from "../lib/ffot3/catalog";
@@ -49,6 +45,9 @@
   import WeaponTable from "./cards/WeaponTable.svelte";
   import InfantryColumn from "./cards/InfantryColumn.svelte";
   import IndirectColumn from "./cards/IndirectColumn.svelte";
+  import VariantPicker from "./cards/VariantPicker.svelte";
+  import MissileSection from "./cards/MissileSection.svelte";
+  import PortraitUnit from "./PortraitUnit.svelte";
 
   let {
     unit,
@@ -117,9 +116,6 @@
   const showCapacity = $derived(!towedUnit && towedCap(unit) > 0);
   const capMax = $derived(towedCap(unit));
   const capRemain = $derived(remainingCap(unit, towedLoad, getUnit));
-  // Same resolution as unitBasePoints, so the shown missile is the one priced.
-  const loadout = $derived(resolveLoadout(unit, missileId));
-  const mslStats = $derived(loadout ? missileHit(loadout.generation, loadout.unlimited, quality) : null);
   const scale = $derived($force.scale);
   const kind = $derived(weaponKind(unit));
   // Infantry anti-infantry fire has its own column; Gun_* holds its AI ratings.
@@ -142,6 +138,9 @@
       (hasTowedFeature ? 1 : 0) +
       towedMounted.length,
   );
+  // Print lays the sections out across the page (up to 4), counting only what
+  // prints: the pod and towed pickers are hidden on paper.
+  const printCols = $derived(Math.min(4, colCount - (hasPods ? 1 : 0) - (hasTowedFeature ? 1 : 0)));
   const gridClass = $derived(
     colCount >= 4 ? "xl:grid-cols-4" : colCount === 3 ? "xl:grid-cols-3" : "xl:grid-cols-2",
   );
@@ -151,11 +150,6 @@
     ["Bad", terrain.bad],
     ["Road", terrain.road],
   ] as const);
-  // Variant picker: mark chips (when a card spans several marks), then the
-  // era options of the current mark.
-  const marks = $derived([...new Set(variants.map((v) => v.mark).filter((m): m is string => !!m))]);
-  const currentMark = $derived(variants.find((v) => v.id === unit.id)?.mark ?? null);
-  const eraOptions = $derived(variants.filter((v) => v.mark === currentMark));
   const surface = $derived(nationSurface(unit.nation));
   const qualityClass = $derived(qualityBtnClass(unit.nation, bw));
 
@@ -165,397 +159,314 @@
 
 </script>
 
-<article
-  data-bw={bw ? "true" : undefined}
-  class="flex flex-col rounded-lg border border-line bg-ink-2 text-paper shadow-[0_18px_40px_-24px_rgba(0,0,0,0.8)] break-inside-avoid bw:border-black bw:bg-white bw:text-black bw:shadow-none"
->
-  <header
-    class="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-2 gap-y-1 rounded-t-[17px] px-3 py-2 {bw
-      ? 'bg-black text-white'
-      : surface}"
+{#if $force.cardStyle !== "classic"}
+  <PortraitUnit
+    layout={$force.cardStyle}
+    {unit}
+    {quality}
+    {bw}
+    {quantity}
+    {missileId}
+    {heloPods}
+    {towedLoad}
+    {dedicated}
+    {variants}
+    {onVariant}
+    {onQuality}
+    {onMissile}
+    {onHeloPods}
+    {onTowed}
+    {onDedicated}
+    {yearMin}
+    {yearMax}
+  />
+{:else}
+  <article
+    data-bw={bw ? "true" : undefined}
+    class="flex flex-col rounded-lg border border-line bg-ink-2 text-paper shadow-[0_18px_40px_-24px_rgba(0,0,0,0.8)] break-inside-avoid bw:border-black bw:bg-white bw:text-black bw:shadow-none"
   >
-    <div class="flex min-w-0 items-baseline gap-2">
-      <span class="font-display text-sm tracking-[0.14em] uppercase"
-        >{nation?.short ?? unit.nation}</span
-      >
-      <span class="font-display text-sm tabular-nums opacity-90"
-        >{formatEra(unit.era.start_era, unit.era.end_era)}</span
-      >
-      {#if isDedicated}
-        <span
-          class="self-center truncate rounded-sm bg-brass px-1.5 py-0.5 font-display text-[0.7rem] tracking-[0.14em] text-ink uppercase bw:bg-white bw:text-black"
-          title="Dedicated transport: double cost (Rule 17.10)">Dedicated · 2× pts</span
-        >
-      {/if}
-    </div>
-    <div class="flex shrink-0 items-center gap-2">
-      <span
-        class="inline-flex h-9 min-w-12 items-center justify-center rounded-sm border px-2.5 font-display text-[1.05rem] tracking-wide tabular-nums {bw
-          ? 'border-white bg-white text-black'
-          : 'border-current/40 bg-current/15'}"
-        title="Points per stand"
-        aria-label="{standCost} points per stand"
-      >
-        {standCost}<span class="ml-1 text-[0.7rem] tracking-[0.12em] uppercase opacity-80">pts</span
-        >{#if quantity > 1}<span class="ml-1 text-xs opacity-80">×{quantity}</span>{/if}
-      </span>
-      <QualityPicker
-        {quality}
-        onChange={onQuality}
-        interactive={Boolean(onQuality)}
-        btnClass={qualityClass}
-      />
-    </div>
-    <h3
-      class="col-span-2 min-w-0 truncate text-center font-display text-[1.35rem] leading-none tracking-wide uppercase"
+    <header
+      class="card-head grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-2 gap-y-1 rounded-t-[17px] px-3 py-2 {bw
+        ? 'bg-black text-white'
+        : surface}"
     >
-      {unit.Name}
-    </h3>
-  </header>
-
-  {#if variants.length > 1 && onVariant}
-    <div class="print:hidden flex flex-col gap-1.5 border-b border-line bg-ink-3/60 px-3 py-2">
-      {#if marks.length > 1}
-        <div class="flex flex-wrap gap-1" role="radiogroup" aria-label="{unit.Name} marks">
-          {#each marks as mark (mark)}
-            {@const active = mark === currentMark}
-            <button
-              type="button"
-              role="radio"
-              aria-checked={active}
-              class="h-8 rounded-md border px-2.5 font-display text-sm tracking-wide transition-colors duration-150 {active
-                ? 'border-brass bg-brass text-ink'
-                : 'border-line-2 text-paper hover:border-brass'}"
-              onclick={() => onVariant(variants.find((v) => v.mark === mark)!.id)}
-            >
-              {mark}
-            </button>
-          {/each}
-        </div>
-      {/if}
-      {#if eraOptions.length > 1}
-        <div class="flex flex-wrap gap-1" role="radiogroup" aria-label="{unit.Name} eras">
-          {#each eraOptions as v (v.id)}
-            {@const active = v.id === unit.id}
-            <button
-              type="button"
-              role="radio"
-              aria-checked={active}
-              class="flex shrink-0 flex-col items-start rounded-md border px-2.5 py-1 text-left transition-colors duration-150 {active
-                ? 'border-brass/80 bg-paper text-ink'
-                : 'border-line-2 text-paper hover:border-brass'}"
-              onclick={() => onVariant(v.id)}
-            >
-              <span class="font-display text-sm leading-tight tracking-wide tabular-nums">
-                {v.era} · {v.points} pts
-              </span>
-              {#if v.diffs.length}
-                <span class="text-[10px] leading-tight tabular-nums {active ? 'text-ink/75' : 'text-muted'}">
-                  {v.diffs.join(" · ")}
-                </span>
-              {/if}
-            </button>
-          {/each}
-        </div>
-      {/if}
-    </div>
-  {/if}
-
-  <div class="grid grid-cols-1 gap-3 p-3 sm:grid-cols-2 {gridClass}">
-    <section>
-      <div class="{STAT_HEAD} h-8 text-lg">Armor</div>
-      {#if helo || armorTbl.soft}
-        <ul class="flex flex-col gap-1">
-          {#each armor as row (row.label)}
-            <li class="flex h-7 overflow-hidden rounded-md text-sm font-display">
-              <span
-                class="flex w-14 items-center justify-start bg-ink-3 px-2 text-paper bw:bg-black bw:text-white"
-                >{row.label}</span
-              >
-              <span
-                class="flex flex-1 items-center justify-center bg-paper text-ink tabular-nums bw:bg-white bw:text-black"
-                >{row.value}</span
-              >
-            </li>
-          {/each}
-        </ul>
-      {:else}
-        <!-- Target side of the ammo colour code: grey vs AP/HE, amber vs HEAT. -->
-        {@const split = (armorTbl.bonus ?? 0) > 0}
-        <div class="{GUN_HEAD} grid gap-1 {split ? 'grid-cols-[3.5rem_1fr_1fr]' : 'grid-cols-[3.5rem_1fr]'}">
-          <span class="py-1"></span>
-          {#if split}
-            <span class="{AMMO_HEAD} bg-paper text-ink" title={AMMO_HINT.ap}>AP / HE</span>
-            <span class="{AMMO_HEAD} bg-ammo-heat text-[#1a1406]" title={AMMO_HINT.heat}>HEAT</span>
-          {:else}
-            <span class="py-1">{armorTbl.bonus === 0 ? "All ammo" : "Armor"}</span>
-          {/if}
-        </div>
-        <div class="mt-1 grid gap-1 {split ? 'grid-cols-[3.5rem_1fr_1fr]' : 'grid-cols-[3.5rem_1fr]'}">
-          {#each armorTbl.rows as row (row.label)}
-            <span class={CELL_RANGE}>{row.label}</span>
-            {#if split}
-              <span class={CELL_AP}>{row.ap}</span>
-              <span class={CELL_HEAT}>{row.heat}</span>
-            {:else}
-              <span class={CELL_VALUE}>{row.ap}</span>
-            {/if}
-          {/each}
-        </div>
-        {#if armorTbl.bonus !== null}
-          <p class="mt-1 text-center text-[10px] uppercase tracking-[0.14em] text-muted">
-            {split ? `h-class ${unit.armorH} · +${armorTbl.bonus} vs HEAT` : "No h-class bonus"}
-          </p>
+      <div class="flex min-w-0 items-baseline gap-2">
+        <span class="font-display text-sm tracking-[0.14em] uppercase"
+          >{nation?.short ?? unit.nation}</span
+        >
+        <span class="font-display text-sm tabular-nums opacity-90"
+          >{formatEra(unit.era.start_era, unit.era.end_era)}</span
+        >
+        {#if isDedicated}
+          <span
+            class="self-center truncate rounded-sm bg-brass px-1.5 py-0.5 font-display text-[0.7rem] tracking-[0.14em] text-ink uppercase bw:bg-white bw:text-black"
+            title="Dedicated transport: double cost (Rule 17.10)">Dedicated · 2× pts</span
+          >
         {/if}
-      {/if}
+      </div>
+      <div class="flex shrink-0 items-center gap-2">
+        <span
+          class="card-pts inline-flex h-9 min-w-12 items-center justify-center rounded-sm border px-2.5 font-display text-[1.05rem] tracking-wide tabular-nums {bw
+            ? 'border-white bg-white text-black'
+            : 'border-current/40 bg-current/15'}"
+          title="Points per stand"
+          aria-label="{standCost} points per stand"
+        >
+          {standCost}<span class="ml-1 text-[0.7rem] tracking-[0.12em] uppercase opacity-80">pts</span
+          >{#if quantity > 1}<span class="ml-1 text-xs opacity-80">×{quantity}</span>{/if}
+        </span>
+        <QualityPicker
+          {quality}
+          onChange={onQuality}
+          interactive={Boolean(onQuality)}
+          btnClass={qualityClass}
+        />
+      </div>
+      <h3
+        class="col-span-2 min-w-0 truncate text-center font-display text-[1.35rem] leading-none tracking-wide uppercase"
+      >
+        {unit.Name}
+      </h3>
+    </header>
 
-      {#if showCapacity}
-        <div class="{STAT_HEAD} mt-3 h-8 text-lg">Capacity</div>
-        <ul class="flex flex-col gap-1">
-          <li class="flex h-7 overflow-hidden rounded-md text-sm font-display">
-            <span
-              class="flex w-16 items-center justify-start bg-ink-3 px-2 text-paper bw:bg-black bw:text-white"
-              >Remain</span
-            >
-            <span
-              class="flex flex-1 items-center justify-center bg-paper text-ink tabular-nums bw:bg-white bw:text-black {capRemain <
-              0.001
-                ? 'opacity-60'
-                : ''}"
-            >
-              {formatCap(capRemain)}
-            </span>
-          </li>
-          <li class="flex h-7 overflow-hidden rounded-md text-sm font-display">
-            <span
-              class="flex w-16 items-center justify-start bg-ink-3 px-2 text-paper bw:bg-black bw:text-white"
-              >Max</span
-            >
-            <span
-              class="flex flex-1 items-center justify-center bg-paper text-ink tabular-nums bw:bg-white bw:text-black"
-            >
-              {formatCap(capMax)}
-            </span>
-          </li>
-        </ul>
-      {/if}
-    </section>
+    {#if variants.length > 1 && onVariant}
+      <VariantPicker {unit} {variants} {onVariant} />
+    {/if}
 
-    {#if showMove}
+    <div
+      class="card-body grid grid-cols-1 gap-3 p-3 sm:grid-cols-2 {gridClass}"
+      style="--print-cols: {printCols}"
+    >
       <section>
-        <div class="{STAT_HEAD} h-8 text-lg">Move</div>
-        {#if helo}
+        <div class="{STAT_HEAD} h-8 text-lg">Armor</div>
+        {#if helo || armorTbl.soft}
           <ul class="flex flex-col gap-1">
-            <li class="flex h-7 overflow-hidden rounded-md text-sm font-display">
-              <span
-                class="flex w-16 items-center justify-start bg-ink-3 px-2 text-paper bw:bg-black bw:text-white"
-                >NOE</span
-              >
-              <span
-                class="flex flex-1 items-center justify-center bg-paper text-ink tabular-nums bw:bg-white bw:text-black"
-              >
-                {formatRange(move, scale)}
-              </span>
-            </li>
-            <li class="flex h-7 overflow-hidden rounded-md text-sm font-display">
-              <span
-                class="flex w-16 items-center justify-start bg-ink-3 px-2 text-paper bw:bg-black bw:text-white"
-                >High</span
-              >
-              <span
-                class="flex flex-1 items-center justify-center bg-paper text-ink tabular-nums bw:bg-white bw:text-black"
-              >
-                {formatRange(-1, scale)}
-              </span>
-            </li>
-          </ul>
-        {:else}
-          <ul class="flex flex-col gap-1">
-            {#each moveRows as row (row[0])}
+            {#each armor as row (row.label)}
               <li class="flex h-7 overflow-hidden rounded-md text-sm font-display">
                 <span
-                  class="flex w-16 items-center justify-start bg-ink-3 px-2 text-paper bw:bg-black bw:text-white"
-                  >{row[0]}</span
+                  class="flex w-14 items-center justify-start bg-ink-3 px-2 text-paper bw:bg-black bw:text-white"
+                  >{row.label}</span
                 >
                 <span
-                  class="flex flex-1 items-center justify-center bg-paper text-ink tabular-nums bw:bg-white bw:text-black"
+                  class="flex flex-1 items-center justify-center bg-cell text-cell-ink ring-1 ring-cell-line ring-inset bw:ring-0 tabular-nums bw:bg-white bw:text-black"
+                  >{row.value}</span
                 >
-                  {formatRange(Number(row[1]), scale)}
-                </span>
               </li>
             {/each}
           </ul>
-          <p class="mt-1 text-center font-display text-sm uppercase tracking-wider text-brass">
-            {unit.move_type.join(" / ")}
-          </p>
-        {/if}
-      </section>
-    {/if}
-
-    {#if showWeapon}
-      <WeaponTable {unit} {quality} />
-    {/if}
-
-    {#if infantry}
-      <InfantryColumn {unit} {quality} />
-    {/if}
-
-    {#if unit.indirect}
-      <IndirectColumn {unit} />
-    {/if}
-
-    {#if hasMissileFeature}
-      <section class="min-w-0 sm:col-span-2 xl:col-span-1">
-        <div
-          class="mb-1 flex min-h-10 items-center justify-center rounded-sm px-2 py-1.5 text-center {bw
-            ? 'bg-black text-white'
-            : surface}"
-        >
-          <span class="block font-display text-[1.65rem] leading-none tracking-[0.18em] uppercase">
-            {loadout?.label ?? "No ATGM"}
-          </span>
-        </div>
-        <p class="mb-1 text-center text-[10px] uppercase tracking-[0.16em] text-muted">Missile</p>
-
-        {#if options.length > 1 || !unit.missileRequired}
-          <div class="mb-2 flex flex-wrap gap-1">
-            {#if !unit.missileRequired}
-              <button
-                type="button"
-                class="h-8 rounded-full px-2.5 text-xs font-medium {loadout
-                  ? 'border border-line text-muted'
-                  : 'bg-paper text-ink'}"
-                onclick={() => pickMissile(null)}
-              >
-                None
-              </button>
+        {:else}
+          <!-- Target side of the ammo colour code: grey vs AP/HE, amber vs HEAT. -->
+          {@const split = (armorTbl.bonus ?? 0) > 0}
+          <div class="{GUN_HEAD} grid gap-1 {split ? 'grid-cols-[3.5rem_1fr_1fr]' : 'grid-cols-[3.5rem_1fr]'}">
+            <span class="py-1"></span>
+            {#if split}
+              <span class="{AMMO_HEAD} bg-cell text-cell-ink" title={AMMO_HINT.ap}>AP / HE</span>
+              <span class="{AMMO_HEAD} bg-ammo-heat text-ammo-heat-ink" title={AMMO_HINT.heat}>HEAT</span>
+            {:else}
+              <span class="py-1">{armorTbl.bonus === 0 ? "All ammo" : "Armor"}</span>
             {/if}
-            {#each options as opt (opt.id)}
-              <button
-                type="button"
-                class="h-8 rounded-full px-2.5 text-xs font-medium {loadout?.id === opt.id
-                  ? 'bg-paper text-ink'
-                  : 'border border-line text-paper'}"
-                onclick={() => pickMissile(opt.id)}
-              >
-                {opt.label}
-              </button>
+          </div>
+          <div class="mt-1 grid gap-1 {split ? 'grid-cols-[3.5rem_1fr_1fr]' : 'grid-cols-[3.5rem_1fr]'}">
+            {#each armorTbl.rows as row (row.label)}
+              <span class={CELL_RANGE}>{row.label}</span>
+              {#if split}
+                <span class={CELL_AP}>{row.ap}</span>
+                <span class={CELL_HEAT}>{row.heat}</span>
+              {:else}
+                <span class={CELL_VALUE}>{row.ap}</span>
+              {/if}
             {/each}
           </div>
+          {#if armorTbl.bonus !== null}
+            <p class="mt-1 text-center text-[10px] uppercase tracking-[0.14em] text-muted">
+              {split ? `h-class ${unit.armorH} · +${armorTbl.bonus} vs HEAT` : "No h-class bonus"}
+            </p>
+          {/if}
         {/if}
 
-        {#if loadout && mslStats}
-          <div
-            class="grid grid-cols-4 gap-1 text-center font-display text-[11px] uppercase tracking-wider text-muted"
-          >
-            <span>Range</span>
-            <span>ROF</span>
-            <span>Hit</span>
-            <span>Pen</span>
-          </div>
-          <div class="mt-1 grid grid-cols-4 gap-1">
-            <span class={CELL_RANGE}>
-              {formatRange(loadout.range[0], scale)}–{formatRange(loadout.range[1], scale)}
-            </span>
-            <span class={CELL_VALUE}>{loadout.rof}</span>
-            <span class={CELL_VALUE}>{mslStats.hit}</span>
-            <span class={penCell(loadout.pen, { missile: !loadout.sam })}>{loadout.pen}</span>
-          </div>
-        {:else}
-          <p class="py-3 text-center text-sm text-muted">Gun tank · missile stowed</p>
+        {#if showCapacity}
+          <div class="{STAT_HEAD} mt-3 h-8 text-lg">Capacity</div>
+          <ul class="flex flex-col gap-1">
+            <li class="flex h-7 overflow-hidden rounded-md text-sm font-display">
+              <span
+                class="flex w-16 items-center justify-start bg-ink-3 px-2 text-paper bw:bg-black bw:text-white"
+                >Remain</span
+              >
+              <span
+                class="flex flex-1 items-center justify-center bg-cell text-cell-ink ring-1 ring-cell-line ring-inset bw:ring-0 tabular-nums bw:bg-white bw:text-black {capRemain <
+                0.001
+                  ? 'opacity-60'
+                  : ''}"
+              >
+                {formatCap(capRemain)}
+              </span>
+            </li>
+            <li class="flex h-7 overflow-hidden rounded-md text-sm font-display">
+              <span
+                class="flex w-16 items-center justify-start bg-ink-3 px-2 text-paper bw:bg-black bw:text-white"
+                >Max</span
+              >
+              <span
+                class="flex flex-1 items-center justify-center bg-cell text-cell-ink ring-1 ring-cell-line ring-inset bw:ring-0 tabular-nums bw:bg-white bw:text-black"
+              >
+                {formatCap(capMax)}
+              </span>
+            </li>
+          </ul>
         {/if}
-        <WeaponBadges
-          marks={[
-            ...(loadout
-              ? missileMarks({
-                  generation: loadout.generation,
-                  ammo: loadout.unlimited ? "unlimited" : "limited",
-                  heat: true,
-                  topAttack: loadout.topAttack,
-                  sam: loadout.sam,
-                  platform: "ground",
-                })
-              : []),
-            ...(weaponBadgesInMissile ? equipSplit.weapon : []),
-          ]}
+      </section>
+
+      {#if showMove}
+        <section>
+          <div class="{STAT_HEAD} h-8 text-lg">Move</div>
+          {#if helo}
+            <ul class="flex flex-col gap-1">
+              <li class="flex h-7 overflow-hidden rounded-md text-sm font-display">
+                <span
+                  class="flex w-16 items-center justify-start bg-ink-3 px-2 text-paper bw:bg-black bw:text-white"
+                  >NOE</span
+                >
+                <span
+                  class="flex flex-1 items-center justify-center bg-cell text-cell-ink ring-1 ring-cell-line ring-inset bw:ring-0 tabular-nums bw:bg-white bw:text-black"
+                >
+                  {formatRange(move, scale)}
+                </span>
+              </li>
+              <li class="flex h-7 overflow-hidden rounded-md text-sm font-display">
+                <span
+                  class="flex w-16 items-center justify-start bg-ink-3 px-2 text-paper bw:bg-black bw:text-white"
+                  >High</span
+                >
+                <span
+                  class="flex flex-1 items-center justify-center bg-cell text-cell-ink ring-1 ring-cell-line ring-inset bw:ring-0 tabular-nums bw:bg-white bw:text-black"
+                >
+                  {formatRange(-1, scale)}
+                </span>
+              </li>
+            </ul>
+          {:else}
+            <ul class="flex flex-col gap-1">
+              {#each moveRows as row (row[0])}
+                <li class="flex h-7 overflow-hidden rounded-md text-sm font-display">
+                  <span
+                    class="flex w-16 items-center justify-start bg-ink-3 px-2 text-paper bw:bg-black bw:text-white"
+                    >{row[0]}</span
+                  >
+                  <span
+                    class="flex flex-1 items-center justify-center bg-cell text-cell-ink ring-1 ring-cell-line ring-inset bw:ring-0 tabular-nums bw:bg-white bw:text-black"
+                  >
+                    {formatRange(Number(row[1]), scale)}
+                  </span>
+                </li>
+              {/each}
+            </ul>
+            <p class="mt-1 text-center font-display text-sm uppercase tracking-wider text-brass">
+              {unit.move_type.join(" / ")}
+            </p>
+          {/if}
+        </section>
+      {/if}
+
+      {#if showWeapon}
+        <WeaponTable {unit} {quality} />
+      {/if}
+
+      {#if infantry}
+        <InfantryColumn {unit} {quality} />
+      {/if}
+
+      {#if unit.indirect}
+        <IndirectColumn {unit} />
+      {/if}
+
+      {#if hasMissileFeature}
+        <MissileSection
+          {unit}
+          {quality}
+          {missileId}
+          {yearMin}
+          {yearMax}
+          {bw}
+          onMissile={pickMissile}
+          extraMarks={weaponBadgesInMissile ? equipSplit.weapon : []}
         />
-      </section>
-    {/if}
+      {/if}
 
-    {#if hasPods}
-      <section class="min-w-0 sm:col-span-2 xl:col-span-1">
-        <div class="{STAT_HEAD} h-8 text-lg">Pods</div>
-        <p class="mb-1 text-center text-[10px] uppercase tracking-[0.16em] text-muted">
-          Weapon pods
-        </p>
-        <HeloPods {unit} picks={heloPods} {yearMin} {yearMax} onChange={onHeloPods} />
-      </section>
-    {/if}
+      {#if hasPods}
+        <section class="print:hidden min-w-0 sm:col-span-2 xl:col-span-1">
+          <div class="{STAT_HEAD} h-8 text-lg">Pods</div>
+          <p class="mb-1 text-center text-[10px] uppercase tracking-[0.16em] text-muted">
+            Weapon pods
+          </p>
+          <HeloPods {unit} picks={heloPods} {yearMin} {yearMax} onChange={onHeloPods} />
+        </section>
+      {/if}
 
-    {#each heloMounted as row (row.weapon.id)}
-      <HeloColumn
-        weapon={row.weapon}
-        count={row.count}
-        {quality}
-        nationId={unit.nation}
-      />
-    {/each}
+      {#each heloMounted as row (row.weapon.id)}
+        <HeloColumn
+          weapon={row.weapon}
+          count={row.count}
+          {quality}
+          nationId={unit.nation}
+        />
+      {/each}
 
-    {#if hasTowedFeature}
-      <section class="min-w-0 sm:col-span-2 xl:col-span-1">
-        <div class="{STAT_HEAD} h-8 text-lg">Towed</div>
-        <p class="mb-1 text-center text-[10px] uppercase tracking-[0.16em] text-muted">
-          Towed weapons
-        </p>
-        <TowedPicker {unit} picks={towedLoad} {yearMin} {yearMax} onChange={onTowed} />
-      </section>
-    {/if}
+      {#if hasTowedFeature}
+        <section class="print:hidden min-w-0 sm:col-span-2 xl:col-span-1">
+          <div class="{STAT_HEAD} h-8 text-lg">Towed</div>
+          <p class="mb-1 text-center text-[10px] uppercase tracking-[0.16em] text-muted">
+            Towed weapons
+          </p>
+          <TowedPicker {unit} picks={towedLoad} {yearMin} {yearMax} onChange={onTowed} />
+        </section>
+      {/if}
 
-    {#each towedMounted as row (row.weapon.id)}
-      <TowedColumn
-        weapon={row.weapon}
-        count={row.count}
-        {quality}
-        missileId={row.missileId}
-        {yearMin}
-        {yearMax}
-        nationId={unit.nation}
-      />
-    {/each}
-  </div>
+      {#each towedMounted as row (row.weapon.id)}
+        <TowedColumn
+          weapon={row.weapon}
+          count={row.count}
+          {quality}
+          missileId={row.missileId}
+          {yearMin}
+          {yearMax}
+          nationId={unit.nation}
+        />
+      {/each}
+    </div>
 
-  <footer
-    class="flex flex-wrap items-center justify-end gap-2 border-t border-line px-3 py-2 bw:border-black"
-  >
-    {#if transport && onDedicated}
-      <div class="mr-auto flex min-w-0 items-center gap-2 print:hidden">
-        <button
-          type="button"
-          role="switch"
-          aria-checked={isDedicated}
-          class="flex h-8 shrink-0 items-center gap-2 rounded-full border px-3 font-display text-xs tracking-[0.14em] uppercase transition-colors duration-150 {isDedicated
-            ? 'border-brass bg-brass text-ink'
-            : 'border-line-2 text-muted hover:border-brass hover:text-paper'}"
-          onclick={() => onDedicated?.(!isDedicated)}
-        >
-          <span class="h-2 w-2 rounded-full {isDedicated ? 'bg-ink' : 'bg-line-2'}" aria-hidden="true"
-          ></span>
-          Dedicated transport
-        </button>
-        <span class="min-w-0 text-[11px] leading-tight text-muted">
-          {isDedicated
-            ? "Stays after dropping cargo · cost doubled"
-            : "Must leave after dropping cargo (17.10)"}
-        </span>
-      </div>
-    {/if}
-    {#if helo && unit.Gun_Rng <= 0 && !(transport && onDedicated)}
-      <span class="mr-auto text-[11px] uppercase tracking-[0.16em] text-muted">Helicopter</span>
-    {/if}
-    {#if !helo && unit.notes}
-      <!-- Helicopter notes already show under the pod picker. -->
-      <p class="mr-auto min-w-0 text-[11px] leading-snug text-muted bw:text-black">{unit.notes}</p>
-    {/if}
-    <EquipBubbles marks={equip} />
-  </footer>
-</article>
+    <footer
+      class="card-foot flex flex-wrap items-center justify-end gap-2 border-t border-line px-3 py-2 bw:border-black"
+    >
+      {#if transport && onDedicated}
+        <div class="mr-auto flex min-w-0 items-center gap-2 print:hidden">
+          <button
+            type="button"
+            role="switch"
+            aria-checked={isDedicated}
+            class="flex h-8 shrink-0 items-center gap-2 rounded-full border px-3 font-display text-xs tracking-[0.14em] uppercase transition-colors duration-150 {isDedicated
+              ? 'border-brass bg-brass text-ink'
+              : 'border-line-2 text-muted hover:border-brass hover:text-paper'}"
+            onclick={() => onDedicated?.(!isDedicated)}
+          >
+            <span class="h-2 w-2 rounded-full {isDedicated ? 'bg-ink' : 'bg-line-2'}" aria-hidden="true"
+            ></span>
+            Dedicated transport
+          </button>
+          <span class="min-w-0 text-[11px] leading-tight text-muted">
+            {isDedicated
+              ? "Stays after dropping cargo · cost doubled"
+              : "Must leave after dropping cargo (17.10)"}
+          </span>
+        </div>
+      {/if}
+      {#if helo && unit.Gun_Rng <= 0 && !(transport && onDedicated)}
+        <span class="mr-auto text-[11px] uppercase tracking-[0.16em] text-muted">Helicopter</span>
+      {/if}
+      {#if !helo && unit.notes}
+        <!-- Helicopter notes already show under the pod picker. -->
+        <p class="mr-auto min-w-0 text-[11px] leading-snug text-muted bw:text-black">{unit.notes}</p>
+      {/if}
+      <EquipBubbles marks={equip} />
+    </footer>
+  </article>
+{/if}

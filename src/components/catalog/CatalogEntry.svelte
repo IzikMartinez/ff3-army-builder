@@ -111,7 +111,7 @@
       <button
         type="button"
         class="h-11 min-w-28 rounded-[12px] px-5 text-sm font-medium transition-[transform,background-color] duration-150 active:scale-[0.98] {added
-          ? 'bg-ok text-paper'
+          ? 'bg-ok text-on-nation'
           : 'bg-paper text-ink'}"
         onclick={add}
       >

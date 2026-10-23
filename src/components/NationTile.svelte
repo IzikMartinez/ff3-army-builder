@@ -19,7 +19,7 @@
   class="group flex w-full min-w-0 items-center gap-3 rounded-xl border border-line bg-ink-2 p-3 text-left transition-[transform,border-color] duration-200 hover:border-brass active:scale-[0.99]"
   onclick={open}
 >
-  <span class="flex h-16 w-16 shrink-0 items-center justify-center rounded-lg border border-line-2 bg-[#2f3326]">
+  <span class="flex h-16 w-16 shrink-0 items-center justify-center rounded-lg border border-line-2 bg-tile">
     <Roundel nationId={nation.id} size={48} />
   </span>
   <span class="min-w-0 flex-1">

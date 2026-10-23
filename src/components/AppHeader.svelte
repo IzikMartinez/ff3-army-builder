@@ -18,6 +18,12 @@
   const isNormal = $derived($force.scale === "1:5");
   const count = $derived($standCount);
   const isDark = $derived($force.theme === "dark");
+  const CARD_STYLE_OPTIONS = [
+    { id: "classic", label: "Classic" },
+    { id: "companion", label: "Portrait · companion" },
+    { id: "foldout", label: "Portrait · fold-out" },
+    { id: "rider", label: "Portrait · rider" },
+  ] as const;
 </script>
 
 <header class="print:hidden sticky top-0 z-30 border-b border-line bg-ink/90 backdrop-blur-md">
@@ -42,7 +48,7 @@
             <path
               d="M4 16 V10 L12 4 L20 10 V16 H15 V12 H9 V16Z"
               stroke="currentColor"
-              class="text-paper"
+              class="text-on-nation"
               stroke-width="1.6"
             />
             <rect x="8" y="14" width="8" height="4" class="fill-brass" />
@@ -89,9 +95,25 @@
         </button>
       </div>
 
+      <label
+        class="flex h-11 shrink-0 items-center overflow-hidden rounded-[12px] border border-line bg-ink-2 pl-3"
+        title="Card layout: classic wide cards, or portrait cards with pods and towed weapons as companion cards, a fold-out face, or riders"
+      >
+        <span class="shrink-0 text-[11px] font-medium uppercase tracking-[0.16em] text-muted">Cards</span>
+        <select
+          class="h-full cursor-pointer bg-transparent px-2 text-sm font-medium text-paper outline-none"
+          value={$force.cardStyle}
+          onchange={(e) => force.setCardStyle(e.currentTarget.value as (typeof CARD_STYLE_OPTIONS)[number]["id"])}
+        >
+          {#each CARD_STYLE_OPTIONS as opt (opt.id)}
+            <option value={opt.id} class="bg-ink-2 text-paper">{opt.label}</option>
+          {/each}
+        </select>
+      </label>
+
       <button
         type="button"
-        class="relative flex h-11 items-center gap-2 rounded-[12px] border border-line bg-olive px-3 text-sm font-medium text-paper transition-transform duration-150 hover:bg-olive-2 active:scale-[0.98]"
+        class="relative flex h-11 items-center gap-2 rounded-[12px] border border-line bg-olive px-3 text-sm font-medium text-on-nation transition-transform duration-150 hover:bg-olive-2 active:scale-[0.98]"
         onclick={goList}
       >
         Force

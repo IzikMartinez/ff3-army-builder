@@ -7,7 +7,7 @@
     quality,
     onChange,
     interactive = true,
-    btnClass = "flex h-9 min-w-18 items-center justify-center rounded-sm border border-paper/40 bg-paper px-2.5 font-display text-[0.95rem] tracking-[0.14em] text-olive uppercase",
+    btnClass = "flex h-9 min-w-18 items-center justify-center rounded-sm border border-on-nation/40 bg-on-nation px-2.5 font-display text-[0.95rem] tracking-[0.14em] text-olive uppercase",
   }: {
     quality: Quality;
     onChange?: (id: string) => void;

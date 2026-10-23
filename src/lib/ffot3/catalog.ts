@@ -17,7 +17,7 @@ import {
   isTransportHelo,
   sanitizeHeloPicks,
 } from "./helo";
-import { isZeroMoveTowed, isTowed, towedExtraPoints, visibleTowed } from "./towed";
+import { isTowed, towedExtraPoints, visibleTowed } from "./towed";
 import { FANTASY_NATIONS, fantasyUnits } from "./fantasy";
 import { supportUnits } from "./patrons";
 import { cardName } from "./variants";
@@ -159,7 +159,9 @@ const ALL: Vehicle[] = [
 
 export const TOWED_WEAPONS: Vehicle[] = ALL.filter(isTowed);
 
-export const UNITS: Vehicle[] = ALL.filter((u) => !isZeroMoveTowed(u));
+/** Every stand gets its own card, towed guns included (9.6: a towed weapon is a
+ *  stand in its own right; carriers can also buy one as a towed load). */
+export const UNITS: Vehicle[] = ALL;
 
 export const MISSILES: Missile[] = missilesJson as unknown as Missile[];
 

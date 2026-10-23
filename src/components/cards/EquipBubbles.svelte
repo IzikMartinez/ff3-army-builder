@@ -6,8 +6,8 @@
   /** Badge colours matching the card's colour code. */
   const TONE: Record<string, string> = {
     inf: "border-vs-inf bg-vs-inf text-vs-inf-ink",
-    white: "border-line-2 bg-paper text-ink",
-    heat: "border-ammo-heat bg-ammo-heat text-[#1a1406]",
+    white: "border-line-2 bg-cell text-cell-ink",
+    heat: "border-ammo-heat bg-ammo-heat text-ammo-heat-ink",
   };
 
   let codeMap = new Map<string, string>([
@@ -29,9 +29,9 @@
       <li class="group relative z-1 hover:z-30 focus-within:z-30">
         <button
           type="button"
-          class="inline-flex h-7 min-w-7 items-center justify-center rounded-full border px-2 font-display text-sm tracking-wide tabular-nums hover:border-paper hover:bg-paper hover:text-ink focus-visible:border-paper focus-visible:bg-paper focus-visible:text-ink bw:border-black bw:bg-white bw:text-black {TONE[
+          class="badge badge-{mark.tone ?? 'plain'} inline-flex h-7 min-w-7 items-center justify-center rounded-full border px-2 font-display text-sm tracking-wide tabular-nums hover:border-paper hover:bg-paper hover:text-ink focus-visible:border-paper focus-visible:bg-paper focus-visible:text-ink bw:border-black bw:bg-white bw:text-black {TONE[
             mark.tone ?? ''
-          ] ?? 'border-line-2 bg-stone-500 text-paper'}"
+          ] ?? 'border-line-2 bg-badge text-badge-ink'}"
           aria-label="{mark.code}: {mark.name}"
           aria-describedby="equip-tip-{mark.code}-{index}"
         >

@@ -14,7 +14,7 @@
 </script>
 
 {#if all.length}
-  <div class="mt-2 flex items-center justify-start gap-1 rounded-b-lg bg-paper-2 px-2 py-1 bw:bg-white">
+  <div class="badge-strip mt-2 flex items-center justify-start gap-1 rounded-b-lg bg-strip px-2 py-1 bw:bg-white">
     <EquipBubbles marks={all} />
   </div>
 {/if}

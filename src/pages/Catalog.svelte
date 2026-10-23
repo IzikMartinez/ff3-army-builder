@@ -392,13 +392,17 @@
           <p class="mt-2 text-muted">Loosen a filter above, or clear them all.</p>
         </div>
       {:else}
-        <ul class="grid grid-cols-1 gap-4 xl:grid-cols-2">
+        <ul
+          class={$force.cardStyle === "classic"
+            ? "grid grid-cols-1 gap-4 xl:grid-cols-2"
+            : "flex flex-wrap items-start gap-4"}
+        >
           {#each cards as variants (`${variants[0]!.nation}::${cardName(variants[0]!)}`)}
             <CatalogEntry
               {variants}
               yearMin={$force.yearMin}
               yearMax={$force.yearMax}
-              bw={$force.bwMode}
+              bw={false}
             />
           {/each}
         </ul>

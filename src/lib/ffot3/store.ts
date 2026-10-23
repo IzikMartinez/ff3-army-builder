@@ -1,5 +1,5 @@
 import { derived, get, writable } from "svelte/store";
-import type { HeloPodPick, ListEntry, Scale, ThemeMode, TowedPick } from "./types";
+import type { CardStyle, HeloPodPick, ListEntry, Scale, ThemeMode, TowedPick } from "./types";
 import { YEAR_MAX, YEAR_MIN } from "./combat";
 import { DEFAULT_QUALITY, QUALITY_BY_ID, getUnit, migrateUnitId, unitStandBase } from "./catalog";
 import { heloPicksEqual, isHelicopter, isTransportHelo, sanitizeHeloPicks } from "./helo";
@@ -22,7 +22,10 @@ export type ForceState = {
   yearMin: number;
   yearMax: number;
   theme: ThemeMode;
+  cardStyle: CardStyle;
 };
+
+const CARD_STYLES: readonly CardStyle[] = ["classic", "companion", "foldout", "rider"];
 
 function applyTheme(theme: ThemeMode) {
   if (typeof document === "undefined") return;
@@ -71,6 +74,7 @@ function loadState(): ForceState {
     yearMin: YEAR_MIN,
     yearMax: YEAR_MAX,
     theme: "dark",
+    cardStyle: "classic",
   };
   if (typeof window === "undefined") return base;
   try {
@@ -91,11 +95,13 @@ function loadState(): ForceState {
         quality?: string;
         bw?: boolean;
         theme?: ThemeMode;
+        cards?: string;
       };
       base.scale = parsed.scale === "1:1" || parsed.range === "metric" ? "1:1" : "1:5";
       base.qualityId = migrateQuality(parsed.quality) || base.qualityId;
       base.bwMode = Boolean(parsed.bw);
       base.theme = parsed.theme === "light" ? "light" : "dark";
+      base.cardStyle = CARD_STYLES.find((c) => c === parsed.cards) ?? "classic";
     }
   } catch {
     /* ignore */
@@ -117,6 +123,7 @@ function persist(state: ForceState) {
       quality: state.qualityId,
       bw: state.bwMode,
       theme: state.theme,
+      cards: state.cardStyle,
     }),
   );
 }
@@ -154,6 +161,9 @@ function createForce() {
     },
     setBw(bwMode: boolean) {
       patch({ bwMode });
+    },
+    setCardStyle(cardStyle: CardStyle) {
+      patch({ cardStyle });
     },
     setTheme(theme: ThemeMode) {
       applyTheme(theme);

@@ -19,6 +19,7 @@ export type UnitClassId =
   | "spa"
   | "spaa"
   | "sam"
+  | "towed-aa"
   | "helicopter"
   | "engineer"
   | "utility"
@@ -44,6 +45,7 @@ export const UNIT_CLASSES: { id: UnitClassId; label: string }[] = [
   { id: "spa", label: "Self-Propelled Artillery (SPA)" },
   { id: "spaa", label: "Self-Propelled AA (SPAA)" },
   { id: "sam", label: "SAM" },
+  { id: "towed-aa", label: "Towed AA" },
   { id: "helicopter", label: "Helicopter" },
   { id: "engineer", label: "Engineer" },
   { id: "utility", label: "Soft-skin" },
@@ -240,6 +242,15 @@ export function classifyUnit(unit: Vehicle): UnitClassId {
 }
 
 function classifyTowed(n: string, cal: number | null): UnitClassId {
+  // Towed AA guns and SAMs (S-60, ZPU-4, M167 Vulcan, towed Rapier…).
+  if (
+    has(
+      n,
+      /\b(aag|aa gun|sam|rapier|chaparral|vulcan|zpu|zu-23|s-60|m1939|bofors|oerlikon|gdf|flak|quad aag|m55|m167|m53|hawk|sa-\d)\b/,
+    )
+  ) {
+    return "towed-aa";
+  }
   if (
     has(n, /\b(at gun|pdr|2a45|mt-12|t-12|wombat|mobat|conbat|\bbat\b|pak|d-44|d-48|bs-3|rr\b)/)
   ) {
@@ -271,7 +282,7 @@ export const CLASS_FAMILIES: { id: string; label: string; classes: UnitClassId[]
   { id: "recon", label: "Recon", classes: ["recon", "armored-car"] },
   { id: "anti-tank", label: "Anti-tank", classes: ["td", "at-gun"] },
   { id: "artillery", label: "Artillery", classes: ["spa", "artillery"] },
-  { id: "air-defence", label: "Air defence", classes: ["spaa", "sam"] },
+  { id: "air-defence", label: "Air defence", classes: ["spaa", "sam", "towed-aa"] },
   { id: "helicopters", label: "Helicopters", classes: ["helicopter"] },
   { id: "support", label: "Support", classes: ["engineer", "utility", "support"] },
 ];
@@ -292,6 +303,7 @@ export const SUBTYPE_LABEL: Partial<Record<UnitClassId, string>> = {
   artillery: "Towed & mortars",
   spaa: "AA guns",
   sam: "SAM",
+  "towed-aa": "Towed AA",
   engineer: "Engineer",
   utility: "Soft-skin",
   support: "Support",

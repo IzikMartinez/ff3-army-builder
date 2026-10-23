@@ -3,6 +3,8 @@ export type Scale = "1:5" | "1:1";
 export type Alliance = "nato" | "warpac" | "warpac-alt" | "other";
 export type HeaderInk = "light" | "dark";
 export type ThemeMode = "dark" | "light";
+/** Card layout: the original wide card, or a portrait card with its loadout as companion cards, a fold-out face, or riders hung underneath. */
+export type CardStyle = "classic" | "companion" | "foldout" | "rider";
 export type UnitKind = "ground" | "helicopter" | "infantry";
 
 export type Era = {

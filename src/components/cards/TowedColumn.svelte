@@ -8,6 +8,9 @@
   import { CELL_RANGE, CELL_VALUE, STAT_HEAD, nationSurface, penCell } from "../../lib/ffot3/ui";
   import { force } from "../../lib/ffot3/store";
   import WeaponTable from "./WeaponTable.svelte";
+  import GunLadder from "./GunLadder.svelte";
+  import { gunLabel } from "../../lib/ffot3/classify";
+  import { splitEquip } from "../../lib/ffot3/combat";
 
   let {
     weapon,
@@ -17,6 +20,7 @@
     yearMin,
     yearMax,
     nationId = "",
+    bare = false,
   }: {
     weapon: Vehicle;
     count?: number;
@@ -25,6 +29,8 @@
     yearMin?: number;
     yearMax?: number;
     nationId?: string;
+    /** Portrait loadout card: the wrapper names the weapon, the gun uses the sideways ladder. */
+    bare?: boolean;
   } = $props();
 
   const scale = $derived($force.scale);
@@ -38,16 +44,28 @@
   const surface = $derived(nationSurface(nationId));
 </script>
 
-<section class="min-w-0 sm:col-span-2 xl:col-span-1">
-  <div class="{STAT_HEAD} text-base leading-tight" title={weapon.Name}>
-    {weapon.Name}{#if count > 1}&nbsp;×{count}{/if}
-  </div>
-  <p class="mb-1 text-center text-[10px] uppercase tracking-[0.16em] text-muted">
-    Towed · cap {formatCap(towedCap(weapon))}
-    {#if showGun} · {weaponCaption(kind)}{/if}
-  </p>
+<section class={bare ? "min-w-0" : "min-w-0 sm:col-span-2 xl:col-span-1"}>
+  {#if !bare}
+    <div class="{STAT_HEAD} text-base leading-tight" title={weapon.Name}>
+      {weapon.Name}{#if count > 1}&nbsp;×{count}{/if}
+    </div>
+    <p class="mb-1 text-center text-[10px] uppercase tracking-[0.16em] text-muted">
+      Towed · cap {formatCap(towedCap(weapon))}
+      {#if showGun} · {weaponCaption(kind)}{/if}
+    </p>
+  {/if}
 
-  {#if showGun}
+  {#if showGun && bare}
+    <GunLadder
+      title={/^towed by/i.test(gunLabel(weapon)) ? weaponCaption(kind) : gunLabel(weapon) || weaponCaption(kind)}
+      range={weapon.Gun_Rng}
+      rof={weapon.Gun_ROF}
+      pen={weapon.Gun_Pen}
+      ai={weapon.AI}
+      {quality}
+      marks={splitEquip(weapon.Equip).weapon}
+    />
+  {:else if showGun}
     <WeaponTable unit={weapon} {quality} caption="" bare />
   {/if}
 

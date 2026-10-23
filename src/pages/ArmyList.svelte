@@ -14,6 +14,14 @@
       .filter((row): row is NonNullable<typeof row> => row !== null),
   );
   const bw = $derived($force.bwMode);
+  const portrait = $derived($force.cardStyle !== "classic");
+
+  // Portrait cards print two across on portrait pages: <html> carries a class
+  // that puts the body on the named "portrait-cards" page (see styles.css).
+  $effect(() => {
+    document.documentElement.classList.toggle("print-portrait", portrait);
+    return () => document.documentElement.classList.remove("print-portrait");
+  });
   const scale = $derived($force.scale);
   const name = $derived($force.listName);
   const empty = $derived($force.entries.length === 0);
@@ -28,7 +36,7 @@
 <div class="min-h-dvh print:bg-white print:p-0 print:text-black">
   <AppHeader title="Force list" backHref="/" />
 
-  <main class="mx-auto max-w-6xl px-4 py-5">
+  <main class="mx-auto max-w-6xl px-4 py-5 {portrait ? 'print-portrait-cards' : ''}">
     <section class="print:hidden mb-5 rounded-[24px] border border-line bg-ink-2 p-4">
       <div class="grid gap-4 md:grid-cols-[1fr_auto_auto]">
         <label class="block">
@@ -85,11 +93,24 @@
     </section>
 
     <div class="mb-4 hidden print:block">
-      <h2 class="font-display text-3xl text-ink">{name}</h2>
+      <h2 class="font-display text-3xl text-paper">{name}</h2>
       <p class="text-sm">
         FFOT3 · {count} stands · {points} pts ·
         {scale}
       </p>
+      {#if bw}
+        <p class="mt-1 flex items-center gap-3 text-xs text-black">
+          <span class="inline-flex items-center gap-1"
+            ><span class="inline-block h-3 w-5 border border-black bg-[#dcdcdc]"></span> Grey Hit = to-hit vs infantry</span
+          >
+          <span class="inline-flex items-center gap-1"
+            ><span
+              class="inline-block h-3 w-5 border border-black"
+              style="background: repeating-linear-gradient(135deg, #fff 0 3px, #9a9a9a 3px 4px)"
+            ></span> Hatched = HEAT (compare with HEAT armor)</span
+          >
+        </p>
+      {/if}
     </div>
 
     {#if rows.length === 0}
@@ -98,9 +119,20 @@
         <p class="mt-2 text-muted">Pick a nation and add cards from the catalog.</p>
       </div>
     {:else}
-      <div class="grid gap-4 lg:grid-cols-1 print:grid-cols-1">
+      <!-- Block layout in print so each card can stay on one page. -->
+      <!-- Portrait cards flow side by side, and print as inline blocks so a
+           unit (with its companions or riders) never splits across pages. -->
+      <div
+        class={portrait
+          ? "flex flex-wrap items-start gap-4 print:block print:[orphans:1] print:[widows:1]"
+          : "grid gap-4 lg:grid-cols-1 print:block"}
+      >
         {#each rows as row (row.entry.id)}
-          <div class="flex flex-col gap-2">
+          <div
+            class="flex flex-col gap-2 print:mb-4 print:break-inside-avoid {portrait
+              ? 'max-w-full print:mr-3 print:mb-3 print:inline-block print:align-top'
+              : 'print:block'}"
+          >
             <div
               class="print:hidden flex flex-wrap items-center gap-2 rounded-[14px] border border-line bg-ink-2 px-3 py-2"
             >
