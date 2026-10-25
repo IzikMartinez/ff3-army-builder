@@ -118,7 +118,8 @@
   const kind = $derived(weaponKind(unit));
   const showWeapon = $derived(kind !== "none" && !infantry);
   const gunTitle = $derived(
-    gunLabel(unit) || (kind === "mg" ? "Machine Gun" : kind === "autocannon" ? "Autocannon" : "Gun"),
+    gunLabel(unit) ||
+      (kind === "mg" ? "Machine Gun" : kind === "autocannon" ? "Autocannon" : "Gun"),
   );
   const hasMissileFeature = $derived(
     !helo && missileChoices(unit, missileId, yearMin, yearMax).length > 0,
@@ -126,7 +127,9 @@
   const equipSplit = $derived(splitEquip(unit.Equip));
   const weaponBadgesInMissile = $derived(!showWeapon && hasMissileFeature);
   const equip = $derived(
-    showWeapon || weaponBadgesInMissile ? equipSplit.unit : [...equipSplit.unit, ...equipSplit.weapon],
+    showWeapon || weaponBadgesInMissile
+      ? equipSplit.unit
+      : [...equipSplit.unit, ...equipSplit.weapon],
   );
   const hasPods = $derived(helo && (unit.pods ?? 0) > 0 && (unit.podOptionKeys?.length ?? 0) > 0);
   const hasTowedFeature = $derived(visibleTowed(unit, TOWED_WEAPONS, yearMin, yearMax).length > 0);
@@ -164,7 +167,10 @@
   const slotFill = $derived(
     attachments.flatMap((a) =>
       a.kind === "pod"
-        ? Array.from({ length: a.count }, () => a.weapon.kind === "missile" || a.weapon.kind === "aam")
+        ? Array.from(
+            { length: a.count },
+            () => a.weapon.kind === "missile" || a.weapon.kind === "aam",
+          )
         : [],
     ),
   );
@@ -199,10 +205,10 @@
     "gun-cell flex h-7 min-w-9 items-center justify-center rounded-md bg-cell px-1.5 font-display text-lg tabular-nums text-cell-ink ring-1 ring-cell-line ring-inset bw:ring-0 bw:border bw:border-black bw:bg-white bw:text-black";
   const BIG_HEAT =
     "pen-heat gun-cell flex h-7 min-w-9 items-center justify-center rounded-md bg-ammo-heat px-1.5 font-display text-lg tabular-nums text-ammo-heat-ink bw:border bw:border-black";
-  const TILE =
-    "rounded-lg border border-line-2 py-1 text-center bw:rounded-sm bw:border-black";
+  const TILE = "rounded-lg border border-line-2 py-1 text-center bw:rounded-sm bw:border-black";
   const TILE_V = "block font-display text-xl leading-tight tabular-nums";
-  const TILE_L = "block text-[9px] font-semibold uppercase tracking-[0.14em] text-muted bw:text-black";
+  const TILE_L =
+    "block text-[9px] font-semibold uppercase tracking-[0.14em] text-muted bw:text-black";
 </script>
 
 {#snippet armorPair(ap: number | string, heat: number | null, vertical = false)}
@@ -259,7 +265,11 @@
     <div class={LABEL}>
       <span>Armor</span>
       {#if !helo && !armorTbl.soft && armorTbl.bonus !== null}
-        <span>{split ? `h-class ${unit.armorH} · +${armorTbl.bonus} vs HEAT` : "No h-class bonus"}</span>
+        <span
+          >{split
+            ? `h-class ${unit.armorH} · +${armorTbl.bonus} vs HEAT`
+            : "No h-class bonus"}</span
+        >
       {/if}
     </div>
     {#if helo || armorTbl.soft || armorTbl.rows.length < 2}
@@ -271,17 +281,26 @@
           <span class="{BIG_WHITE} h-11 min-w-16 text-3xl">{row?.ap ?? 0}</span>
           {#if split && row}<span class="{BIG_HEAT} h-11 min-w-16 text-3xl">{row.heat}</span>{/if}
         {/if}
-        <span class="text-[10px] font-semibold uppercase leading-snug tracking-[0.14em] text-muted bw:text-black">
-          {#if armorTbl.soft}Soft target<br />no armor save{:else}All facings<br />{split ? "AP / HE · HEAT" : "all ammo"}{/if}
+        <span
+          class="text-[10px] font-semibold uppercase leading-snug tracking-[0.14em] text-muted bw:text-black"
+        >
+          {#if armorTbl.soft}Soft target<br />no armor save{:else}All facings<br />{split
+              ? "AP / HE · HEAT"
+              : "all ammo"}{/if}
         </span>
       </div>
     {:else}
       {@const front = armorTbl.rows[0]!}
       {@const flank = armorTbl.rows[1]!}
       <!-- Top-down hull: front values at the nose, flank values either side. -->
-      <div class="relative mx-auto h-[8.6rem] w-[15rem]" aria-label="Armor: front {front.ap}, flank {flank.ap}">
+      <div
+        class="relative mx-auto h-[8.6rem] w-[15rem]"
+        aria-label="Armor: front {front.ap}, flank {flank.ap}"
+      >
         {#if showWeapon}
-          <span class="absolute top-[1.1rem] left-1/2 h-[2.6rem] w-1 -translate-x-1/2 bg-line-2 bw:bg-black"></span>
+          <span
+            class="absolute top-[1.1rem] left-1/2 h-[2.6rem] w-1 -translate-x-1/2 bg-line-2 bw:bg-black"
+          ></span>
         {/if}
         <span
           class="absolute top-[2.3rem] left-1/2 h-[6rem] w-[4.6rem] -translate-x-1/2 rounded-lg border-2 border-line-2 bg-ink-3 bw:border-black bw:bg-white"
@@ -304,10 +323,14 @@
       {#if split}
         <div class="mt-1 flex justify-center gap-3 text-[11px] text-muted bw:text-black">
           <span class="inline-flex items-center gap-1"
-            ><i class="inline-block h-2.5 w-2.5 rounded-xs bg-cell ring-1 ring-cell-line bw:ring-0 bw:border bw:border-black bw:bg-white"></i>vs AP / HE</span
+            ><i
+              class="inline-block h-2.5 w-2.5 rounded-xs bg-cell ring-1 ring-cell-line bw:ring-0 bw:border bw:border-black bw:bg-white"
+            ></i>vs AP / HE</span
           >
           <span class="inline-flex items-center gap-1"
-            ><i class="pen-heat inline-block h-2.5 w-2.5 rounded-xs bg-ammo-heat bw:border bw:border-black"></i>vs HEAT</span
+            ><i
+              class="pen-heat inline-block h-2.5 w-2.5 rounded-xs bg-ammo-heat bw:border bw:border-black"
+            ></i>vs HEAT</span
           >
         </div>
       {/if}
@@ -319,20 +342,35 @@
       <div class={LABEL}><span>Move</span></div>
       <div class="flex items-center gap-3">
         <div class="flex shrink-0 items-baseline gap-1.5">
-          <span class="font-display text-[2.9rem] leading-none tabular-nums">{formatRange(move, scale)}</span>
-          <span class="text-[10px] font-semibold uppercase tracking-[0.14em] text-muted bw:text-black"
+          <span class="font-display text-[2.9rem] leading-none tabular-nums"
+            >{formatRange(move, scale)}</span
+          >
+          <span
+            class="text-[10px] font-semibold uppercase tracking-[0.14em] text-muted bw:text-black"
             >{helo ? "NOE" : moveType === "leg" ? "Any terrain" : "Normal"}</span
           >
         </div>
         {#if helo}
           <div class="ml-auto grid w-24 grid-cols-1 gap-1">
-            <div class={TILE}><b class={TILE_V}>{formatRange(-1, scale)}</b><span class={TILE_L}>High</span></div>
+            <div class={TILE}>
+              <b class={TILE_V}>{formatRange(-1, scale)}</b><span class={TILE_L}>High</span>
+            </div>
           </div>
         {:else if moveType !== "leg"}
           <div class="ml-auto grid min-w-0 flex-1 grid-cols-3 gap-1">
-            <div class={TILE}><b class={TILE_V}>{formatRange(terrain.rough, scale)}</b><span class={TILE_L}>Rough</span></div>
-            <div class={TILE}><b class={TILE_V}>{formatRange(terrain.bad, scale)}</b><span class={TILE_L}>Bad</span></div>
-            <div class={TILE}><b class={TILE_V}>{formatRange(terrain.road, scale)}</b><span class={TILE_L}>Road</span></div>
+            <div class={TILE}>
+              <b class={TILE_V}>{formatRange(terrain.rough, scale)}</b><span class={TILE_L}
+                >Rough</span
+              >
+            </div>
+            <div class={TILE}>
+              <b class={TILE_V}>{formatRange(terrain.bad, scale)}</b><span class={TILE_L}>Bad</span>
+            </div>
+            <div class={TILE}>
+              <b class={TILE_V}>{formatRange(terrain.road, scale)}</b><span class={TILE_L}
+                >Road</span
+              >
+            </div>
           </div>
         {/if}
       </div>
@@ -350,7 +388,8 @@
           {#each Array.from({ length: row.count }, (_, i) => i) as i (i)}
             <span
               class="flex h-7 max-w-full items-center truncate rounded-md bg-brass px-2 font-display text-sm tracking-wide text-ink bw:border bw:border-black bw:bg-[#dcdcdc] bw:text-black"
-              title="{row.weapon.Name} · uses {formatCap(towedCap(row.weapon))}">{row.weapon.Name}</span
+              title="{row.weapon.Name} · uses {formatCap(towedCap(row.weapon))}"
+              >{row.weapon.Name}</span
             >
           {/each}
         {/each}
@@ -396,7 +435,7 @@
         {yearMax}
         {bw}
         portrait
-        onMissile={onMissile}
+        {onMissile}
         extraMarks={weaponBadgesInMissile ? equipSplit.weapon : []}
       />
     </div>
@@ -418,7 +457,8 @@
           : "Must leave after dropping cargo (17.10)"}
         onclick={() => onDedicated?.(!isDedicated)}
       >
-        <span class="h-2 w-2 rounded-full {isDedicated ? 'bg-ink' : 'bg-line-2'}" aria-hidden="true"></span>
+        <span class="h-2 w-2 rounded-full {isDedicated ? 'bg-ink' : 'bg-line-2'}" aria-hidden="true"
+        ></span>
         Dedicated
       </button>
     {/if}
@@ -427,7 +467,8 @@
     {/if}
     {#if attachments.length && layout !== "foldout"}
       <span class="mr-auto text-[11px] text-muted tabular-nums bw:text-black">
-        Hull {hullPts} + {loadNoun.toLowerCase()} {loadPts}
+        Hull {hullPts} + {loadNoun.toLowerCase()}
+        {loadPts}
       </span>
     {/if}
     <EquipBubbles marks={equip} />
@@ -462,13 +503,17 @@
 
 {#snippet itemHead(a: Attachment, cls = "")}
   <div class="flex items-baseline gap-2 {cls}">
-    <span class="min-w-0 flex-1 truncate font-display text-xl leading-tight tracking-wide uppercase" title={a.name}
-      >{a.name}</span
+    <span
+      class="min-w-0 flex-1 truncate font-display text-xl leading-tight tracking-wide uppercase"
+      title={a.name}>{a.name}</span
     >
-    {#if a.count > 1}<span class="font-display text-lg text-brass bw:text-black">×{a.count}</span>{/if}
+    {#if a.count > 1}<span class="font-display text-lg text-brass bw:text-black">×{a.count}</span
+      >{/if}
     <span
       class="shrink-0 rounded-md border border-line-2 px-1.5 font-display text-base tabular-nums bw:border-black"
-      >{a.pts}<span class="ml-0.5 text-[8px] font-semibold tracking-[0.14em] text-muted bw:text-black">PTS</span></span
+      >{a.pts}<span
+        class="ml-0.5 text-[8px] font-semibold tracking-[0.14em] text-muted bw:text-black">PTS</span
+      ></span
     >
   </div>
 {/snippet}
@@ -492,7 +537,8 @@
     {#if hasLoadout}
       <div class="flex {CARD_W} flex-col gap-2 {attachments.length ? '' : 'print:hidden'}">
         {#if attachments.length}
-          <span class="text-[10px] font-semibold uppercase tracking-[0.16em] text-muted bw:text-black"
+          <span
+            class="text-[10px] font-semibold uppercase tracking-[0.16em] text-muted bw:text-black"
             >Mounted on {unit.Name}</span
           >
         {/if}
@@ -513,7 +559,9 @@
               class="absolute inset-y-0 left-0 w-1.5 rounded-l-[13px] {bw ? 'bg-black' : surface}"
               aria-hidden="true"
             ></span>
-            <header class="card-head rounded-tr-[13px] border-b border-line bg-ink-3 py-2 pr-3 pl-4 bw:border-black bw:bg-white">
+            <header
+              class="card-head rounded-tr-[13px] border-b border-line bg-ink-3 py-2 pr-3 pl-4 bw:border-black bw:bg-white"
+            >
               {@render itemHead(a)}
             </header>
             <div class="py-2.5 pr-3 pl-4">{@render itemBody(a)}</div>
@@ -540,18 +588,30 @@
           class="card-head flex items-baseline justify-between border-b border-line bg-ink-3 px-3.5 py-3 sm:rounded-tr-[15px] bw:border-black bw:bg-white"
         >
           <span class="font-display text-2xl tracking-[0.08em] uppercase">Loadout</span>
-          <span class="text-[10px] font-semibold uppercase tracking-[0.16em] text-muted bw:text-black">
-            {#if helo}{podsUsed} of {podSlots} pods{:else if showCapacity}{formatCap(capMax - capRemain)} of {formatCap(capMax)} capacity{/if}
+          <span
+            class="text-[10px] font-semibold uppercase tracking-[0.16em] text-muted bw:text-black"
+          >
+            {#if helo}{podsUsed} of {podSlots} pods{:else if showCapacity}{formatCap(
+                capMax - capRemain,
+              )} of {formatCap(capMax)} capacity{/if}
           </span>
         </div>
         {#if podSlots > 0}
           <!-- One segment per pod slot: brass = missiles, grey = other pods. -->
           <div class="flex gap-1 px-3.5 pt-2.5" aria-hidden="true">
             {#each slotFill as missile, i (i)}
-              <span class="h-2 flex-1 rounded-full {missile ? 'bg-brass' : 'bg-muted'} bw:border bw:border-black {missile ? 'bw:bg-black' : 'bw:bg-[#dcdcdc]'}"></span>
+              <span
+                class="h-2 flex-1 rounded-full {missile
+                  ? 'bg-brass'
+                  : 'bg-muted'} bw:border bw:border-black {missile
+                  ? 'bw:bg-black'
+                  : 'bw:bg-[#dcdcdc]'}"
+              ></span>
             {/each}
             {#each Array.from({ length: Math.max(0, podSlots - podsUsed) }, (_, i) => i) as i (i)}
-              <span class="h-2 flex-1 rounded-full border border-dashed border-line-2 bw:border-black"></span>
+              <span
+                class="h-2 flex-1 rounded-full border border-dashed border-line-2 bw:border-black"
+              ></span>
             {/each}
           </div>
         {/if}
@@ -570,7 +630,9 @@
             class="mt-auto flex items-baseline justify-between border-t border-line px-3.5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-muted bw:border-black bw:text-black"
           >
             <span>Hull {hullPts} · {loadNoun} {loadPts}{isDedicated ? " · ×2 dedicated" : ""}</span>
-            <b class="font-display text-2xl tracking-wide text-paper tabular-nums bw:text-black">{basePts} pts</b>
+            <b class="font-display text-2xl tracking-wide text-paper tabular-nums bw:text-black"
+              >{basePts} pts</b
+            >
           </div>
         {/if}
       </div>
@@ -584,23 +646,27 @@
     {#each attachments as a (a.key)}
       <!-- Hitch: the rider hangs off the card above. -->
       <div class="relative h-6 break-after-avoid" aria-hidden="true">
-        <span class="absolute inset-y-0 left-1/2 border-l-[3px] border-dashed border-brass bw:border-black"></span>
+        <span
+          class="absolute inset-y-0 left-1/2 border-l-[3px] border-dashed border-brass bw:border-black"
+        ></span>
         <span
           class="absolute top-1 left-[calc(50%+0.6rem)] text-[10px] font-semibold uppercase tracking-[0.16em] text-brass bw:text-black"
           >{a.kind === "pod" ? "Mounted" : "Towing"}</span
         >
       </div>
-      <article
-        data-bw={bw ? "true" : undefined}
-        class="{CARD} relative {MINI} break-inside-avoid"
-      >
-        <span class="pointer-events-none absolute inset-0 overflow-hidden rounded-[13px]" aria-hidden="true">
+      <article data-bw={bw ? "true" : undefined} class="{CARD} relative {MINI} break-inside-avoid">
         <span
-          class="absolute top-3 -right-9 rotate-[35deg] bg-brass px-10 py-0.5 font-display text-xs tracking-[0.2em] text-ink uppercase bw:border-y bw:border-black bw:bg-white bw:text-black"
-          >{a.kind === "pod" ? "Pod" : "Towed"}</span
+          class="pointer-events-none absolute inset-0 overflow-hidden rounded-[13px]"
+          aria-hidden="true"
         >
+          <span
+            class="absolute top-3 -right-9 rotate-[35deg] bg-brass px-10 py-0.5 font-display text-xs tracking-[0.2em] text-ink uppercase bw:border-y bw:border-black bw:bg-white bw:text-black"
+            >{a.kind === "pod" ? "Pod" : "Towed"}</span
+          >
         </span>
-        <header class="card-head rounded-t-[13px] border-b border-line bg-ink-3 py-2.5 pr-16 pl-3.5 bw:border-black bw:bg-white">
+        <header
+          class="card-head rounded-t-[13px] border-b border-line bg-ink-3 py-2.5 pr-16 pl-3.5 bw:border-black bw:bg-white"
+        >
           {@render itemHead(a)}
         </header>
         <div class="px-3.5 py-3">

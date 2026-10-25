@@ -45,7 +45,8 @@
   const bands = $derived(gunBands(range));
   const parsed = $derived(parsePen(pen.map(String)));
   const shownRof = $derived(adjustedRof(rof, quality));
-  const ROW_HEAD = "flex items-center text-[9px] font-semibold uppercase tracking-[0.12em] text-muted";
+  const ROW_HEAD =
+    "flex items-center text-[9px] font-semibold uppercase tracking-[0.12em] text-muted";
   const INF_CELL =
     "hit-inf gun-cell flex items-center justify-center rounded-xs bg-vs-inf py-1 text-center font-display text-sm tabular-nums text-vs-inf-ink bw:border bw:border-black bw:bg-white bw:text-black";
 </script>
@@ -53,7 +54,8 @@
 <div class="mb-1 flex items-baseline justify-between gap-2">
   <span class="min-w-0 truncate font-display text-lg tracking-wide uppercase" {title}>{title}</span>
   {#if range > 0}
-    <span class="shrink-0 text-[10px] font-semibold uppercase tracking-[0.18em] text-muted"
+    <span
+      class="shrink-0 text-[11px] font-extrabold uppercase tracking-[0.18em] bg-indigo-400 p-1 rounded text-yellow-50"
       >ROF {shownRof}</span
     >
   {/if}
@@ -66,14 +68,16 @@
   <div class="grid grid-cols-[3.5rem_repeat(3,minmax(0,1fr))] gap-[3px]">
     <span></span>
     {#each bands as band (band.band)}
-      <span class="cell-range text-center font-display text-base tabular-nums text-brass bw:text-black"
+      <span
+        class="cell-range text-center font-display text-base tabular-nums text-brass bw:text-black"
         >{formatRange(band.range, scale)}</span
       >
     {/each}
 
     <span class={ROW_HEAD}>Hit</span>
     {#each bands as band (band.band)}
-      <span class={CELL_VALUE} title="To-hit vs vehicles">{adjustedHit(band.hitBase, quality)}</span>
+      <span class={CELL_VALUE} title="To-hit vs vehicles">{adjustedHit(band.hitBase, quality)}</span
+      >
     {/each}
 
     <span class={ROW_HEAD}>vs Inf</span>
