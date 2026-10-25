@@ -5,3 +5,6 @@ dist/
 .node_modules.lock
 *.log
 rules
+
+# Design mockups (local only)
+mockups/
