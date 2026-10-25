@@ -3566,7 +3566,7 @@
         "sam": false
       }
     ],
-    "missileRequired": true,
+    "missileRequired": false,
     "notes": "",
     "armorSoft": true
   },
@@ -11558,7 +11558,7 @@
     "Gun_ROF": 2,
     "Gun_Rng": 16,
     "Name": "T-72B",
-    "Points": 252.0,
+    "Points": 261.0,
     "era": {
       "start_era": "88",
       "end_era": "96"
@@ -13217,7 +13217,7 @@
         "sam": false
       }
     ],
-    "missileRequired": true,
+    "missileRequired": false,
     "notes": "",
     "armorSoft": true
   },
@@ -21098,7 +21098,7 @@
     "Gun_ROF": 2,
     "Gun_Rng": 16,
     "Name": "T-72B",
-    "Points": 252.0,
+    "Points": 261.0,
     "era": {
       "start_era": "88",
       "end_era": "96"
@@ -22244,7 +22244,7 @@
         "sam": false
       }
     ],
-    "missileRequired": true,
+    "missileRequired": false,
     "notes": "",
     "armorSoft": true
   },
@@ -29904,7 +29904,7 @@
     "Gun_ROF": 2,
     "Gun_Rng": 16,
     "Name": "T-72B",
-    "Points": 252.0,
+    "Points": 261.0,
     "era": {
       "start_era": "88",
       "end_era": "96"
@@ -35090,7 +35090,7 @@
         "sam": false
       }
     ],
-    "missileRequired": true,
+    "missileRequired": false,
     "notes": "",
     "armorSoft": true
   },
@@ -42750,7 +42750,7 @@
     "Gun_ROF": 2,
     "Gun_Rng": 16,
     "Name": "T-72B",
-    "Points": 252.0,
+    "Points": 261.0,
     "era": {
       "start_era": "88",
       "end_era": "96"
@@ -45727,7 +45727,7 @@
         "sam": false
       }
     ],
-    "missileRequired": true,
+    "missileRequired": false,
     "notes": "",
     "armorSoft": true
   },
@@ -53703,7 +53703,7 @@
     "Gun_ROF": 2,
     "Gun_Rng": 16,
     "Name": "T-72B",
-    "Points": 252.0,
+    "Points": 261.0,
     "era": {
       "start_era": "88",
       "end_era": "96"
@@ -54724,7 +54724,7 @@
         "sam": false
       }
     ],
-    "missileRequired": true,
+    "missileRequired": false,
     "notes": "",
     "armorSoft": true
   },
@@ -62256,7 +62256,7 @@
     "Gun_ROF": 2,
     "Gun_Rng": 16,
     "Name": "T-72B",
-    "Points": 252.0,
+    "Points": 261.0,
     "era": {
       "start_era": "88",
       "end_era": "96"
@@ -63467,7 +63467,7 @@
         "sam": false
       }
     ],
-    "missileRequired": true,
+    "missileRequired": false,
     "notes": "",
     "armorSoft": true
   },
@@ -74645,7 +74645,7 @@
     "Gun_ROF": 2,
     "Gun_Rng": 16,
     "Name": "T-72B",
-    "Points": 252.0,
+    "Points": 261.0,
     "era": {
       "start_era": "88",
       "end_era": "96"
