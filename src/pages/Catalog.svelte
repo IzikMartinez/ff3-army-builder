@@ -2,6 +2,8 @@
   import { onMount } from "svelte";
   import AppHeader from "../components/AppHeader.svelte";
   import CatalogEntry from "../components/catalog/CatalogEntry.svelte";
+  import OrderOfBattle from "../components/catalog/OrderOfBattle.svelte";
+  import { armyListsFor } from "../lib/ffot3/armyLists";
   import {
     availableGunsFor,
     availableMissilesFor,
@@ -34,6 +36,8 @@
   let gun = $state("");
   let missile = $state("");
   let moreOpen = $state(false);
+  let oobOpen = $state(false);
+  const hasArmyLists = $derived(armyListsFor(nationId).length > 0);
   let moreEl = $state<HTMLElement | null>(null);
 
   const eras = [
@@ -181,7 +185,21 @@
               >{$force.yearMin}–{$force.yearMax}</span
             >
           </div>
-          <span class="shrink-0 text-sm tabular-nums text-muted">{cards.length} cards</span>
+          <div class="flex shrink-0 items-center gap-3">
+            {#if hasArmyLists}
+              <button
+                type="button"
+                class="h-9 rounded-[10px] border px-3 font-display text-sm tracking-wide uppercase {oobOpen
+                  ? 'border-brass bg-brass text-ink'
+                  : 'border-brass/70 text-paper hover:bg-brass/15'}"
+                aria-expanded={oobOpen}
+                onclick={() => (oobOpen = !oobOpen)}
+              >
+                Order of battle
+              </button>
+            {/if}
+            <span class="text-sm tabular-nums text-muted">{cards.length} cards</span>
+          </div>
         </div>
 
         <!-- Row 1: search, era, weapons (gun / missile) -->
@@ -385,6 +403,14 @@
           </div>
         {/if}
       </section>
+
+      {#if oobOpen && hasArmyLists}
+        <OrderOfBattle
+          {nationId}
+          initialYear={decadeSelected ? Math.round(($force.yearMin + $force.yearMax) / 2) : 1985}
+          onClose={() => (oobOpen = false)}
+        />
+      {/if}
 
       {#if cards.length === 0}
         <div class="rounded-[24px] border border-line bg-ink-2 px-4 py-16 text-center">

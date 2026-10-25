@@ -227,6 +227,37 @@ function createForce() {
         };
       });
     },
+    /** Add many stands at once (a whole formation), merging with matching entries. */
+    addBatch(items: { unitId: string; quantity: number; missileId: string | null }[], quality: string) {
+      patch((s) => {
+        const entries = [...s.entries];
+        for (const it of items) {
+          if (it.quantity <= 0) continue;
+          const i = entries.findIndex(
+            (e) =>
+              e.unitId === it.unitId &&
+              e.quality === quality &&
+              (e.missileId ?? null) === it.missileId &&
+              e.heloPods.length === 0 &&
+              e.towedLoad.length === 0 &&
+              !e.dedicated,
+          );
+          if (i >= 0) entries[i] = { ...entries[i]!, quantity: entries[i]!.quantity + it.quantity };
+          else
+            entries.push({
+              id: uid(),
+              unitId: it.unitId,
+              quantity: it.quantity,
+              quality,
+              missileId: it.missileId,
+              heloPods: [],
+              towedLoad: [],
+              dedicated: false,
+            });
+        }
+        return { ...s, entries };
+      });
+    },
     setQuantity(id: string, quantity: number) {
       const next = Math.max(0, Math.round(quantity));
       patch((s) => ({
