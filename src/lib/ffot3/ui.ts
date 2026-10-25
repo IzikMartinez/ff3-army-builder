@@ -74,6 +74,7 @@ export const NATION_SURFACE: Record<string, string> = {
   bulgaria: "bg-nation-bulgaria text-on-nation",
   japan: "bg-nation-japan text-on-nation",
   "south-africa": "bg-nation-south-africa text-on-nation",
+  zapadoslavia: "bg-nation-zapadoslavia text-on-nation-dark ring-1 ring-inset ring-line-2",
 };
 
 export const NATION_QUALITY: Record<string, string> = {
@@ -96,6 +97,7 @@ export const NATION_QUALITY: Record<string, string> = {
   bulgaria: "border-on-nation/40 bg-on-nation text-nation-bulgaria",
   japan: "border-on-nation/40 bg-on-nation text-nation-japan",
   "south-africa": "border-on-nation/40 bg-on-nation text-nation-south-africa",
+  zapadoslavia: "border-on-nation-dark/40 bg-on-nation-dark text-nation-zapadoslavia",
 };
 
 export function nationSurface(id: string): string {
